@@ -214,6 +214,10 @@
           <div class="card-body"><span class="region">Washington, DC</span><h3>Hiss Golden Messenger with Sam Amidon</h3><p class="artist-bio">American folk band from Durham, North Carolina, formed in 2007 and led by singer-songwriter M.C. Taylor; their 2019 album Terms of Surrender was Grammy-nominated for Best Americana Album. <a class="artist-source" href="https://en.wikipedia.org/wiki/Hiss_Golden_Messenger" target="_blank" rel="noopener">Wikipedia ↗</a><span class="co-bio">Sam Amidon is a Vermont-born folk singer and multi-instrumentalist known for reimagining traditional American folk songs. <a class="artist-source" href="https://en.wikipedia.org/wiki/Sam_Amidon" target="_blank" rel="noopener">Sam Amidon on Wikipedia ↗</a></span></p><p class="critic-rating"><span aria-label="Critic rating">Critic score:</span> <a href="https://www.metacritic.com/music/haw/hiss-golden-messenger" target="_blank" rel="noopener">Metacritic 86/100</a> · <cite>Haw</cite></p><p>Doors 6 PM · 9:30 Club</p><p class="detail">Early show.</p><a class="ticket" href="https://www.930.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article class="event-card" data-area="nova">
+          <div class="art"><img src="assets/phil-gates-blues.png" alt="Phil Gates performing live onstage"><span class="date-chip">Sun · Oct 11</span></div>
+          <div class="card-body"><span class="region">Falls Church, Virginia</span><h3>Phil Gates</h3><p class="artist-bio">Chicago-born blues, funk and soul guitarist and singer; a U.S. Air Force “Tops in Blue” veteran whose band won the “Beale Street Blues Kings” competition in Memphis, blending Chicago blues grit with funk, soul and New Orleans flavors — and a JV’s regular. <a class="artist-source" href="https://epkbuilder.com/site/phil-gates" target="_blank" rel="noopener">Phil Gates EPK ↗</a></p><p class="critic-rating no-rating">No critic rating found</p><p>8:30 PM · JV’s</p><p class="detail">Blues, funk &amp; originals. His latest JV’s night was Sun Oct 11; JV’s calendar and his own site listed no later date as of Oct 12 — he plays JV’s regularly, so check JV’s for his next date.</p><a class="ticket" href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article class="event-card" data-area="nova">
           <div class="art"><img src="assets/dave-chappell-guitar.webp" alt="Dave Chappell with Jonathan Sloane performing live onstage"><span class="date-chip">Thu · Oct 15</span></div>
           <div class="card-body"><span class="region">Falls Church, Virginia</span><h3>Dave Chappell with Jonathan Sloane</h3><p class="artist-bio">Washington, DC native guitarist described as one of the area's most sought-after and respected musicians, a multiple Washington Area Music Award winner in rock/roots rock instrumentalist categories. No Wikipedia or official artist site found.<span class="co-bio">Jonathan Sloane is a Rockville, Maryland-based blues-rooted guitarist and songwriter who has toured and recorded with Cris Jacobs and Anders Osborne. <a class="artist-source" href="http://www.jonathansloanemusic.com" target="_blank" rel="noopener">Jonathan Sloane official site ↗</a></span></p><p class="critic-rating no-rating">No critic rating found</p><p>8 PM · JV’s</p><p class="detail">Every-third-Thursday residency.</p><a class="ticket" href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -896,11 +900,9 @@
       }
       function fuzzyFragmentMatches(query,word){
         if(query.length<4||query.charAt(0)!==word.charAt(0))return false;
-        var allowance=query.length===4?1:2;
-        if(word.length>=query.length){
-          return editDistance(query,word.slice(0,query.length))<=allowance;
-        }
-        return query.length-word.length<=allowance&&editDistance(query,word)<=allowance;
+        if(Math.abs(word.length-query.length)>1)return false;
+        var allowance=query.length>=8?2:1;
+        return editDistance(query,word)<=allowance;
       }
       function termMatches(query,value){
         if(!query)return true;
@@ -966,6 +968,10 @@
         "Airmont Road Band": {
                 "label": "Watch Airmont Road perform “Foxy Lady”",
                 "url": "https://www.youtube.com/watch?v=QPWk9N3rfYA"
+        },
+        "Phil Gates": {
+                "label": "Watch Phil Gates perform “New Kinda Funky” live at JV’s",
+                "url": "https://www.youtube.com/watch?v=ZryNAKCcslE"
         },
         "Saved By The 90's": {
                 "label": "Watch Saved By The 90's perform (official promo)",
@@ -1479,6 +1485,12 @@
                 {
                         "label": "Hiss Golden Messenger official site",
                         "url": "https://hissgoldenmessenger.com"
+                }
+        ],
+        "Phil Gates": [
+                {
+                        "label": "Phil Gates official site",
+                        "url": "https://philgates.com/"
                 }
         ],
         "Dave Chappell with Jonathan Sloane": [
