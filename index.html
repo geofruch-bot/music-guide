@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#e7412f">
   <link rel="icon" href="data:,">
-  <title>Music Guide</title>
+  <title>Great Music — Close Enough to Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Libre+Franklin:wght@500;600;700;800&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap');
     :root{
@@ -32,6 +32,7 @@
     .hero-visual:before{width:72px;height:72px;right:-22px;top:-22px;background:var(--yellow);border:4px solid var(--ink);transform:rotate(15deg)}
     .hero-visual:after{left:0;right:0;bottom:0;height:12px;background:repeating-linear-gradient(90deg,var(--yellow) 0 18px,var(--red) 18px 36px,var(--blue) 36px 54px)}
     .hero-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:52% 45%;filter:saturate(1.22) contrast(1.12)}
+    .hero-visual-link{display:block;text-decoration:none;color:inherit}
     .hero-visual figcaption{position:absolute;left:12px;bottom:20px;z-index:3;max-width:86%;padding:7px 10px;background:var(--yellow);color:#111;border:2px solid #111;font:800 12px/1.2 var(--sans);text-transform:uppercase;transform:rotate(-2deg)}
     .intro{margin:0;padding:12px 14px;background:var(--blue);color:#fff;border:3px solid var(--ink);font:700 18px/1.4 var(--serif);box-shadow:5px 5px 0 var(--ink);transform:rotate(-1.25deg)}
     .last-updated{background:var(--yellow);color:#111;border-bottom:5px solid var(--ink)}
@@ -188,15 +189,101 @@
     @media(max-width:420px){.view-switch{display:flex;width:100%}.view-tab{flex:1;padding-inline:9px}.calendar-day{min-height:104px;padding:6px}.calendar-artist{font-size:10px}.calendar-venue{font-size:9px}.calendar-more{font-size:9px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.jump-target{animation:none;outline:6px solid var(--yellow);outline-offset:5px}}
     @media print{.jump,.float-menu,.concert-search,.view-switch,.calendar-view,.filter-row,.no-matches,.search-results{display:none}.event-grid{display:grid!important}.event-card{break-inside:avoid;box-shadow:none}.ticket{border:1px solid var(--ink);color:var(--ink);background:none}.venue-link{break-inside:avoid}}
+    /* ——— Modern polish pass: visual only, same markup, ids, and behavior ——— */
+    :root{
+      --paper:#f5f6f7;--ink:#1a1e24;--muted:#5a636e;--line:#e3e6ea;--surface:#ffffff;
+      --red:#e0341f;--blue:#0f66d0;--yellow:#f2c200;--green:#0f8a4d;--shadow:#1a1e24;
+      --display:'Libre Franklin',sans-serif;
+      --soft:0 1px 2px rgba(18,24,33,.05),0 12px 32px -16px rgba(18,24,33,.22);
+    }
+    @media(prefers-color-scheme:dark){:root{--paper:#0f1114;--ink:#f3f4f6;--muted:#a3adb9;--line:#2a2f36;--surface:#181b20;--red:#ff6a55;--blue:#6cabff;--yellow:#ffd83d;--green:#4cc983;--shadow:#000000;--soft:0 1px 2px rgba(0,0,0,.4),0 12px 32px -16px rgba(0,0,0,.65)}}
+    .hero h1,.section-head h2,.band-index-head h2,.panel h2,.panel h3,.artist-watch h3,.month-switch strong,.calendar-day-number,.search-count,.no-matches strong,.last-updated strong,.card-body h3{font-weight:800;text-transform:none;letter-spacing:-.025em}
+    /* Masthead */
+    .hero{padding:44px 0 36px;border-bottom:1px solid var(--line);gap:44px}
+    .hero:before{display:none}
+    .hero h1{font-size:clamp(42px,6.2vw,74px);line-height:1.0}
+    .tagline{margin:20px 0 0;font:700 clamp(17px,2.2vw,21px)/1.35 var(--sans);color:var(--muted)}
+    .tagline strong{color:var(--red);font-weight:800;box-shadow:inset 0 -.45em 0 color-mix(in srgb,var(--yellow) 55%,transparent)}
+    .hero-side{transform:none;gap:18px}
+    .hero-visual{border:0;border-radius:20px;box-shadow:var(--soft);background:var(--line)}
+    .hero-visual:before,.hero-visual:after{display:none}
+    .hero-visual img{filter:saturate(1.05) contrast(1.03)}
+    .hero-visual figcaption{border:0;border-radius:999px;transform:none;text-transform:none;font-size:12.5px;padding:8px 13px;bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+    .hero-visual-link{border-radius:20px}
+    .intro{border:0;border-radius:16px;box-shadow:var(--soft);transform:none;padding:16px 18px}
+    .last-updated{border-bottom:1px solid var(--line)}
+    .last-updated .wrap{padding:13px 0}
+    /* Jump bar + floating menu */
+    .jump{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .jump a{border:1px solid var(--line);border-radius:999px;background:var(--surface);min-height:40px;padding:7px 14px}
+    .jump a:nth-child(1){border-bottom:3px solid var(--red)}
+    .jump a:nth-child(2){border-bottom:3px solid var(--blue)}
+    .jump a:nth-child(3){border-bottom:3px solid var(--green)}
+    .float-menu{border:0;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.3)}
+    /* Sections + spacing */
+    main{padding:38px 0 72px}
+    .section-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+    .section-head h2{font-size:clamp(28px,4.2vw,44px)}
+    .band-index{margin-bottom:44px}
+    .band-index-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+    .band-index-head h2{font-size:clamp(26px,3.8vw,40px)}
+    .band-list{gap:12px}
+    .band-row{border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+    .band-date{border:0;border-radius:999px;min-height:40px}
+    .split{gap:32px;margin-top:56px}
+    #venues{margin-top:56px}
+    footer{border-top:1px solid var(--line);padding:28px 0 96px}
+    /* Search */
+    .concert-search.is-active{border:1px solid rgba(26,30,36,.25);border-radius:16px;box-shadow:var(--soft)}
+    .search-field input{border:1px solid var(--line);border-radius:12px}
+    .concert-search.is-active .search-field input{border:2px solid #1a1e24}
+    .search-results{border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 44px -12px rgba(18,24,33,.35)}
+    .search-result{border-bottom:1px solid var(--line)}
+    .result-kind{border-radius:999px}
+    .search-clear{border:0;border-radius:10px;box-shadow:var(--soft)}
+    .search-count{font-size:24px}
+    /* Controls */
+    .view-switch{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .view-tab{border-right:1px solid var(--line)}
+    .view-tab:last-child{border-right:0}
+    .filter{border:1px solid var(--line);border-radius:999px}
+    .filter[aria-pressed="true"]{border-color:var(--ink)}
+    /* Calendar */
+    .month-switch{border-radius:14px;padding:14px 16px}
+    .month-tab{border-radius:999px}
+    .calendar-grid{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line);gap:1px}
+    .calendar-show{border-left:0;border-radius:8px}
+    .calendar-day.is-today{box-shadow:inset 0 0 0 2px var(--yellow)}
+    .no-matches{border:1px solid rgba(26,30,36,.2);border-radius:16px;box-shadow:var(--soft)}
+    /* Event cards */
+    .event-grid{gap:24px}
+    .event-card{border:1px solid var(--line);border-radius:18px;box-shadow:var(--soft);overflow:hidden}
+    .event-card.text-card{border-top:4px solid var(--blue)}
+    .event-card:not(.text-card):nth-child(4n+1){border-top:4px solid var(--red)}
+    .event-card:not(.text-card):nth-child(4n+2){border-top:4px solid var(--yellow)}
+    .event-card:not(.text-card):nth-child(4n+3){border-top:4px solid var(--blue)}
+    .event-card:not(.text-card):nth-child(4n){border-top:4px solid var(--green)}
+    .date-chip{border-radius:999px;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+    .card-body{padding:22px}
+    .popular-track{border:1px solid rgba(26,30,36,.25);border-radius:999px;box-shadow:none;transform:none}
+    .official-site{border-radius:999px}
+    .ticket{border:0;border-radius:10px;box-shadow:var(--soft)}
+    /* Panels + venues */
+    .panel{border:1px solid var(--line);border-top:4px solid var(--yellow);border-radius:16px;box-shadow:var(--soft);padding:26px}
+    .callout{border:1px solid var(--green);border-radius:12px}
+    .artist-watch{border-radius:16px;padding:22px}
+    .venue-list{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line)}
+    @media(max-width:860px){.hero{gap:24px}}
+    @media print{*{box-shadow:none!important}}
   </style>
 </head>
 <body id="top">
-  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-10-12T22:55:31-04:00">October 12, 2026 · 10:55 PM ET</time></div></div>
+  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-10-12T23:34:00-04:00">October 12, 2026 · 11:34 PM ET</time></div></div>
   <header class="wrap hero">
-    <div><h1>Good music, <span>close enough.</span></h1></div>
+    <div><h1>Great Music — <span>Close Enough to Home</span></h1><p class="tagline">Live music across the <strong>DMV</strong> — DC · Maryland · Virginia</p></div>
     <div class="hero-side">
-      <figure class="hero-visual"><img src="assets/peter-hook-bass.jpg" alt="New Order bassist Peter Hook playing his bass guitar low across the stage"><figcaption>Peter Hook · bass down low, energy up high</figcaption></figure>
-      <p class="intro">Concert picks around Northern Virginia, DC, and Maryland — now with a free song or live-performance sample before you commit.</p>
+      <a class="hero-visual-link" href="#show-justin-trawick-oct-14" aria-label="Justin Trawick — Wed Oct 14 at Clare &amp; Don's Listening Room"><figure class="hero-visual"><img src="assets/justin-trawick.jpg" alt="Justin Trawick singing and playing acoustic guitar"><figcaption>Justin Trawick · Wed Oct 14 · Clare &amp; Don's Listening Room</figcaption></figure></a>
+      <p class="intro">Concert picks across the DMV — DC, Maryland, and Northern Virginia — now with a free song or live-performance sample before you commit.</p>
     </div>
   </header>
   <nav class="jump" aria-label="On this page"><div class="wrap"><a href="#shows">Concert picks</a><a href="#venues">Venue links</a></div></nav>
@@ -207,18 +294,24 @@
       <ul class="band-list">
           <li class="band-row"><span class="band-name">The 19th Street Band</span><span class="band-dates"><a class="band-date" href="#show-the-19th-street-band-nov-21">Nov 21</a></span></li>
           <li class="band-row"><span class="band-name">ADULT. with A Place to Bury Strangers</span><span class="band-dates"><a class="band-date" href="#show-adult-with-a-place-to-bury-strangers-nov-11">Nov 11</a></span></li>
+          <li class="band-row"><span class="band-name">Air Supply</span><span class="band-dates"><a class="band-date" href="#show-air-supply-nov-13">Nov 13</a></span></li>
           <li class="band-row"><span class="band-name">Airmont Road Band</span><span class="band-dates"><a class="band-date" href="#show-airmont-road-band-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">AJ Lee &amp; Blue Summit</span><span class="band-dates"><a class="band-date" href="#show-aj-lee-blue-summit-nov-13">Nov 13</a></span></li>
           <li class="band-row"><span class="band-name">AJJ with Greet Death</span><span class="band-dates"><a class="band-date" href="#show-ajj-with-greet-death-oct-18">Oct 18</a></span></li>
           <li class="band-row"><span class="band-name">Allison Russell</span><span class="band-dates"><a class="band-date" href="#show-allison-russell-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Allstar Purple Party</span><span class="band-dates"><a class="band-date" href="#show-allstar-purple-party-tribute-to-prince-nov-13">Nov 13</a></span></li>
           <li class="band-row"><span class="band-name">Andy's Acoustic Bluegrass Open Mic</span><span class="band-dates"><a class="band-date" href="#show-andy-s-acoustic-bluegrass-open-mic-oct-14">Oct 14</a></span></li>
+          <li class="band-row"><span class="band-name">Anthony Hamilton</span><span class="band-dates"><a class="band-date" href="#show-anthony-hamilton-oct-23">Oct 23</a></span></li>
           <li class="band-row"><span class="band-name">BAILEN</span><span class="band-dates"><a class="band-date" href="#show-bailen-swim-at-your-own-risk-tour-nov-18">Nov 18</a></span></li>
           <li class="band-row"><span class="band-name">Basia Bulat</span><span class="band-dates"><a class="band-date" href="#show-basia-bulat-nov-7">Nov 7</a></span></li>
+          <li class="band-row"><span class="band-name">Be Your Own Pet</span><span class="band-dates"><a class="band-date" href="#show-be-your-own-pet-oct-23">Oct 23</a></span></li>
+          <li class="band-row"><span class="band-name">Beartooth</span><span class="band-dates"><a class="band-date" href="#show-beartooth-nov-15">Nov 15</a></span></li>
           <li class="band-row"><span class="band-name">BEAT</span><span class="band-dates"><a class="band-date" href="#show-beat-nov-10">Nov 10</a></span></li>
           <li class="band-row"><span class="band-name">Beck</span><span class="band-dates"><a class="band-date" href="#show-beck-oct-25">Oct 25</a></span></li>
           <li class="band-row"><span class="band-name">Bedouine with Other Delights</span><span class="band-dates"><a class="band-date" href="#show-bedouine-with-other-delights-nov-14">Nov 14</a></span></li>
+          <li class="band-row"><span class="band-name">Benjamin Tod &amp; Lost Dog Street Band</span><span class="band-dates"><a class="band-date" href="#show-benjamin-tod-lost-dog-street-band-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Bert and Chris Acoustic Duo</span><span class="band-dates"><a class="band-date" href="#show-bert-and-chris-acoustic-duo-oct-28">Oct 28</a></span></li>
+          <li class="band-row"><span class="band-name">Bettye LaVette</span><span class="band-dates"><a class="band-date" href="#show-bettye-lavette-oct-25">Oct 25</a></span></li>
           <li class="band-row"><span class="band-name">Big Howdy album release</span><span class="band-dates"><a class="band-date" href="#show-big-howdy-album-release-nov-7">Nov 7</a></span></li>
           <li class="band-row"><span class="band-name">Born Cross Eyed</span><span class="band-dates"><a class="band-date" href="#show-born-cross-eyed-oct-24">Oct 24</a></span></li>
           <li class="band-row"><span class="band-name">Brad Lands</span><span class="band-dates"><a class="band-date" href="#show-brad-lands-oct-15">Oct 15</a></span></li>
@@ -230,7 +323,9 @@
           <li class="band-row"><span class="band-name">Caleb Carpenter</span><span class="band-dates"><a class="band-date" href="#show-caleb-carpenter-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">Caligula Blushed</span><span class="band-dates"><a class="band-date" href="#show-caligula-blushed-nov-14">Nov 14</a></span></li>
           <li class="band-row"><span class="band-name">Cannons</span><span class="band-dates"><a class="band-date" href="#show-cannons-the-everything-glows-tour-oct-17">Oct 17</a></span></li>
+          <li class="band-row"><span class="band-name">Cavetown</span><span class="band-dates"><a class="band-date" href="#show-cavetown-oct-23">Oct 23</a></span></li>
           <li class="band-row"><span class="band-name">Charlie Parr</span><span class="band-dates"><a class="band-date" href="#show-charlie-parr-nov-13">Nov 13</a></span></li>
+          <li class="band-row"><span class="band-name">Charlie Wilson</span><span class="band-dates"><a class="band-date" href="#show-charlie-wilson-oct-30">Oct 30</a></span></li>
           <li class="band-row"><span class="band-name">The Clarks</span><span class="band-dates"><a class="band-date" href="#show-the-clarks-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Convertible Jerks</span><span class="band-dates"><a class="band-date" href="#show-convertible-jerks-costume-party-oct-31">Oct 31</a></span></li>
           <li class="band-row"><span class="band-name">Crack the Sky</span><span class="band-dates"><a class="band-date" href="#show-crack-the-sky-oct-30">Oct 30</a><a class="band-date" href="#show-crack-the-sky-oct-30">Oct 31</a></span></li>
@@ -247,6 +342,7 @@
           <li class="band-row"><span class="band-name">East Nash Grass</span><span class="band-dates"><a class="band-date" href="#show-east-nash-grass-oct-22">Oct 22</a></span></li>
           <li class="band-row"><span class="band-name">Eddie 9V</span><span class="band-dates"><a class="band-date" href="#show-eddie-9v-oct-25">Oct 25</a></span></li>
           <li class="band-row"><span class="band-name">Eric Johanson</span><span class="band-dates"><a class="band-date" href="#show-eric-johanson-oct-20">Oct 20</a></span></li>
+          <li class="band-row"><span class="band-name">Eric Prydz</span><span class="band-dates"><a class="band-date" href="#show-eric-prydz-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">Evan Honer</span><span class="band-dates"><a class="band-date" href="#show-evan-honer-oct-19">Oct 19</a></span></li>
           <li class="band-row"><span class="band-name">Ezra Furman with The Golden Dregs</span><span class="band-dates"><a class="band-date" href="#show-ezra-furman-with-the-golden-dregs-oct-28">Oct 28</a></span></li>
           <li class="band-row"><span class="band-name">Fat Chance Band</span><span class="band-dates"><a class="band-date" href="#show-fat-chance-band-oct-30">Oct 30</a></span></li>
@@ -267,6 +363,7 @@
           <li class="band-row"><span class="band-name">Goldfinger with Mustard Plug &amp; The Planet Smashers</span><span class="band-dates"><a class="band-date" href="#show-goldfinger-with-mustard-plug-the-planet-smashers-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">Greg Freeman with Robber Robber</span><span class="band-dates"><a class="band-date" href="#show-greg-freeman-with-robber-robber-nov-16">Nov 16</a></span></li>
           <li class="band-row"><span class="band-name">Groovejet</span><span class="band-dates"><a class="band-date" href="#show-groovejet-oct-16">Oct 16</a></span></li>
+          <li class="band-row"><span class="band-name">Grupo Niche</span><span class="band-dates"><a class="band-date" href="#show-grupo-niche-nov-7">Nov 7</a></span></li>
           <li class="band-row"><span class="band-name">The HalFSmokes</span><span class="band-dates"><a class="band-date" href="#show-the-halfsmokes-nov-19">Nov 19</a></span></li>
           <li class="band-row"><span class="band-name">Hamilton Leithauser &amp; Rostam</span><span class="band-dates"><a class="band-date" href="#show-hamilton-leithauser-rostam-nov-5">Nov 5</a></span></li>
           <li class="band-row"><span class="band-name">Helado Negro with Reyna Tropical</span><span class="band-dates"><a class="band-date" href="#show-helado-negro-with-reyna-tropical-oct-23">Oct 23</a></span></li>
@@ -275,26 +372,43 @@
           <li class="band-row"><span class="band-name">Hovvdy</span><span class="band-dates"><a class="band-date" href="#show-hovvdy-nov-2">Nov 2</a></span></li>
           <li class="band-row"><span class="band-name">Jameson Green Band</span><span class="band-dates"><a class="band-date" href="#show-jameson-green-band-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Jason Carter &amp; Michael Cleveland</span><span class="band-dates"><a class="band-date" href="#show-jason-carter-michael-cleveland-nov-21">Nov 21</a></span></li>
+          <li class="band-row"><span class="band-name">The Jayhawks</span><span class="band-dates"><a class="band-date" href="#show-the-jayhawks-oct-21">Oct 21</a></span></li>
+          <li class="band-row"><span class="band-name">Jeffrey Osborne &amp; Will Downing</span><span class="band-dates"><a class="band-date" href="#show-jeffrey-osborne-will-downing-nov-14">Nov 14</a></span></li>
+          <li class="band-row"><span class="band-name">Jeremy Pelt</span><span class="band-dates"><a class="band-date" href="#show-jeremy-pelt-nov-5">Nov 5</a></span></li>
           <li class="band-row"><span class="band-name">Jesse Welles with Hudson Freeman</span><span class="band-dates"><a class="band-date" href="#show-jesse-welles-with-hudson-freeman-oct-21">Oct 21</a></span></li>
           <li class="band-row"><span class="band-name">Jim Messina</span><span class="band-dates"><a class="band-date" href="#show-jim-messina-nov-4">Nov 4</a></span></li>
+          <li class="band-row"><span class="band-name">Jodeci</span><span class="band-dates"><a class="band-date" href="#show-jodeci-nov-12">Nov 12</a></span></li>
+          <li class="band-row"><span class="band-name">Joey Alexander</span><span class="band-dates"><a class="band-date" href="#show-joey-alexander-oct-24">Oct 24</a></span></li>
           <li class="band-row"><span class="band-name">Johnny Blue Skies (Sturgill Simpson) &amp; The Dark Clouds</span><span class="band-dates"><a class="band-date" href="#show-johnny-blue-skies-sturgill-simpson-the-dark-clouds-oct-18">Oct 18</a></span></li>
           <li class="band-row"><span class="band-name">The Joni Mitchell Songbook</span><span class="band-dates"><a class="band-date" href="#show-the-joni-mitchell-songbook-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">Josh Allen Band</span><span class="band-dates"><a class="band-date" href="#show-josh-allen-band-halloween-dance-party-oct-31">Oct 31</a></span></li>
           <li class="band-row"><span class="band-name">Josh Ritter</span><span class="band-dates"><a class="band-date" href="#show-josh-ritter-oct-24">Oct 24</a><a class="band-date" href="#show-josh-ritter-oct-24">Oct 25</a></span></li>
           <li class="band-row"><span class="band-name">Josh Rouse</span><span class="band-dates"><a class="band-date" href="#show-josh-rouse-nov-5">Nov 5</a></span></li>
+          <li class="band-row"><span class="band-name">Joy Oladokun</span><span class="band-dates"><a class="band-date" href="#show-joy-oladokun-nov-13">Nov 13</a></span></li>
+          <li class="band-row"><span class="band-name">JPEGMAFIA</span><span class="band-dates"><a class="band-date" href="#show-jpegmafia-oct-21">Oct 21</a></span></li>
           <li class="band-row"><span class="band-name">Judy Collins</span><span class="band-dates"><a class="band-date" href="#show-judy-collins-nov-18">Nov 18</a></span></li>
+          <li class="band-row"><span class="band-name">Julia Jacklin</span><span class="band-dates"><a class="band-date" href="#show-julia-jacklin-nov-10">Nov 10</a></span></li>
           <li class="band-row"><span class="band-name">Justin Trawick</span><span class="band-dates"><a class="band-date" href="#show-justin-trawick-oct-14">Oct 14</a><a class="band-date" href="#show-justin-trawick-oct-15">Oct 15</a><a class="band-date" href="#show-justin-trawick-oct-23">Oct 23</a><a class="band-date" href="#show-justin-trawick-oct-24">Oct 24</a><a class="band-date" href="#show-justin-trawick-oct-25">Oct 25</a><a class="band-date" href="#show-justin-trawick-nov-8">Nov 8</a><a class="band-date" href="#show-justin-trawick-nov-28">Nov 28</a></span></li>
+          <li class="band-row"><span class="band-name">Kate Nash</span><span class="band-dates"><a class="band-date" href="#show-kate-nash-nov-7">Nov 7</a></span></li>
+          <li class="band-row"><span class="band-name">Kelela</span><span class="band-dates"><a class="band-date" href="#show-kelela-oct-13">Oct 13</a></span></li>
+          <li class="band-row"><span class="band-name">Kennedy Center Opera House Orchestra</span><span class="band-dates"><a class="band-date" href="#show-kennedy-center-opera-house-orchestra-oct-15">Oct 15</a></span></li>
           <li class="band-row"><span class="band-name">The Kennedys</span><span class="band-dates"><a class="band-date" href="#show-the-kennedys-oct-25">Oct 25</a></span></li>
           <li class="band-row"><span class="band-name">King Moon Racer</span><span class="band-dates"><a class="band-date" href="#show-king-moon-racer-oct-17">Oct 17</a></span></li>
+          <li class="band-row"><span class="band-name">Kool &amp; The Gang</span><span class="band-dates"><a class="band-date" href="#show-kool-and-the-gang-oct-15">Oct 15</a></span></li>
           <li class="band-row"><span class="band-name">Leftover Salmon</span><span class="band-dates"><a class="band-date" href="#show-leftover-salmon-oct-30">Oct 30</a><a class="band-date" href="#show-leftover-salmon-oct-30">Oct 31</a></span></li>
           <li class="band-row"><span class="band-name">The Legwarmers</span><span class="band-dates"><a class="band-date" href="#show-the-legwarmers-80s-halloween-the-haunted-theatre-oct-30">Oct 30</a><a class="band-date" href="#show-the-legwarmers-80s-halloween-the-haunted-theatre-oct-30">Oct 31</a></span></li>
           <li class="band-row"><span class="band-name">Lez Zeppelin</span><span class="band-dates"><a class="band-date" href="#show-lez-zeppelin-nov-14">Nov 14</a></span></li>
           <li class="band-row"><span class="band-name">Little Big Town</span><span class="band-dates"><a class="band-date" href="#show-little-big-town-oct-24">Oct 24</a></span></li>
+          <li class="band-row"><span class="band-name">Logan Mize</span><span class="band-dates"><a class="band-date" href="#show-logan-mize-oct-14">Oct 14</a></span></li>
           <li class="band-row"><span class="band-name">The Lone Bellow</span><span class="band-dates"><a class="band-date" href="#show-the-lone-bellow-nov-14">Nov 14</a></span></li>
+          <li class="band-row"><span class="band-name">Low Cut Connie</span><span class="band-dates"><a class="band-date" href="#show-low-cut-connie-oct-23">Oct 23</a></span></li>
           <li class="band-row"><span class="band-name">The Magic Trio</span><span class="band-dates"><a class="band-date" href="#show-the-magic-trio-nov-13">Nov 13</a></span></li>
+          <li class="band-row"><span class="band-name">Mannheim Steamroller</span><span class="band-dates"><a class="band-date" href="#show-mannheim-steamroller-nov-22">Nov 22</a></span></li>
+          <li class="band-row"><span class="band-name">Marcel Penzes</span><span class="band-dates"><a class="band-date" href="#show-marcel-penzes-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Mark O'Connor's An Appalachian Christmas</span><span class="band-dates"><a class="band-date" href="#show-mark-o-connor-s-an-appalachian-christmas-nov-18">Nov 18</a><a class="band-date" href="#show-mark-o-connor-s-an-appalachian-christmas-nov-18">Nov 19</a></span></li>
           <li class="band-row"><span class="band-name">Marshall Crenshaw</span><span class="band-dates"><a class="band-date" href="#show-marshall-crenshaw-band-with-sarah-borges-nov-21">Nov 21</a><a class="band-date" href="#show-marshall-crenshaw-with-sarah-borges-eric-ambel-nov-22">Nov 22</a></span></li>
           <li class="band-row"><span class="band-name">Marty Stuart and His Fabulous Superlatives</span><span class="band-dates"><a class="band-date" href="#show-marty-stuart-and-his-fabulous-superlatives-nov-12">Nov 12</a></span></li>
+          <li class="band-row"><span class="band-name">Mary in the Junkyard</span><span class="band-dates"><a class="band-date" href="#show-mary-in-the-junkyard-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">Maya de Vitry</span><span class="band-dates"><a class="band-date" href="#show-maya-de-vitry-nov-12">Nov 12</a></span></li>
           <li class="band-row"><span class="band-name">Michael McDermott</span><span class="band-dates"><a class="band-date" href="#show-michael-mcdermott-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">Michelle Swan and Pet Names</span><span class="band-dates"><a class="band-date" href="#show-michelle-swan-and-pet-names-listening-room-nov-8">Nov 8</a></span></li>
@@ -304,6 +418,8 @@
           <li class="band-row"><span class="band-name">Nick Shoulders</span><span class="band-dates"><a class="band-date" href="#show-nick-shoulders-universe-of-battle-tour-nov-5">Nov 5</a></span></li>
           <li class="band-row"><span class="band-name">The Nighthawks &amp; The Soul Crackers</span><span class="band-dates"><a class="band-date" href="#show-the-nighthawks-the-soul-crackers-nov-27">Nov 27</a></span></li>
           <li class="band-row"><span class="band-name">Noise in the Basement</span><span class="band-dates"><a class="band-date" href="#show-noise-in-the-basement-oct-23">Oct 23</a></span></li>
+          <li class="band-row"><span class="band-name">ODESZA</span><span class="band-dates"><a class="band-date" href="#show-odesza-nov-12">Nov 12</a></span></li>
+          <li class="band-row"><span class="band-name">Open Mike Eagle</span><span class="band-dates"><a class="band-date" href="#show-open-mike-eagle-oct-13">Oct 13</a></span></li>
           <li class="band-row"><span class="band-name">Orange Line</span><span class="band-dates"><a class="band-date" href="#show-orange-line-oct-24">Oct 24</a></span></li>
           <li class="band-row"><span class="band-name">Pat McGee Band + Freddy Jones Band + Jackopierce</span><span class="band-dates"><a class="band-date" href="#show-pat-mcgee-band-freddy-jones-band-jackopierce-nov-7">Nov 7</a></span></li>
           <li class="band-row"><span class="band-name">Paul Cebar Tomorrow Sound</span><span class="band-dates"><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 20</a><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 21</a><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 22</a></span></li>
@@ -314,11 +430,14 @@
           <li class="band-row"><span class="band-name">Psycho Killers</span><span class="band-dates"><a class="band-date" href="#show-psycho-killers-nov-28">Nov 28</a></span></li>
           <li class="band-row"><span class="band-name">Punch Brothers</span><span class="band-dates"><a class="band-date" href="#show-punch-brothers-nov-6">Nov 6</a></span></li>
           <li class="band-row"><span class="band-name">Ramon &amp; Kamaka</span><span class="band-dates"><a class="band-date" href="#show-ramon-kamaka-oct-18">Oct 18</a></span></li>
+          <li class="band-row"><span class="band-name">Rawayana</span><span class="band-dates"><a class="band-date" href="#show-rawayana-nov-4">Nov 4</a></span></li>
           <li class="band-row"><span class="band-name">Relaxed Fit</span><span class="band-dates"><a class="band-date" href="#show-relaxed-fit-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">Replay Duo with Eddie Rogers &amp; Nick Gallagher</span><span class="band-dates"><a class="band-date" href="#show-replay-duo-with-eddie-rogers-nick-gallagher-oct-14">Oct 14</a></span></li>
           <li class="band-row"><span class="band-name">Rocky Mountain High Experience</span><span class="band-dates"><a class="band-date" href="#show-rocky-mountain-high-experience-a-john-denver-tribute-nov-28">Nov 28</a></span></li>
           <li class="band-row"><span class="band-name">Rodrigo y Gabriela</span><span class="band-dates"><a class="band-date" href="#show-rodrigo-y-gabriela-ourhome-tour-oct-20">Oct 20</a></span></li>
+          <li class="band-row"><span class="band-name">Ruben Studdard</span><span class="band-dates"><a class="band-date" href="#show-ruben-studdard-nov-20">Nov 20</a></span></li>
           <li class="band-row"><span class="band-name">RUSH</span><span class="band-dates"><a class="band-date" href="#show-rush-fifty-something-50th-anniversary-oct-25">Oct 25</a><a class="band-date" href="#show-rush-fifty-something-50th-anniversary-oct-25">Oct 27</a></span></li>
+          <li class="band-row"><span class="band-name">Sabaton</span><span class="band-dates"><a class="band-date" href="#show-sabaton-dec-6">Dec 6</a></span></li>
           <li class="band-row"><span class="band-name">Sadurn with kitchen</span><span class="band-dates"><a class="band-date" href="#show-sadurn-with-kitchen-nov-9">Nov 9</a></span></li>
           <li class="band-row"><span class="band-name">The Saints '73–'78</span><span class="band-dates"><a class="band-date" href="#show-the-saints-73-78-nov-16">Nov 16</a></span></li>
           <li class="band-row"><span class="band-name">Saved By The 90's</span><span class="band-dates"><a class="band-date" href="#show-saved-by-the-90-s-oct-16">Oct 16</a></span></li>
@@ -327,8 +446,10 @@
           <li class="band-row"><span class="band-name">Second Sole Band</span><span class="band-dates"><a class="band-date" href="#show-second-sole-band-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">Shartel and Hume</span><span class="band-dates"><a class="band-date" href="#show-shartel-and-hume-duo-oct-16">Oct 16</a><a class="band-date" href="#show-shartel-and-hume-acoustic-duo-oct-21">Oct 21</a><a class="band-date" href="#show-shartel-hume-oct-23">Oct 23</a></span></li>
           <li class="band-row"><span class="band-name">She Wants Revenge</span><span class="band-dates"><a class="band-date" href="#show-she-wants-revenge-nov-1">Nov 1</a></span></li>
+          <li class="band-row"><span class="band-name">Sin Bandera</span><span class="band-dates"><a class="band-date" href="#show-sin-bandera-oct-14">Oct 14</a></span></li>
           <li class="band-row"><span class="band-name">Slow Pulp with Her New Knife</span><span class="band-dates"><a class="band-date" href="#show-slow-pulp-with-her-new-knife-nov-9">Nov 9</a></span></li>
           <li class="band-row"><span class="band-name">The Smithereens</span><span class="band-dates"><a class="band-date" href="#show-the-smithereens-nov-6">Nov 6</a></span></li>
+          <li class="band-row"><span class="band-name">Spanish Love Songs</span><span class="band-dates"><a class="band-date" href="#show-spanish-love-songs-nov-4">Nov 4</a></span></li>
           <li class="band-row"><span class="band-name">Special Josh &amp; Andy Open Mic</span><span class="band-dates"><a class="band-date" href="#show-special-josh-andy-open-mic-oct-13">Oct 13</a></span></li>
           <li class="band-row"><span class="band-name">The Splinters</span><span class="band-dates"><a class="band-date" href="#show-the-splinters-oct-23">Oct 23</a></span></li>
           <li class="band-row"><span class="band-name">Stealin the Deal</span><span class="band-dates"><a class="band-date" href="#show-stealin-the-deal-nov-14">Nov 14</a></span></li>
@@ -336,14 +457,20 @@
           <li class="band-row"><span class="band-name">Strange Souls</span><span class="band-dates"><a class="band-date" href="#show-strange-souls-the-doors-reimagined-oct-24">Oct 24</a></span></li>
           <li class="band-row"><span class="band-name">Sugar feat. Bob Mould with J. Robbins</span><span class="band-dates"><a class="band-date" href="#show-sugar-feat-bob-mould-with-j-robbins-oct-14">Oct 14</a></span></li>
           <li class="band-row"><span class="band-name">SUSTO</span><span class="band-dates"><a class="band-date" href="#show-susto-solo-matinee-oct-24">Oct 24</a></span></li>
+          <li class="band-row"><span class="band-name">The Tallest Man on Earth</span><span class="band-dates"><a class="band-date" href="#show-the-tallest-man-on-earth-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">Ten Feet Tall</span><span class="band-dates"><a class="band-date" href="#show-ten-feet-tall-oct-16">Oct 16</a></span></li>
           <li class="band-row"><span class="band-name">Texas Is the Reason + Her Head's On Fire</span><span class="band-dates"><a class="band-date" href="#show-texas-is-the-reason-her-head-s-on-fire-oct-20">Oct 20</a></span></li>
           <li class="band-row"><span class="band-name">They Might Be Giants</span><span class="band-dates"><a class="band-date" href="#show-they-might-be-giants-nov-19">Nov 19</a></span></li>
           <li class="band-row"><span class="band-name">This Is Lorelei with @</span><span class="band-dates"><a class="band-date" href="#show-this-is-lorelei-with-nov-4">Nov 4</a></span></li>
           <li class="band-row"><span class="band-name">The Thrills</span><span class="band-dates"><a class="band-date" href="#show-the-thrills-oct-22">Oct 22</a></span></li>
           <li class="band-row"><span class="band-name">Toad the Wet Sprocket</span><span class="band-dates"><a class="band-date" href="#show-toad-the-wet-sprocket-oct-23">Oct 23</a></span></li>
+          <li class="band-row"><span class="band-name">Tre. Charles</span><span class="band-dates"><a class="band-date" href="#show-tre-charles-oct-17">Oct 17</a></span></li>
           <li class="band-row"><span class="band-name">Urgent</span><span class="band-dates"><a class="band-date" href="#show-urgent-a-tribute-to-foreigner-oct-17">Oct 17</a></span></li>
+          <li class="band-row"><span class="band-name">Vaultboy</span><span class="band-dates"><a class="band-date" href="#show-vaultboy-nov-8">Nov 8</a></span></li>
           <li class="band-row"><span class="band-name">VERONNEAU</span><span class="band-dates"><a class="band-date" href="#show-veronneau-blue-tapestry-oct-18">Oct 18</a></span></li>
+          <li class="band-row"><span class="band-name">Vienna Teng</span><span class="band-dates"><a class="band-date" href="#show-vienna-teng-nov-21">Nov 21</a></span></li>
+          <li class="band-row"><span class="band-name">The War and Treaty</span><span class="band-dates"><a class="band-date" href="#show-the-war-and-treaty-nov-13">Nov 13</a></span></li>
+          <li class="band-row"><span class="band-name">We Are Scientists</span><span class="band-dates"><a class="band-date" href="#show-we-are-scientists-nov-17">Nov 17</a></span></li>
           <li class="band-row"><span class="band-name">White Ford Bronco: DC's All '90s Band</span><span class="band-dates"><a class="band-date" href="#show-white-ford-bronco-dc-s-all-90s-band-nov-28">Nov 28</a></span></li>
           <li class="band-row"><span class="band-name">Wicked Jezabel</span><span class="band-dates"><a class="band-date" href="#show-wicked-jezabel-nov-14">Nov 14</a></span></li>
           <li class="band-row"><span class="band-name">Will Varley</span><span class="band-dates"><a class="band-date" href="#show-will-varley-with-will-lawrence-oct-21">Oct 21</a><a class="band-date" href="#show-will-varley-nov-9">Nov 9</a></span></li>
@@ -369,7 +496,7 @@
       </div>
       <div class="no-matches" id="no-matches" role="status" hidden><strong>No results</strong>Nothing matched that band or venue. Try another spelling, or clear your search.</div>
       <div class="calendar-view" id="calendar-view" role="tabpanel" aria-labelledby="calendar-tab" hidden>
-        <div class="month-switch"><strong id="calendar-month-label">October 2026</strong><div class="month-tabs" role="group" aria-label="Choose calendar month"><button class="month-tab" type="button" data-month="9" aria-pressed="true">October</button><button class="month-tab" type="button" data-month="10" aria-pressed="false">November</button></div></div>
+        <div class="month-switch"><strong id="calendar-month-label">October 2026</strong><div class="month-tabs" role="group" aria-label="Choose calendar month"><button class="month-tab" type="button" data-month="9" aria-pressed="true">October</button><button class="month-tab" type="button" data-month="10" aria-pressed="false">November</button><button class="month-tab" type="button" data-month="11" aria-pressed="false">December</button></div></div>
         <div class="calendar-grid" id="calendar-grid" role="grid" aria-labelledby="calendar-month-label"></div>
         <p class="small-note">Up to three top picks appear per day. Tap a show to jump to its full listing.</p>
       </div>
@@ -926,6 +1053,126 @@
         <article id="show-justin-trawick-nov-28" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Tysons, Virginia</span><span class="date-chip">Sat · Nov 28</span><h3>Justin Trawick</h3><p class="artist-bio">Leesburg/DC “urban folk rock” singer-songwriter, founder of The 9 Songwriter Series and leader of Justin Trawick and the Common Good.</p><p class="critic-rating no-rating">No critic rating listed</p><p>9 PM–12:30 AM · Starr Hill Brewpub</p><p class="detail">With The Common Good.</p><a class="ticket" href="https://www.starrhilltysons.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-logan-mize-oct-14" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Oct 14</span><h3>Logan Mize</h3><p class="artist-bio">Kansas-born country singer-songwriter known for plainspoken storytelling and a steady run of independent albums; other Nashville artists have cut his songs as well.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Hamilton Live</p><p class="detail">With Willie Lock opening.</p><a class="ticket" href="https://live.thehamiltondc.com/calendar/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-bettye-lavette-oct-25" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Oct 25</span><h3>Bettye LaVette</h3><p class="artist-bio">Detroit soul and blues singer whose late-career run of acclaimed albums, including her Bob Dylan covers record Things Have Changed, made her one of the great interpreters in American music.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Hamilton Live</p><a class="ticket" href="https://live.thehamiltondc.com/calendar/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-kate-nash-nov-7" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 7</span><h3>Kate Nash</h3><p class="artist-bio">London singer-songwriter who broke out with the piano-driven hit &quot;Foundations&quot; and has kept a fiercely independent streak across pop, punk, and acting, including a run on GLOW.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Hamilton Live</p><p class="detail">On tour behind her album 9 Sad Symphonies.</p><a class="ticket" href="https://wl.eventim.us/event/Kate-Nash/705407?afflky=TheHamiltonDC" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-vienna-teng-nov-21" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 21</span><h3>Vienna Teng</h3><p class="artist-bio">Pianist and singer-songwriter whose literate chamber-pop songs, &quot;Lullabye for a Stormy Night&quot; among them, built a devoted following from her earliest independent releases.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Hamilton Live</p><p class="detail">Doors 6:30 PM.</p><a class="ticket" href="https://live.thehamiltondc.com/calendar/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-benjamin-tod-lost-dog-street-band-oct-16" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Oct 16</span><h3>Benjamin Tod &amp; Lost Dog Street Band</h3><p class="artist-bio">Kentucky songwriter Benjamin Tod fronts Lost Dog Street Band, whose raw, fiddle-and-banjo country grew out of years of busking and freight-train travel.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Howard Theatre</p><p class="detail">With Tommy Prine also on the bill.</p><a class="ticket" href="https://www.jambase.com/venue/howard-theatre" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-low-cut-connie-oct-23" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Oct 23</span><h3>Low Cut Connie</h3><p class="artist-bio">Philadelphia's Adam Weiner leads this piano-pounding rock and roll band, known for sweaty, piano-bar-meets-arena shows and songs like &quot;Rio.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Howard Theatre</p><p class="detail">With Brian Dunne.</p><a class="ticket" href="https://www.jambase.com/venue/howard-theatre" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-joy-oladokun-nov-13" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Nov 13</span><h3>Joy Oladokun</h3><p class="artist-bio">Arizona-raised, Nashville-based singer-songwriter whose warm folk-soul songs, including &quot;Sunday,&quot; pair plainspoken lyrics with quietly anthemic choruses.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Howard Theatre</p><a class="ticket" href="https://www.jambase.com/venue/howard-theatre" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-tallest-man-on-earth-oct-17" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Oct 17</span><h3>The Tallest Man on Earth</h3><p class="artist-bio">Swedish singer-songwriter Kristian Matsson, whose intricate fingerpicking and weathered voice draw constant Dylan comparisons; his live KEXP performance of &quot;The Gardener&quot; is a fan favorite.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Lincoln Theatre</p><p class="detail">With Gwenifer Raymond.</p><a class="ticket" href="https://www.thelincolndc.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-jayhawks-oct-21" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Oct 21</span><h3>The Jayhawks</h3><p class="artist-bio">Minneapolis alt-country institution formed in 1985, built on the harmonies of Gary Louris and Mark Olson; &quot;Blue&quot; remains their signature song.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Lincoln Theatre</p><p class="detail">With The Cactus Blossoms.</p><a class="ticket" href="https://www.thelincolndc.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-julia-jacklin-nov-10" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Nov 10</span><h3>Julia Jacklin</h3><p class="artist-bio">Australian singer-songwriter whose spare, emotionally direct indie rock, heard at its best on &quot;Don't Know How to Keep Loving You,&quot; has made her a critics' favorite.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Lincoln Theatre</p><p class="detail">With Jordan Patterson.</p><a class="ticket" href="https://www.thelincolndc.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-kennedy-center-opera-house-orchestra-oct-15" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Oct 15</span><h3>Kennedy Center Opera House Orchestra</h3><p class="artist-bio">The Kennedy Center's resident orchestra, heard nightly in the Opera House pit for opera and ballet, steps out for a free Millennium Stage performance at The REACH.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free performance in Studio K at The REACH.</p><a class="ticket" href="https://www.kennedy-center.org/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-marcel-penzes-oct-16" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Oct 16</span><h3>Marcel Penzes</h3><p class="artist-bio">New Orleans trombonist and composer leading his own band through modern jazz rooted in the Crescent City brass tradition.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free performance at the River Pavilion at The REACH.</p><a class="ticket" href="https://www.kennedy-center.org/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-tre-charles-oct-17" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Oct 17</span><h3>Tre. Charles</h3><p class="artist-bio">Singer and guitarist blending alternative indie and soul, with a voice and songwriting style that invite comparisons to Jeff Buckley and Frank Ocean.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free performance at the River Pavilion at The REACH.</p><a class="ticket" href="https://www.kennedy-center.org/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-joey-alexander-oct-24" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Oct 24</span><h3>Joey Alexander</h3><p class="artist-bio">Indonesian-born jazz pianist who released his debut album at age 11 and has grown into one of the most lyrical pianists in modern jazz.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Blues Alley</p><p class="detail">Also playing Sunday, October 25.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-jeremy-pelt-nov-5" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Nov 5</span><h3>Jeremy Pelt</h3><p class="artist-bio">Trumpeter and composer at the center of New York's modern jazz scene, leading his quintet through hard-swinging originals.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Blues Alley</p><p class="detail">Second set at 9:30 PM; also playing November 6.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-ruben-studdard-nov-20" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Nov 20</span><h3>Ruben Studdard</h3><p class="artist-bio">The velvet-voiced American Idol winner whose R&amp;B ballads like &quot;Sorry 2004&quot; made him a fixture of 2000s soul radio.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Blues Alley</p><p class="detail">Three-night run, November 20–22, with sets at 7 and 9:30 PM.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-open-mike-eagle-oct-13" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Oct 13</span><h3>Open Mike Eagle</h3><p class="artist-bio">Chicago-raised, Los Angeles-based rapper and comedian whose witty, self-aware art rap includes the breakout track &quot;95 Radios&quot; with Has-Lo.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Songbyrd Music House</p><p class="detail">With Kenny Segal.</p><a class="ticket" href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-spanish-love-songs-nov-4" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Nov 4</span><h3>Spanish Love Songs</h3><p class="artist-bio">Los Angeles indie-punk band whose big-hearted, anxious anthems like &quot;Kick&quot; have built a devoted cult following.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Songbyrd Music House</p><a class="ticket" href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-we-are-scientists-nov-17" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Nov 17</span><h3>We Are Scientists</h3><p class="artist-bio">New York indie-rock duo Keith Murray and Chris Cain, best known for the jittery 2006 hit &quot;Nobody Move, Nobody Get Hurt&quot; and their deadpan stage banter.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Songbyrd Music House</p><a class="ticket" href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-be-your-own-pet-oct-23" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Oct 23</span><h3>Be Your Own Pet</h3><p class="artist-bio">Nashville garage-punk band fronted by Jemina Pearl, back in action after a long hiatus with the same frantic energy as their cult favorite &quot;Becky.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · DC9</p><a class="ticket" href="https://www.jambase.com/venue/dc9" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-vaultboy-nov-8" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 8</span><h3>Vaultboy</h3><p class="artist-bio">Jacksonville singer-songwriter who turned a song-a-day challenge into a viral pop career, starting with the wry breakup anthem &quot;everything sucks.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · DC9</p><a class="ticket" href="https://www.jambase.com/venue/dc9" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-mary-in-the-junkyard-nov-20" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Nov 20</span><h3>Mary in the Junkyard</h3><p class="artist-bio">London trio making dreamy, off-kilter indie rock; their single &quot;Marble Arch&quot; turned heads across UK radio and blogs.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · DC9</p><a class="ticket" href="https://www.jambase.com/venue/dc9" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-jpegmafia-oct-21" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Oct 21</span><h3>JPEGMAFIA</h3><p class="artist-bio">Baltimore-raised rapper and producer whose abrasive, internet-native experimental hip-hop, with &quot;1539 N. Calvert&quot; as the calling card, sells out rooms worldwide.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · Echostage</p><p class="detail">Experimental Rap Tour.</p><a class="ticket" href="https://www.ticketmaster.com/echostage-tickets-washington/venue/172570" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-odesza-nov-12" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Nov 12</span><h3>ODESZA</h3><p class="artist-bio">Seattle electronic duo whose cinematic, drum-heavy productions grew from blog favorites like &quot;Say My Name&quot; into arena headliners; this appearance is a special DJ set.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Echostage</p><p class="detail">DJ set.</p><a class="ticket" href="https://www.ticketmaster.com/echostage-tickets-washington/venue/172570" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-eric-prydz-nov-20" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Nov 20</span><h3>Eric Prydz</h3><p class="artist-bio">Swedish progressive-house titan behind &quot;Call on Me&quot; and the epic instrumental &quot;Opus,&quot; famous for arena-scale productions and his Pryda alias.</p><p class="critic-rating no-rating">No critic rating listed</p><p>10 PM · Echostage</p><a class="ticket" href="https://www.ticketmaster.com/echostage-tickets-washington/venue/172570" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-kelela-oct-13" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Silver Spring, Maryland</span><span class="date-chip">Tue · Oct 13</span><h3>Kelela</h3><p class="artist-bio">DC-raised singer whose futuristic R&amp;B, with the slinky &quot;LMK&quot; as a signature track, helped define the alternative R&amp;B wave of the 2010s.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Fillmore Silver Spring</p><a class="ticket" href="https://www.livenation.com/venue/KovZpZA6tFlA/the-fillmore-silver-spring-events" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-cavetown-oct-23" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Silver Spring, Maryland</span><span class="date-chip">Fri · Oct 23</span><h3>Cavetown</h3><p class="artist-bio">English singer-songwriter Robin Skinner, who built a huge young following from bedroom recordings like &quot;This Is Home,&quot; blending ukulele pop and indie rock.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Fillmore Silver Spring</p><p class="detail">With Chloe Moriondo.</p><a class="ticket" href="https://www.livenation.com/venue/KovZpZA6tFlA/the-fillmore-silver-spring-events" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-war-and-treaty-nov-13" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Silver Spring, Maryland</span><span class="date-chip">Fri · Nov 13</span><h3>The War and Treaty</h3><p class="artist-bio">Husband-and-wife duo Michael and Tanya Trotter, whose gospel-fired country-soul and powerhouse harmonies made &quot;Down to the River&quot; a breakout moment.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Fillmore Silver Spring</p><a class="ticket" href="https://www.livenation.com/venue/KovZpZA6tFlA/the-fillmore-silver-spring-events" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-sin-bandera-oct-14" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Wed · Oct 14</span><h3>Sin Bandera</h3><p class="artist-bio">Mexican-Argentine duo Noel Schajris and Leonel García, Latin pop's premier romantic balladeers since their breakout hit &quot;Entra en mi vida.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><p class="detail">Escenas US Tour.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-kool-and-the-gang-oct-15" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Thu · Oct 15</span><h3>Kool &amp; The Gang</h3><p class="artist-bio">New Jersey funk institution whose &quot;Celebration,&quot; &quot;Jungle Boogie,&quot; and &quot;Get Down on It&quot; have soundtracked parties for five decades.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><p class="detail">With The S.O.S. Band.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-anthony-hamilton-oct-23" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Fri · Oct 23</span><h3>Anthony Hamilton</h3><p class="artist-bio">Charlotte soul singer whose church-rooted baritone carried &quot;Charlene&quot; and &quot;Comin' From Where I'm From&quot; into modern R&amp;B classics.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Theater at MGM National Harbor</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-charlie-wilson-oct-30" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Fri · Oct 30</span><h3>Charlie Wilson</h3><p class="artist-bio">Former Gap Band frontman turned solo R&amp;B elder statesman, nicknamed &quot;Uncle Charlie,&quot; with evergreen ballads like &quot;There Goes My Baby.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-rawayana-nov-4" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Wed · Nov 4</span><h3>Rawayana</h3><p class="artist-bio">Venezuelan band blending reggae, funk, and Caribbean rhythms into a laid-back party sound; their track &quot;Binikini&quot; with Danny Ocean went viral.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-grupo-niche-nov-7" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Sat · Nov 7</span><h3>Grupo Niche</h3><p class="artist-bio">Colombia's definitive salsa orchestra, founded by Jairo Varela and still filling dance floors with classics like &quot;Una aventura.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><p class="detail">Niche Disco Tour.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-jodeci-nov-12" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Thu · Nov 12</span><h3>Jodeci</h3><p class="artist-bio">The bad boys of R&amp;B — K-Ci, JoJo, DeVante, and Mr. Dalvin — whose &quot;Forever My Lady&quot; rewrote the rules for 1990s soul groups.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><p class="detail">35th anniversary of Forever My Lady.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-air-supply-nov-13" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Fri · Nov 13</span><h3>Air Supply</h3><p class="artist-bio">Graham Russell and Russell Hitchcock's soft-rock partnership has been selling out theaters for 50 years on evergreens like &quot;All Out of Love.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-jeffrey-osborne-will-downing-nov-14" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Sat · Nov 14</span><h3>Jeffrey Osborne &amp; Will Downing</h3><p class="artist-bio">Two of R&amp;B's smoothest voices on one bill: Osborne, of L.T.D. and &quot;On the Wings of Love,&quot; and Downing, the baritone balladeer behind A Love Supreme.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Theater at MGM National Harbor</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-beartooth-nov-15" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Sun · Nov 15</span><h3>Beartooth</h3><p class="artist-bio">Columbus metalcore band led by Caleb Shomo, pairing arena-sized choruses with raw songs about anxiety and recovery like &quot;In Between.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>6:30 PM · Theater at MGM National Harbor</p><p class="detail">Pure Ecstasy World Tour, with Don Broco, Magnolia Park, and Windwaker.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-mannheim-steamroller-nov-22" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Sun · Nov 22</span><h3>Mannheim Steamroller</h3><p class="artist-bio">Chip Davis's new-age ensemble turned Christmas music into an arena tradition with its synthesizer-and-orchestra take on &quot;Deck the Halls.&quot;</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · Theater at MGM National Harbor</p><p class="detail">Mannheim Steamroller Christmas.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-sabaton-dec-6" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Oxon Hill, Maryland</span><span class="date-chip">Sun · Dec 6</span><h3>Sabaton</h3><p class="artist-bio">Swedish power-metal band whose anthems retell military history — &quot;To Hell and Back&quot; honors Audie Murphy — with pyro-heavy arena shows.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Theater at MGM National Harbor</p><p class="detail">Legends on Tour, with Pop Evil and Wings of Steel.</p><a class="ticket" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Event details</a></div>
+        </article>
       </div>
       <p class="small-note" id="filter-status" aria-live="polite">Showing all concert picks and venue links.</p>
     </section>
@@ -972,17 +1219,25 @@
         <div class="venue-pair"><a href="http://theatlantis.com/" target="_blank" rel="noopener">The Atlantis · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Atlantis%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.birchmere.com/" target="_blank" rel="noopener">The Birchmere · Alexandria ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Birchmere%2C+Alexandria%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.blackcatdc.com/" target="_blank" rel="noopener">Black Cat · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Black+Cat%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.bluesalley.com/" target="_blank" rel="noopener">Blues Alley · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Blues+Alley%2C+1073+Wisconsin+Ave+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://bunnymanbrewing.com/" target="_blank" rel="noopener">Bunnyman · Burke ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Bunnyman+Brewing%2C+Burke%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.capitalonearena.com/" target="_blank" rel="noopener">Capital One Arena · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Capital+One+Arena%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.capitalonehall.com/" target="_blank" rel="noopener">Capital One Hall ↗</a><a class="venue-sub" href="https://www.capitalonehall.com/the-vault" target="_blank" rel="noopener">The Vault ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Capital+One+Hall%2C+Tysons%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.clareanddons.com/" target="_blank" rel="noopener">Clare &amp; Don's ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Clare+%26+Don's%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.jambase.com/venue/dc9" target="_blank" rel="noopener">DC9 · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=DC9+Nightclub%2C+1940+9th+St+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.eaglebankarena.com/" target="_blank" rel="noopener">EagleBank Arena · Fairfax ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=EagleBank+Arena%2C+Fairfax%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.ticketmaster.com/echostage-tickets-washington/venue/172570" target="_blank" rel="noopener">Echostage · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Echostage%2C+2135+Queens+Chapel+Rd+NE%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://fairwindsbrewing.com/" target="_blank" rel="noopener">Fair Winds · Lorton ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Fair+Winds+Brewing%2C+Lorton%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.thefarmbreweryatbroadrun.com/" target="_blank" rel="noopener">Farm Brewery at Broad Run · Haymarket ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Farm+Brewery+at+Broad+Run%2C+Haymarket%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.livenation.com/venue/KovZpZA6tFlA/the-fillmore-silver-spring-events" target="_blank" rel="noopener">The Fillmore Silver Spring · Silver Spring ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Fillmore+Silver+Spring%2C+8656+Colesville+Rd%2C+Silver+Spring%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://live.thehamiltondc.com/calendar/" target="_blank" rel="noopener">The Hamilton Live · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Hamilton+Live%2C+600+14th+St+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://thehowardtheatre.com/" target="_blank" rel="noopener">Howard Theatre · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Howard+Theatre%2C+620+T+St+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Jammin Java ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Jammin+Java%2C+Vienna%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.jiffylubelive.com/" target="_blank" rel="noopener">Jiffy Lube Live ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Jiffy+Lube+Live%2C+Bristow%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">JV's Restaurant ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=JV's+Restaurant%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.kennedy-center.org/" target="_blank" rel="noopener">The Kennedy Center · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Kennedy+Center%2C+2700+F+St+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.kilroys.com/" target="_blank" rel="noopener">Kilroy's · 5250 Port Royal Rd ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Kilroy's%2C+5250+Port+Royal+Rd%2C+Springfield%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.thelincolndc.com/" target="_blank" rel="noopener">Lincoln Theatre · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Lincoln+Theatre%2C+1215+U+St+NW%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.merriweathermusic.com/" target="_blank" rel="noopener">Merriweather Post Pavilion ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Merriweather+Post+Pavilion%2C+Columbia%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.mlb.com/nationals/tickets/events" target="_blank" rel="noopener">Nationals Park · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Nationals+Park%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://nevermorehall.com/" target="_blank" rel="noopener">Nevermore Hall · Baltimore ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Nevermore+Hall%2C+Baltimore%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
@@ -993,9 +1248,10 @@
         <div class="venue-pair"><a href="https://www.portcitybrewing.com/" target="_blank" rel="noopener">Port City · Alexandria ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Port+City+Brewing%2C+Alexandria%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Rams Head · Annapolis ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Rams+Head+On+Stage%2C+Annapolis%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://settledowneasybrewing.com/" target="_blank" rel="noopener">Settle Down Easy · Falls Church ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Settle+Down+Easy+Brewing%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Songbyrd Music House · Washington ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Songbyrd+Music+House%2C+540+Penn+St+NE%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.starrhilltysons.com/" target="_blank" rel="noopener">Starr Hill · Tysons ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Starr+Hill%2C+Tysons%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.thestatetheatre.com/" target="_blank" rel="noopener">State Theatre ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=State+Theatre%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
-        <div class="venue-pair"><a href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Theater at MGM National Harbor · Oxon Hill ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Theater+at+MGM+National+Harbor%2C+Oxon+Hill%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Theater at MGM National Harbor · Oxon Hill ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Theater+at+MGM+National+Harbor%2C+101+MGM+National+Ave%2C+Oxon+Hill%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Union Stage · DC Wharf ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Union+Stage%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="https://www.warnertheatredc.com/" target="_blank" rel="noopener">Warner Theatre · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Warner+Theatre%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
         <div class="venue-pair"><a href="http://www.wineryatbullrun.com/" target="_blank" rel="noopener">Winery at Bull Run · Centreville ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Winery+at+Bull+Run%2C+Centreville%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
@@ -1006,7 +1262,6 @@
 
   <footer><div class="wrap">Listings compiled October 12, 2026. Ticket availability and prices can change.
     <details><summary>Concert photo sources</summary><ul>
-      <li><a href="http://rockhall.com/museum/" target="_blank" rel="noopener">Peter Hook hero photo · Adam Kennedy / Rock &amp; Roll Hall of Fame</a></li>
       <li><a href="https://www.washingtonblade.com/2023/08/17/930-club-justin-trawick-griefcat-jon-tyler-wiley/" target="_blank" rel="noopener">Justin Trawick · Washington Blade / YouTube screen capture</a></li>
       <li><a href="https://www.thecurrent.org/feature/2023/05/12/coffee-break-2023-americana-honors-awards-nominees" target="_blank" rel="noopener">Allison Russell</a></li><li><a href="https://musicwhynot.com/susto-stubbs-bar-b-q-austin/" target="_blank" rel="noopener">SUSTO</a></li><li><a href="https://www.cascadeae.com/come-see-great-lake-swimmers/" target="_blank" rel="noopener">Great Lake Swimmers</a></li><li><a href="https://thesesubtlesounds.com/cris-jacobs-and-caleb-stine-team-up-for-a-night-of-amazing-music-at-the-recher/" target="_blank" rel="noopener">Cris Jacobs</a></li><li><a href="https://theartsstl.com/beck-15/" target="_blank" rel="noopener">Beck</a></li><li><a href="https://www.concertaddicts.com/new/concert-event-listings/europe/south-uk/the-damned--brighton-dome--2026-11-25--G5vHZ_aQ_cdxW" target="_blank" rel="noopener">The Damned</a></li><li><a href="https://asburyparkchamber.com/events-calendar/category/music/2025-06/" target="_blank" rel="noopener">The Smithereens</a></li><li><a href="https://www.musicscenemedia.com/toad-the-wet-sprocket-at-the-music-hall/" target="_blank" rel="noopener">Toad the Wet Sprocket</a></li><li><a href="https://www.ticketnews.com/2025/10/sugar-reunites-three-decades-new-music-tour-dates/" target="_blank" rel="noopener">Sugar</a></li>
 
@@ -1638,6 +1893,166 @@
         "Justin Trawick": {
                 "label": "Watch \"Kool Kids\" feat. Flex Mathews (live at Appaloosa Roots Music Festival, 9/3/2022)",
                 "url": "https://www.youtube.com/watch?v=N1WfoudOKjg"
+        },
+        "Logan Mize": {
+                "label": "Watch \"Better Off Gone\" (official video)",
+                "url": "https://www.youtube.com/embed/uxZrMFJsRqM"
+        },
+        "Bettye LaVette": {
+                "label": "Watch \"Things Have Changed\"",
+                "url": "https://www.youtube.com/watch?v=AUK8ZQD5GYo"
+        },
+        "Kate Nash": {
+                "label": "Watch \"Foundations\" (official video)",
+                "url": "https://www.youtube.com/embed/ryH5cga0yUI"
+        },
+        "Vienna Teng": {
+                "label": "Watch \"Lullabye for a Stormy Night\"",
+                "url": "https://www.youtube.com/watch?v=bZd2kgLZtfA"
+        },
+        "Benjamin Tod & Lost Dog Street Band": {
+                "label": "Watch \"September Doves\" (GemsOnVHS session)",
+                "url": "https://www.youtube.com/watch?v=Eh47m0dUdbc"
+        },
+        "Low Cut Connie": {
+                "label": "Watch \"Rio\"",
+                "url": "https://www.youtube.com/watch?v=SbzNaWOMus4"
+        },
+        "Joy Oladokun": {
+                "label": "Watch \"Sunday\"",
+                "url": "https://www.youtube.com/embed/sHbl6zhO3wo"
+        },
+        "The Tallest Man on Earth": {
+                "label": "Watch \"The Gardener\" (live on KEXP)",
+                "url": "https://www.youtube.com/watch?v=Wa3lyo_Eowc"
+        },
+        "The Jayhawks": {
+                "label": "Watch \"Blue\"",
+                "url": "https://www.youtube.com/watch?v=Z9mJ69Tqh84"
+        },
+        "Julia Jacklin": {
+                "label": "Watch \"Don't Know How to Keep Loving You\"",
+                "url": "https://www.youtube.com/embed/XXnw6gYX_IA"
+        },
+        "Kennedy Center Opera House Orchestra": {
+                "label": "Watch a Millennium Stage performance",
+                "url": "https://www.youtube.com/watch?v=hmXn-ZhAwe4"
+        },
+        "Marcel Penzes": {
+                "label": "Watch his Millennium Stage performance",
+                "url": "https://www.youtube.com/watch?v=euyRN6yYjUU"
+        },
+        "Tre. Charles": {
+                "label": "Watch \"Lately.\"",
+                "url": "https://www.youtube.com/watch?v=faQ0jrnNbDY"
+        },
+        "Joey Alexander": {
+                "label": "Watch \"Giant Steps\" (in-studio performance)",
+                "url": "https://www.youtube.com/embed/f4V_uaxBVOw"
+        },
+        "Jeremy Pelt": {
+                "label": "Watch Jeremy Pelt live at Jazz Alley (KNKX session)",
+                "url": "https://www.youtube.com/watch?v=rdN7TDoWoJs"
+        },
+        "Ruben Studdard": {
+                "label": "Watch \"Sorry 2004\"",
+                "url": "https://www.youtube.com/watch?v=fRuzeZKYN-I"
+        },
+        "Open Mike Eagle": {
+                "label": "Watch \"95 Radios\"",
+                "url": "https://www.youtube.com/watch?v=BnSVqxYSPPY"
+        },
+        "Spanish Love Songs": {
+                "label": "Watch \"Kick\"",
+                "url": "https://www.youtube.com/embed/li8_sda6Gt0"
+        },
+        "We Are Scientists": {
+                "label": "Watch \"Nobody Move, Nobody Get Hurt\"",
+                "url": "https://www.youtube.com/embed/Et9llKBJdEs"
+        },
+        "Be Your Own Pet": {
+                "label": "Watch \"Becky\"",
+                "url": "https://www.youtube.com/watch?v=3cMiNDwyq3w"
+        },
+        "Vaultboy": {
+                "label": "Watch \"everything sucks\"",
+                "url": "https://www.youtube.com/embed/_yGifKCmHC0"
+        },
+        "Mary in the Junkyard": {
+                "label": "Watch \"Marble Arch\"",
+                "url": "https://www.youtube.com/embed/Q0AgzTQR2Cc"
+        },
+        "JPEGMAFIA": {
+                "label": "Watch \"1539 N. Calvert\"",
+                "url": "https://www.youtube.com/embed/PO3mri47s7M"
+        },
+        "ODESZA": {
+                "label": "Watch \"Say My Name\"",
+                "url": "https://www.youtube.com/embed/QMssNXBCCl0"
+        },
+        "Eric Prydz": {
+                "label": "Watch \"Opus\"",
+                "url": "https://www.youtube.com/embed/iRA82xLsb_w"
+        },
+        "Kelela": {
+                "label": "Watch \"LMK\"",
+                "url": "https://www.youtube.com/embed/ePi5BLJogyA"
+        },
+        "Cavetown": {
+                "label": "Watch \"This Is Home\"",
+                "url": "https://www.youtube.com/embed/ZM_Gamwxvtc"
+        },
+        "The War and Treaty": {
+                "label": "Watch \"Down to the River\"",
+                "url": "https://www.youtube.com/embed/PfkPgfzuVAc"
+        },
+        "Sin Bandera": {
+                "label": "Watch \"Entra en mi vida\"",
+                "url": "https://www.youtube.com/watch?v=-hoZpSoKAYE"
+        },
+        "Kool & The Gang": {
+                "label": "Watch \"Celebration\"",
+                "url": "https://www.youtube.com/embed/3GwjfUFyY6M"
+        },
+        "Anthony Hamilton": {
+                "label": "Watch \"Charlene\"",
+                "url": "https://www.youtube.com/embed/QUmxh7H8vok"
+        },
+        "Charlie Wilson": {
+                "label": "Watch \"There Goes My Baby\"",
+                "url": "https://www.youtube.com/embed/Hd0T5BuIl0c"
+        },
+        "Rawayana": {
+                "label": "Watch \"Binikini\" (with Danny Ocean)",
+                "url": "https://www.youtube.com/watch?v=vylxZVKpung&list=RDzCLK89kWHxc&index=5"
+        },
+        "Grupo Niche": {
+                "label": "Watch \"Una aventura\"",
+                "url": "https://www.youtube.com/embed/UwnmzIgNzyU"
+        },
+        "Jodeci": {
+                "label": "Watch \"Forever My Lady\"",
+                "url": "https://www.youtube.com/watch?v=qZCPgfEZvzQ"
+        },
+        "Air Supply": {
+                "label": "Watch \"All Out of Love\"",
+                "url": "https://www.youtube.com/embed/JWdZEumNRmI"
+        },
+        "Jeffrey Osborne & Will Downing": {
+                "label": "Watch Jeffrey Osborne — \"On the Wings of Love\"",
+                "url": "https://www.youtube.com/embed/vFhR2FHKmss"
+        },
+        "Beartooth": {
+                "label": "Watch \"In Between\"",
+                "url": "https://www.youtube.com/embed/j2p_w409y-o"
+        },
+        "Mannheim Steamroller": {
+                "label": "Watch \"Deck the Halls\"",
+                "url": "https://www.youtube.com/watch?v=e3cEOWIwDTI"
+        },
+        "Sabaton": {
+                "label": "Watch \"To Hell and Back\"",
+                "url": "https://www.youtube.com/watch?v=hZNeastYxEc"
         }
 };
       var officialSites={
@@ -2486,6 +2901,48 @@
                         "label": "Justin Trawick official site",
                         "url": "https://justintrawick.com"
                 }
+        ],
+        "Benjamin Tod & Lost Dog Street Band": [
+                {
+                        "label": "Lost Dog Street Band official site",
+                        "url": "https://www.lostdogstreetband.com/"
+                }
+        ],
+        "Tre. Charles": [
+                {
+                        "label": "Tre. Charles official site",
+                        "url": "https://www.trecharles.com/"
+                }
+        ],
+        "Marcel Penzes": [
+                {
+                        "label": "Marcel Penzes official site",
+                        "url": "https://www.marcelpenzes.com/events"
+                }
+        ],
+        "We Are Scientists": [
+                {
+                        "label": "We Are Scientists official site",
+                        "url": "http://wearescientists.com/"
+                }
+        ],
+        "Kool & The Gang": [
+                {
+                        "label": "Kool & The Gang official site",
+                        "url": "https://www.koolandthegang.com/"
+                }
+        ],
+        "Charlie Wilson": [
+                {
+                        "label": "Charlie Wilson official site",
+                        "url": "https://www.charliewilsonmusic.com"
+                }
+        ],
+        "The War and Treaty": [
+                {
+                        "label": "The War and Treaty official site",
+                        "url": "https://www.thewarandtreaty.com"
+                }
         ]
 };
       cards.forEach(function(card){
@@ -2527,7 +2984,7 @@
         link.appendChild(note);
         ticket.parentNode.insertBefore(link,ticket);
       });
-      function monthName(month){return month===9?'October':'November';}
+      function monthName(month){return month===9?'October':month===10?'November':'December';}
       function jumpToCard(card){
         setView('list');
         window.requestAnimationFrame(function(){
