@@ -169,7 +169,17 @@
     .venue-link[hidden],.venue-pair[hidden],.venue-pair a[hidden]{display:none}
     .venue-pair{background:var(--surface);padding:14px;display:flex;flex-direction:column;justify-content:center;gap:7px}
     .venue-pair a{font-weight:800}.venue-pair a:first-child{font-size:17px}.venue-pair a:last-child{font-size:14px;color:var(--blue)}
-    footer{border-top:5px solid var(--ink);padding:24px 0 34px;color:var(--muted);font-size:14px}
+    .venue-pair a.venue-sub,.venue-pair a.venue-maps{font-size:14px;color:var(--blue)}
+    footer{border-top:5px solid var(--ink);padding:24px 0 90px;color:var(--muted);font-size:14px}
+    #bands,#shows,#venues,#concert-search{scroll-margin-top:70px}
+    .float-menu{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom, 0px));z-index:60;display:flex;gap:2px;background:#17212a;border:2px solid var(--ink);border-radius:999px;padding:5px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .float-menu a{display:inline-flex;align-items:center;min-height:40px;padding:6px 13px;border-radius:999px;color:#fff;font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
+    .float-menu a:nth-child(1){box-shadow:inset 0 -4px 0 var(--red)}
+    .float-menu a:nth-child(2){box-shadow:inset 0 -4px 0 var(--blue)}
+    .float-menu a:nth-child(3){box-shadow:inset 0 -4px 0 var(--green)}
+    .float-menu a:nth-child(4){box-shadow:inset 0 -4px 0 var(--yellow)}
+    .float-menu a:nth-child(5){box-shadow:inset 0 -4px 0 var(--red)}
+    @media(max-width:420px){.float-menu a{padding:6px 9px;font-size:13px}}
     footer details{margin-top:10px}footer summary{cursor:pointer;font-weight:800;color:var(--ink)}footer ul{columns:2;padding-left:20px}footer li{margin:5px 0}
     a:focus-visible,button:focus-visible{outline:4px solid var(--yellow);outline-offset:3px}
     @media(max-width:860px){.hero,.split{grid-template-columns:1fr}.hero{gap:22px}.hero-side{grid-template-columns:minmax(240px,.9fr) minmax(220px,.75fr);align-items:center;transform:none}.intro{max-width:700px}.section-head{align-items:flex-start;flex-direction:column}.section-head p{text-align:left}.event-grid{grid-template-columns:1fr}.venue-list{grid-template-columns:repeat(2,1fr)}}
@@ -177,11 +187,11 @@
     @media(max-width:700px){.month-switch{align-items:flex-start;flex-direction:column}.month-tabs{width:100%}.month-tab{flex:1}.calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-weekday,.calendar-blank{display:none}.calendar-day{min-height:108px;padding:8px;gap:5px}.calendar-day-number{font-size:17px}.calendar-day-number:before{content:attr(data-weekday) ' · ';color:var(--blue);font:800 11px/1 var(--sans);text-transform:uppercase}.calendar-show{border-left-width:4px;padding:6px}.calendar-artist,.calendar-venue{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}.calendar-artist{-webkit-line-clamp:2;font-size:11px}.calendar-venue{-webkit-line-clamp:1;font-size:10px}.calendar-more{font-size:10px}}
     @media(max-width:420px){.view-switch{display:flex;width:100%}.view-tab{flex:1;padding-inline:9px}.calendar-day{min-height:104px;padding:6px}.calendar-artist{font-size:10px}.calendar-venue{font-size:9px}.calendar-more{font-size:9px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.jump-target{animation:none;outline:6px solid var(--yellow);outline-offset:5px}}
-    @media print{.jump,.concert-search,.view-switch,.calendar-view,.filter-row,.no-matches,.search-results{display:none}.event-grid{display:grid!important}.event-card{break-inside:avoid;box-shadow:none}.ticket{border:1px solid var(--ink);color:var(--ink);background:none}.venue-link{break-inside:avoid}}
+    @media print{.jump,.float-menu,.concert-search,.view-switch,.calendar-view,.filter-row,.no-matches,.search-results{display:none}.event-grid{display:grid!important}.event-card{break-inside:avoid;box-shadow:none}.ticket{border:1px solid var(--ink);color:var(--ink);background:none}.venue-link{break-inside:avoid}}
   </style>
 </head>
-<body>
-  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-10-12T22:17:35-04:00">October 12, 2026 · 10:17 PM ET</time></div></div>
+<body id="top">
+  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-10-12T22:55:31-04:00">October 12, 2026 · 10:55 PM ET</time></div></div>
   <header class="wrap hero">
     <div><h1>Good music, <span>close enough.</span></h1></div>
     <div class="hero-side">
@@ -956,40 +966,40 @@
     <section id="venues" aria-labelledby="venues-title">
       <div class="section-head"><h2 id="venues-title">Venue links</h2><p>Go straight to the calendar for every regular stop.</p></div>
       <div class="venue-list">
-        <a class="venue-link" href="http://www.thestatetheatre.com/" target="_blank" rel="noopener">State Theatre <span>↗</span></a>
-        <div class="venue-pair"><a href="https://www.capitalonehall.com/" target="_blank" rel="noopener">Capital One Hall ↗</a><a href="https://www.capitalonehall.com/the-vault" target="_blank" rel="noopener">The Vault ↗</a></div>
-        <a class="venue-link" href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">JV's Restaurant <span>↗</span></a>
-        <a class="venue-link" href="http://www.clareanddons.com/" target="_blank" rel="noopener">Clare &amp; Don's <span>↗</span></a>
-        <a class="venue-link" href="http://www.birchmere.com/" target="_blank" rel="noopener">The Birchmere · Alexandria <span>↗</span></a>
-        <a class="venue-link" href="https://www.petestavernva.com" target="_blank" rel="noopener">Pete's Tavern · Springfield <span>↗</span></a>
-        <a class="venue-link" href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Jammin Java <span>↗</span></a>
-        <a class="venue-link" href="https://www.930.com/" target="_blank" rel="noopener">9:30 Club <span>↗</span></a>
-        <a class="venue-link" href="https://www.axs.com/venues/126387/the-anthem-washington-tickets" target="_blank" rel="noopener">The Anthem <span>↗</span></a>
-        <a class="venue-link" href="https://www.wolftrap.org/news-and-stories/news/performance-news/26-27-the-barns-announcement/" target="_blank" rel="noopener">Wolf Trap + The Barns <span>↗</span></a>
-        <a class="venue-link" href="https://www.jiffylubelive.com/" target="_blank" rel="noopener">Jiffy Lube Live <span>↗</span></a>
-        <a class="venue-link" href="https://www.merriweathermusic.com/" target="_blank" rel="noopener">Merriweather Post Pavilion <span>↗</span></a>
-        <a class="venue-link" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Rams Head · Annapolis <span>↗</span></a>
-        <a class="venue-link" href="https://nevermorehall.com/" target="_blank" rel="noopener">Nevermore Hall · Baltimore <span>↗</span></a>
-        <a class="venue-link" href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Union Stage · DC Wharf <span>↗</span></a>
-        <a class="venue-link" href="http://www.pearlstreetwarehouse.com/" target="_blank" rel="noopener">Pearl Street Warehouse · DC Wharf <span>↗</span></a>
-        <a class="venue-link" href="http://theatlantis.com/" target="_blank" rel="noopener">The Atlantis · DC <span>↗</span></a>
-        <a class="venue-link" href="https://www.warnertheatredc.com/" target="_blank" rel="noopener">Warner Theatre · DC <span>↗</span></a>
-        <a class="venue-link" href="http://www.blackcatdc.com/" target="_blank" rel="noopener">Black Cat · DC <span>↗</span></a>
-        <a class="venue-link" href="https://www.kilroys.com/" target="_blank" rel="noopener">Kilroy's · 5250 Port Royal Rd <span>↗</span></a>
-        <a class="venue-link" href="https://www.starrhilltysons.com/" target="_blank" rel="noopener">Starr Hill · Tysons <span>↗</span></a>
-        <a class="venue-link" href="https://www.capitalonecenter.com/events" target="_blank" rel="noopener">The Perch · Tysons <span>↗</span></a>
-        <a class="venue-link" href="http://www.wineryatbullrun.com/" target="_blank" rel="noopener">Winery at Bull Run · Centreville <span>↗</span></a>
-        <a class="venue-link" href="https://www.paradisespringswinery.com/Home" target="_blank" rel="noopener">Paradise Springs · Clifton <span>↗</span></a>
-        <a class="venue-link" href="https://settledowneasybrewing.com/" target="_blank" rel="noopener">Settle Down Easy · Falls Church <span>↗</span></a>
-        <a class="venue-link" href="https://bunnymanbrewing.com/" target="_blank" rel="noopener">Bunnyman · Burke <span>↗</span></a>
-        <a class="venue-link" href="http://fairwindsbrewing.com/" target="_blank" rel="noopener">Fair Winds · Lorton <span>↗</span></a>
-        <a class="venue-link" href="https://www.portcitybrewing.com/" target="_blank" rel="noopener">Port City · Alexandria <span>↗</span></a>
-        <a class="venue-link" href="https://2silosbrewing.com/" target="_blank" rel="noopener">2 Silos · Manassas <span>↗</span></a>
-        <a class="venue-link" href="http://www.thefarmbreweryatbroadrun.com/" target="_blank" rel="noopener">Farm Brewery at Broad Run · Haymarket <span>↗</span></a>
-        <a class="venue-link" href="https://www.capitalonearena.com/" target="_blank" rel="noopener">Capital One Arena · DC <span>↗</span></a>
-        <a class="venue-link" href="https://www.mlb.com/nationals/tickets/events" target="_blank" rel="noopener">Nationals Park · DC <span>↗</span></a>
-        <a class="venue-link" href="http://www.eaglebankarena.com/" target="_blank" rel="noopener">EagleBank Arena · Fairfax <span>↗</span></a>
-        <a class="venue-link" href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Theater at MGM National Harbor · Oxon Hill <span>↗</span></a>
+        <div class="venue-pair"><a href="https://2silosbrewing.com/" target="_blank" rel="noopener">2 Silos · Manassas ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=2+Silos%2C+Manassas%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.930.com/" target="_blank" rel="noopener">9:30 Club ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=9%3A30+Club%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.axs.com/venues/126387/the-anthem-washington-tickets" target="_blank" rel="noopener">The Anthem ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Anthem%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://theatlantis.com/" target="_blank" rel="noopener">The Atlantis · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Atlantis%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.birchmere.com/" target="_blank" rel="noopener">The Birchmere · Alexandria ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Birchmere%2C+Alexandria%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.blackcatdc.com/" target="_blank" rel="noopener">Black Cat · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Black+Cat%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://bunnymanbrewing.com/" target="_blank" rel="noopener">Bunnyman · Burke ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Bunnyman+Brewing%2C+Burke%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.capitalonearena.com/" target="_blank" rel="noopener">Capital One Arena · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Capital+One+Arena%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.capitalonehall.com/" target="_blank" rel="noopener">Capital One Hall ↗</a><a class="venue-sub" href="https://www.capitalonehall.com/the-vault" target="_blank" rel="noopener">The Vault ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Capital+One+Hall%2C+Tysons%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.clareanddons.com/" target="_blank" rel="noopener">Clare &amp; Don's ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Clare+%26+Don's%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.eaglebankarena.com/" target="_blank" rel="noopener">EagleBank Arena · Fairfax ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=EagleBank+Arena%2C+Fairfax%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://fairwindsbrewing.com/" target="_blank" rel="noopener">Fair Winds · Lorton ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Fair+Winds+Brewing%2C+Lorton%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.thefarmbreweryatbroadrun.com/" target="_blank" rel="noopener">Farm Brewery at Broad Run · Haymarket ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Farm+Brewery+at+Broad+Run%2C+Haymarket%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Jammin Java ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Jammin+Java%2C+Vienna%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.jiffylubelive.com/" target="_blank" rel="noopener">Jiffy Lube Live ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Jiffy+Lube+Live%2C+Bristow%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">JV's Restaurant ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=JV's+Restaurant%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.kilroys.com/" target="_blank" rel="noopener">Kilroy's · 5250 Port Royal Rd ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Kilroy's%2C+5250+Port+Royal+Rd%2C+Springfield%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.merriweathermusic.com/" target="_blank" rel="noopener">Merriweather Post Pavilion ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Merriweather+Post+Pavilion%2C+Columbia%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.mlb.com/nationals/tickets/events" target="_blank" rel="noopener">Nationals Park · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Nationals+Park%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://nevermorehall.com/" target="_blank" rel="noopener">Nevermore Hall · Baltimore ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Nevermore+Hall%2C+Baltimore%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.paradisespringswinery.com/Home" target="_blank" rel="noopener">Paradise Springs · Clifton ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Paradise+Springs%2C+Clifton%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.pearlstreetwarehouse.com/" target="_blank" rel="noopener">Pearl Street Warehouse · DC Wharf ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Pearl+Street+Warehouse%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.capitalonecenter.com/events" target="_blank" rel="noopener">The Perch · Tysons ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=The+Perch%2C+Tysons%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.petestavernva.com" target="_blank" rel="noopener">Pete's Tavern · Springfield ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Pete's+Tavern%2C+Springfield%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.portcitybrewing.com/" target="_blank" rel="noopener">Port City · Alexandria ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Port+City+Brewing%2C+Alexandria%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Rams Head · Annapolis ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Rams+Head+On+Stage%2C+Annapolis%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://settledowneasybrewing.com/" target="_blank" rel="noopener">Settle Down Easy · Falls Church ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Settle+Down+Easy+Brewing%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.starrhilltysons.com/" target="_blank" rel="noopener">Starr Hill · Tysons ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Starr+Hill%2C+Tysons%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.thestatetheatre.com/" target="_blank" rel="noopener">State Theatre ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=State+Theatre%2C+Falls+Church%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html" target="_blank" rel="noopener">Theater at MGM National Harbor · Oxon Hill ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Theater+at+MGM+National+Harbor%2C+Oxon+Hill%2C+MD" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Union Stage · DC Wharf ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Union+Stage%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.warnertheatredc.com/" target="_blank" rel="noopener">Warner Theatre · DC ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Warner+Theatre%2C+Washington%2C+DC" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="http://www.wineryatbullrun.com/" target="_blank" rel="noopener">Winery at Bull Run · Centreville ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Winery+at+Bull+Run%2C+Centreville%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
+        <div class="venue-pair"><a href="https://www.wolftrap.org/news-and-stories/news/performance-news/26-27-the-barns-announcement/" target="_blank" rel="noopener">Wolf Trap + The Barns ↗</a><a class="venue-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Wolf+Trap%2C+Vienna%2C+VA" target="_blank" rel="noopener">Google Maps ↗</a></div>
       </div>
     </section>
   </main>
@@ -1005,6 +1015,7 @@
       <li><a href="https://townsquare.media/site/623/files/2016/03/sturgill-simpson-new-music-2016.jpg" target="_blank" rel="noopener">Sturgill Simpson</a></li><li><a href="https://i.ytimg.com/vi/qR4l4GM7pXs/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIFYoSTAP&amp;amp;rs=AOn4CLBCpql2IkdjCVSfWjzglmTjleMGHA" target="_blank" rel="noopener">Airmont Road Band</a></li><li><a href="https://morristourism.org/wp-content/uploads/2023/09/Jim-Messina-Photo-2-scaled.jpeg" target="_blank" rel="noopener">Jim Messina joined by Orleans (Farewell Tour)</a></li><li><a href="https://seatgeekimages.com/performers-landscape/hamilton-leithauser-7cf996/270572/20577/600x600.jpg?auto=webp&amp;amp;width=96&amp;amp;quality=75" target="_blank" rel="noopener">Hamilton Leithauser &amp; Rostam</a></li><li><a href="https://c02.purpledshub.com/uploads/sites/16/2024/06/Five-Finger-Death-Punch-0234.jpg" target="_blank" rel="noopener">Five Finger Death Punch</a></li>
     </ul></details>
   </div></footer>
+  <nav class="float-menu" aria-label="Quick menu"><a href="#bands">Bands</a><a href="#shows">Shows</a><a href="#concert-search">Search</a><a href="#venues">Venues</a><a href="#top">Top</a></nav>
   <script>
     (function(){
       var eventGrid=document.getElementById('event-grid');
@@ -1020,7 +1031,7 @@
 
       var buttons=[].slice.call(document.querySelectorAll('.filter'));
       var cards=[].slice.call(document.querySelectorAll('.event-card'));
-      var venues=[].slice.call(document.querySelectorAll('.venue-list > .venue-link, .venue-list > .venue-pair a'));
+      var venues=[].slice.call(document.querySelectorAll('.venue-list > .venue-link, .venue-list > .venue-pair a:not(.venue-maps)'));
       var venuePairs=[].slice.call(document.querySelectorAll('.venue-list > .venue-pair'));
       var form=document.getElementById('concert-search');
       var input=document.getElementById('concert-query');
@@ -2700,7 +2711,7 @@
           if(visible)shownVenues++;
         });
         venuePairs.forEach(function(pair){
-          pair.hidden=[].slice.call(pair.querySelectorAll('a')).every(function(link){return link.hidden;});
+          pair.hidden=[].slice.call(pair.querySelectorAll('a:not(.venue-maps)')).every(function(link){return link.hidden;});
         });
         var matchTotal=shownCards+shownVenues;
         form.classList.toggle('is-active',Boolean(query));
