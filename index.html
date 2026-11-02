@@ -320,39 +320,111 @@
     .band-index[hidden],#shows[hidden]{display:none!important}
     @media(max-width:580px){.main-tabs .view-tab{font-size:14px;padding:11px 6px}}
     @media print{.band-index,#shows{display:block!important}}
+
+    /* ——— My Lists pass: Watchlist / Favorites / Curb, back button, band scroller ——— */
+    .view-switch.main-tabs{flex-wrap:wrap}
+    .main-tabs .view-tab{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+    .tab-count{background:var(--ink);color:var(--paper);border-radius:999px;padding:1px 8px;font-size:12px;font-weight:800;line-height:1.5}
+    .tab-count[hidden]{display:none!important}
+    #lists[hidden]{display:none!important}
+    .lists-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin:0 0 18px}
+    .lists-head h2{margin:0;font-size:clamp(26px,3.8vw,40px);font-weight:800;letter-spacing:-.025em}
+    .lists-head p{margin:7px 0 0;color:var(--muted);font-weight:700;max-width:720px}
+    .list-panel[hidden]{display:none!important}
+    .list-panel-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:0 0 14px}
+    .list-panel-head h3{margin:0;font-size:clamp(21px,3vw,28px);font-weight:800;letter-spacing:-.02em}
+    .list-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .list-btn{min-height:44px;border:0;border-radius:10px;padding:9px 15px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer;box-shadow:var(--soft)}
+    .list-btn.alt{background:var(--ink);color:var(--paper)}
+    .list-empty{padding:22px;border:1px dashed var(--line);border-radius:14px;background:var(--surface);color:var(--muted);font-weight:700}
+    .list-empty strong{display:block;color:var(--ink);font-size:19px;margin-bottom:5px}
+    .list-items{display:grid;gap:12px}
+    .list-item{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--soft)}
+    .list-item-main{flex:1 1 260px;min-width:0}
+    .list-item-artist{font-weight:800;font-size:19px;line-height:1.25}
+    .list-item-meta{color:var(--muted);font-weight:700;font-size:14.5px;margin-top:2px}
+    .list-item-btns{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+    .mini-btn{min-height:40px;border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:var(--surface);color:var(--ink);font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+    .mini-btn:hover{border-color:var(--ink)}
+    .mini-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+    .mini-btn.danger{background:var(--red);border-color:var(--red);color:#fff}
+    .mini-btn:disabled{opacity:.35;cursor:default}
+    .tent-badge{display:inline-block;background:var(--yellow);color:#111;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;vertical-align:2px;margin-left:8px}
+    .fav-badge{display:inline-block;background:var(--yellow);color:#111;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;vertical-align:2px;margin-left:8px}
+    .reminder-line{margin-top:5px;color:var(--green);font-weight:800;font-size:14px}
+    .show-lines{margin:6px 0 0;padding:0;list-style:none}
+    .show-lines li{padding:3px 0;color:var(--muted);font-weight:700;font-size:14.5px}
+    /* Per-card + per-row action buttons */
+    .mg-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px;width:100%}
+    .mg-btn{min-height:42px;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:var(--surface);color:var(--ink);font-weight:800;font-size:14px;cursor:pointer}
+    .mg-btn.fav[aria-pressed="true"]{background:var(--yellow);color:#111}
+    .mg-btn.watch[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+    .mg-btn.curb:hover{background:var(--red);border-color:var(--red);color:#fff}
+    .band-actions{display:inline-flex;gap:5px;margin-left:auto;flex-wrap:wrap}
+    .band-actions .mg-btn{min-height:36px;padding:4px 10px;font-size:12.5px;border-width:1.5px}
+    .band-row.is-fav{box-shadow:inset 6px 0 0 var(--yellow)}
+    .band-row.is-watching{box-shadow:inset 6px 0 0 var(--blue)}
+    .band-row.is-fav.is-watching{box-shadow:inset 6px 0 0 var(--blue),inset 12px 0 0 var(--yellow)}
+    .band-row[hidden]{display:none!important}
+    /* Calendar tentative marks */
+    .calendar-show.is-tentative{outline:2px dashed var(--ink);outline-offset:-2px;background:color-mix(in srgb,var(--yellow) 30%,var(--surface))}
+    .cal-tent{display:block;margin-top:3px;font:800 10px/1.2 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+    /* A–Z rail for the band list */
+    .az-rail{position:sticky;top:8px;z-index:30;display:flex;flex-wrap:wrap;gap:5px;padding:9px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;margin:0 0 14px}
+    .az-btn{min-width:38px;min-height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-weight:800;cursor:pointer;padding:4px 6px}
+    .az-btn:hover,.az-btn:focus-visible{background:var(--yellow);color:#111}
+    .az-btn:disabled{opacity:.3;cursor:default}
+    .az-note{width:100%;font-size:13px;font-weight:700;color:var(--muted)}
+    .band-row,.event-card{scroll-margin-top:120px}
+    .mg-step-flash{outline:4px solid var(--blue)!important;outline-offset:3px}
+    /* Back button + step-through scroller */
+    .mg-back{position:fixed;left:12px;bottom:calc(70px + env(safe-area-inset-bottom, 0px));z-index:61;min-height:48px;padding:10px 18px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+    .mg-back:disabled{opacity:.35;cursor:default}
+    .mg-back[hidden]{display:none!important}
+    .mg-stepnav{position:fixed;right:10px;bottom:calc(128px + env(safe-area-inset-bottom, 0px));z-index:61;display:flex;flex-direction:column;gap:6px;align-items:center}
+    .mg-stepnav[hidden]{display:none!important}
+    .mg-stepnav button{width:52px;min-height:52px;border:0;border-radius:50%;background:var(--ink);color:var(--paper);font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.32);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;padding:4px}
+    .mg-stepnav button span{font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+    .mg-step-pos{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:3px 9px;font-size:12px;font-weight:800;box-shadow:var(--soft);white-space:nowrap}
+    .float-menu{max-width:calc(100vw - 10px);overflow-x:auto;scrollbar-width:none}
+    .float-menu::-webkit-scrollbar{display:none}
+    @media(max-width:640px){.float-menu{left:5px;right:5px;transform:none;width:auto}.float-menu a{flex:1;justify-content:center;padding:6px 2px;font-size:11.5px;min-width:0}}
+    @media(max-width:640px){.mg-stepnav{opacity:.94}.mg-stepnav button{width:44px;min-height:44px;font-size:12px}.mg-step-pos{font-size:11px;padding:2px 7px}}
+    @media(max-width:580px){.main-tabs .view-tab{flex:1 1 31%;font-size:13.5px;padding:10px 4px}.mg-back{bottom:calc(64px + env(safe-area-inset-bottom, 0px));min-height:44px;font-size:15px}.mg-stepnav button{width:48px;min-height:48px}}
+    @media print{#lists,.mg-back,.mg-stepnav,.az-rail,.mg-actions,.band-actions{display:none!important}}
   </style>
 </head>
 <body id="top">
-  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-11-01T06:13:00-05:00">November 1, 2026 · 6:13 AM ET</time></div></div>
+  <div class="last-updated"><div class="wrap"><strong>Listings last updated</strong><time datetime="2026-11-02T06:32:00-05:00">November 2, 2026 · 6:32 AM ET</time></div></div>
   <header class="wrap hero">
     <div><h1>Great Music — <span>Close Enough to Home</span></h1><p class="tagline">Live music across the <strong>DMV</strong> — DC · Maryland · Virginia</p></div>
     <div class="hero-side">
       <div class="hero-spot" id="just-added" aria-label="Just added to the guide">
         <div class="spot-head"><span class="spot-badge">JUST ADDED</span><span class="spot-sub">Newest concerts in the guide — tap one to jump to its show</span></div>
         <div class="spot-stage">
-        <a class="spot-slide is-active" href="#show-bill-pappas-project-nov-13" style="--acc:var(--red)">
-          <span class="spot-artist">Bill Pappas Project</span>
-          <span class="spot-meta">Fri · Nov 13 · Evening set · JV's · Falls Church, VA</span>
+                <a class="spot-slide is-active" href="#show-the-bob-polding-band-nov-30" style="--acc:var(--red)">
+          <span class="spot-artist">Bob Polding Band</span>
+          <span class="spot-meta">Mon · Nov 30 · 8:00 PM · Rams Head On Stage · Annapolis, MD</span>
         </a>
-        <a class="spot-slide" href="#show-spencer-thomas-dec-3" style="--acc:var(--blue)">
-          <span class="spot-artist">Spencer Thomas</span>
-          <span class="spot-meta">Thu · Dec 3 · 6:00 PM · The Kennedy Center — Millennium Stage · Washington, DC</span>
+        <a class="spot-slide" href="#show-dan-hovey-dec-8" style="--acc:var(--blue)">
+          <span class="spot-artist">Dan Hovey</span>
+          <span class="spot-meta">Tue · Dec 8 · 5:30 PM · Hank Dietle’s Tavern · Rockville, MD</span>
         </a>
-        <a class="spot-slide" href="#show-kennedy-center-opera-house-orchestra-dec-4" style="--acc:var(--green)">
-          <span class="spot-artist">Kennedy Center Opera House Orchestra</span>
-          <span class="spot-meta">Fri · Dec 4 · 6:00 PM · The Kennedy Center — Millennium Stage · Washington, DC</span>
+        <a class="spot-slide" href="#show-keith-grimes-dean-dalton-dec-9" style="--acc:var(--green)">
+          <span class="spot-artist">Keith Grimes &amp; Dean Dalton</span>
+          <span class="spot-meta">Wed · Dec 9 · 5:30 PM · Hank Dietle’s Tavern · Rockville, MD</span>
         </a>
-        <a class="spot-slide" href="#show-the-montaines-dec-4" style="--acc:var(--red)">
-          <span class="spot-artist">The Montaines</span>
-          <span class="spot-meta">Fri · Dec 4 · 7:00 PM · Songbyrd Music House · Washington, DC</span>
+        <a class="spot-slide" href="#show-bill-starks-greg-hardin-dec-10" style="--acc:var(--red)">
+          <span class="spot-artist">Bill Starks w/ Greg Hardin</span>
+          <span class="spot-meta">Thu · Dec 10 · 5:30 PM · Hank Dietle’s Tavern · Rockville, MD</span>
         </a>
-        <a class="spot-slide" href="#show-the-snowman-live-in-concert-dec-18" style="--acc:var(--blue)">
-          <span class="spot-artist">The Snowman Live in Concert</span>
-          <span class="spot-meta">Fri · Dec 18 · 7:00 PM · Capital One Hall · Tysons, VA</span>
+        <a class="spot-slide" href="#show-the-grandsons-present-dec-10" style="--acc:var(--blue)">
+          <span class="spot-artist">The Grandsons Present</span>
+          <span class="spot-meta">Thu · Dec 10 · 8:00 PM · Hank Dietle’s Tavern · Rockville, MD</span>
         </a>
-        <a class="spot-slide" href="#show-members-of-the-kennedy-center-opera-house-orchestra-dec-31" style="--acc:var(--green)">
-          <span class="spot-artist">Members of the Kennedy Center Opera House Orchestra</span>
-          <span class="spot-meta">Thu · Dec 31 · 6:00 PM · The Kennedy Center — Millennium Stage · Washington, DC</span>
+        <a class="spot-slide" href="#show-an-annapolis-christmas-dec-14" style="--acc:var(--green)">
+          <span class="spot-artist">An Annapolis Christmas</span>
+          <span class="spot-meta">Mon · Dec 14 · 7:00 PM · Rams Head On Stage · Annapolis, MD</span>
         </a>
 <div class="spot-nav"><button class="spot-arrow" id="spot-prev" type="button" aria-label="Previous concert">&#8249;</button><div class="spot-dots" role="tablist" aria-label="Just added concerts"></div><button class="spot-arrow" id="spot-next" type="button" aria-label="Next concert">&#8250;</button></div>
       </div>
@@ -362,9 +434,9 @@
   <nav class="jump" aria-label="On this page"><div class="wrap"><a href="#shows">Concert picks</a><a href="#venues">Venue links</a></div></nav>
 
   <main class="wrap">
-    <div class="view-switch main-tabs" role="tablist" aria-label="Guide views"><button class="view-tab" id="shows-tab" type="button" role="tab" aria-selected="false" aria-controls="shows">Shows</button><button class="view-tab" id="bands-tab" type="button" role="tab" aria-selected="true" aria-controls="bands">Bands — Next 60 Days</button><button class="view-tab" id="calendar-tab" type="button" role="tab" aria-selected="false" aria-controls="calendar-view">Calendar</button></div>
+    <div class="view-switch main-tabs" role="tablist" aria-label="Guide views"><button class="view-tab" id="shows-tab" type="button" role="tab" aria-selected="false" aria-controls="shows">Shows</button><button class="view-tab" id="bands-tab" type="button" role="tab" aria-selected="true" aria-controls="bands">Bands — Next 60 Days</button><button class="view-tab" id="calendar-tab" type="button" role="tab" aria-selected="false" aria-controls="calendar-view">Calendar</button><button class="view-tab" id="watchlist-tab" type="button" role="tab" aria-selected="false" aria-controls="lists">Watchlist <span class="tab-count" id="count-watchlist" hidden>0</span></button><button class="view-tab" id="favorites-tab" type="button" role="tab" aria-selected="false" aria-controls="lists">Favorites <span class="tab-count" id="count-favorites" hidden>0</span></button><button class="view-tab" id="curb-tab" type="button" role="tab" aria-selected="false" aria-controls="lists">Kicked to Curb <span class="tab-count" id="count-curb" hidden>0</span></button></div>
     <section class="band-index" id="bands" role="tabpanel" aria-labelledby="bands-title">
-      <div class="band-index-head"><h2 id="bands-title"><span class="live-dot" aria-hidden="true"></span><span class="live-title">LIVE MUSIC — NEXT 60 DAYS</span></h2><p>Every band with a show Nov 2 – Dec 31, 2026. Tap anywhere on a band's row to jump to its show.</p><p class="next-up" id="next-up" hidden></p></div>
+      <div class="band-index-head"><h2 id="bands-title"><span class="live-dot" aria-hidden="true"></span><span class="live-title">LIVE MUSIC — NEXT 60 DAYS</span></h2><p>Every band with a show Nov 3, 2026 – Jan 1, 2027. Tap anywhere on a band's row to jump to its show.</p><p class="next-up" id="next-up" hidden></p></div>
       <ul class="band-list">
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-19th-street-band-nov-21">The 19th Street Band</a></span><span class="band-dates"><a class="band-date" href="#show-the-19th-street-band-nov-21">Nov 21</a> <span class="band-venue">Starr Hill Brewpub</span><a class="band-date" href="#show-the-19th-street-band-dec-26">Dec 26</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-2000s-rave-nov-28">2000's Rave</a></span><span class="band-dates"><a class="band-date" href="#show-2000s-rave-nov-28">Nov 28</a> <span class="band-venue">Union Stage</span></span></li>
@@ -402,6 +474,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-alyssa-grace-nov-11">Alyssa Grace</a></span><span class="band-dates"><a class="band-date" href="#show-alyssa-grace-nov-11">Nov 11</a> <span class="band-venue">Lincoln Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-amble-nov-11">Amble</a></span><span class="band-dates"><a class="band-date" href="#show-amble-nov-11">Nov 11</a> <span class="band-venue">9:30 Club</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-american-darling-nov-8">American Darling</a></span><span class="band-dates"><a class="band-date" href="#show-american-darling-nov-8">Nov 8</a> <span class="band-venue">Rams Head On Stage</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-an-annapolis-christmas-dec-14">An Annapolis Christmas</a></span><span class="band-dates"><a class="band-date" href="#show-an-annapolis-christmas-dec-14">Dec 14</a> <span class="band-venue">Rams Head On Stage</span><a class="band-date" href="#show-an-annapolis-christmas-dec-15">Dec 15</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-an-evening-with-trevor-hall-dec-2">An Evening with Trevor Hall</a></span><span class="band-dates"><a class="band-date" href="#show-an-evening-with-trevor-hall-dec-2">Dec 2</a> <span class="band-venue">The Birchmere</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-an-irish-christmas-dec-17">An Irish Christmas with John Doyle, Cathie Ryan &amp; Mick McAuley</a></span><span class="band-dates"><a class="band-date" href="#show-an-irish-christmas-dec-17">Dec 17</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-ana-gasteyer-dec-6">Ana Gasteyer: Sugar &amp; Booze Holiday Spectacular</a></span><span class="band-dates"><a class="band-date" href="#show-ana-gasteyer-dec-6">Dec 6</a> <span class="band-venue">Howard Theatre</span></span></li>
@@ -422,7 +495,6 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-last-waltz-nov-13">The Band — Tribute: The Last Waltz</a></span><span class="band-dates"><a class="band-date" href="#show-the-last-waltz-nov-13">Nov 13</a> <span class="band-venue">The Hamilton Live</span><a class="band-date" href="#show-the-last-waltz-nov-13">Nov 14</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-banda-al9-nov-5">Banda AL9 w/ Leannán Shi</a></span><span class="band-dates"><a class="band-date" href="#show-banda-al9-nov-5">Nov 5</a> <span class="band-venue">Pie Shop</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-basia-bulat-nov-7">Basia Bulat</a></span><span class="band-dates"><a class="band-date" href="#show-basia-bulat-nov-7">Nov 7</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bass-drum-of-death-nov-2">Bass Drum of Death</a></span><span class="band-dates"><a class="band-date" href="#show-bass-drum-of-death-nov-2">Nov 2</a> <span class="band-venue">DC9</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bela-dona-dec-27">Be'la Dona</a></span><span class="band-dates"><a class="band-date" href="#show-bela-dona-dec-27">Dec 27</a> <span class="band-venue">The Birchmere</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-beartooth-nov-15">Beartooth</a></span><span class="band-dates"><a class="band-date" href="#show-beartooth-nov-15">Nov 15</a> <span class="band-venue">Theater at MGM National Harbor</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-beatles-at-dietles-nov-20">Beatles at Dietle’s</a></span><span class="band-dates"><a class="band-date" href="#show-beatles-at-dietles-nov-20">Nov 20</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
@@ -440,6 +512,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bill-baker-band-nov-25">Bill Baker Band</a></span><span class="band-dates"><a class="band-date" href="#show-bill-baker-band-nov-25">Nov 25</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bill-kirchen-dec-11">Bill Kirchen</a></span><span class="band-dates"><a class="band-date" href="#show-bill-kirchen-dec-11">Dec 11</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bill-pappas-project-nov-13">Bill Pappas Project</a></span><span class="band-dates"><a class="band-date" href="#show-bill-pappas-project-nov-13">Nov 13</a> <span class="band-venue">JV’s</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bill-starks-greg-hardin-dec-10">Bill Starks w/ Greg Hardin</a></span><span class="band-dates"><a class="band-date" href="#show-bill-starks-greg-hardin-dec-10">Dec 10</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-billy-price-band-nov-8">Billy Price Band</a></span><span class="band-dates"><a class="band-date" href="#show-billy-price-band-nov-8">Nov 8</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-birds-of-a-feather-crowbait-blues-band-jam-nov-4">Birds of a Feather — Crowbait Blues Band hosts Band Jam</a></span><span class="band-dates"><a class="band-date" href="#show-birds-of-a-feather-crowbait-blues-band-jam-nov-4">Nov 4</a> <span class="band-venue">JV’s</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-blade-runner-live-nov-13">Blade Runner Live</a></span><span class="band-dates"><a class="band-date" href="#show-blade-runner-live-nov-13">Nov 13</a> <span class="band-venue">Capital One Hall</span></span></li>
@@ -448,13 +521,12 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-blitzkid-nov-19">Blitzkid</a></span><span class="band-dates"><a class="band-date" href="#show-blitzkid-nov-19">Nov 19</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-blu-detiger-nov-5">Blu DeTiger</a></span><span class="band-dates"><a class="band-date" href="#show-blu-detiger-nov-5">Nov 5</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-blues-travelogue-nov-17">Blues Travelogue</a></span><span class="band-dates"><a class="band-date" href="#show-blues-travelogue-nov-17">Nov 17</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bob-polding-band-nov-3">Bob Polding Band</a></span><span class="band-dates"><a class="band-date" href="#show-bob-polding-band-nov-3">Nov 3</a> <span class="band-venue">Rams Head On Stage</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-bob-polding-band-nov-30">The Bob Polding Band w/ Mike Sharp</a></span><span class="band-dates"><a class="band-date" href="#show-the-bob-polding-band-nov-30">Nov 30</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bones-jones-music-students-nov-14">Bones Jones Music Students</a></span><span class="band-dates"><a class="band-date" href="#show-bones-jones-music-students-nov-14">Nov 14</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bonny-light-horseman-nov-6">Bonny Light Horseman</a></span><span class="band-dates"><a class="band-date" href="#show-bonny-light-horseman-nov-6">Nov 6</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bonobo-dec-3">Bonobo</a></span><span class="band-dates"><a class="band-date" href="#show-bonobo-dec-3">Dec 3</a> <span class="band-venue">The Fillmore Silver Spring</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-boston-manor-nov-11">Boston Manor</a></span><span class="band-dates"><a class="band-date" href="#show-boston-manor-nov-11">Nov 11</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-bouncing-souls-dec-11">The Bouncing Souls</a></span><span class="band-dates"><a class="band-date" href="#show-the-bouncing-souls-dec-11">Dec 11</a> <span class="band-venue">Black Cat</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-brass-against-nov-2">Brass Against</a></span><span class="band-dates"><a class="band-date" href="#show-brass-against-nov-2">Nov 2</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-brass-band-of-northern-virginia-dec-18">Brass Band of Northern Virginia with Vocal Arts Fairfax</a></span><span class="band-dates"><a class="band-date" href="#show-brass-band-of-northern-virginia-dec-18">Dec 18</a> <span class="band-venue">Capital One Hall</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-breaks-nov-20">The Breaks with Gordon Sterling and The People</a></span><span class="band-dates"><a class="band-date" href="#show-the-breaks-nov-20">Nov 20</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bresh-nov-27">BRESH</a></span><span class="band-dates"><a class="band-date" href="#show-bresh-nov-27">Nov 27</a> <span class="band-venue">Echostage</span></span></li>
@@ -490,13 +562,14 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-chuck-underwood-trio-nov-19">The Chuck Underwood Trio</a></span><span class="band-dates"><a class="band-date" href="#show-the-chuck-underwood-trio-nov-19">Nov 19</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-chuckthespittah-dec-1">ChuckTheSpittah w/ Shango Supreme, Father Sokka, Kudo NYC</a></span><span class="band-dates"><a class="band-date" href="#show-chuckthespittah-dec-1">Dec 1</a> <span class="band-venue">Pie Shop</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-claire-ozmun-nov-8">Claire Ozmun w/ Flo Petite, Ajola</a></span><span class="band-dates"><a class="band-date" href="#show-claire-ozmun-nov-8">Nov 8</a> <span class="band-venue">Pie Shop</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-clara-la-san-nov-2">Clara La San</a></span><span class="band-dates"><a class="band-date" href="#show-clara-la-san-nov-2">Nov 2</a> <span class="band-venue">Nevermore Hall</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cloonee-dec-31">Cloonee</a></span><span class="band-dates"><a class="band-date" href="#show-cloonee-dec-31">Dec 31</a> <span class="band-venue">Echostage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-club-slayyyy-dec-19">CLUB SLAYYYY</a></span><span class="band-dates"><a class="band-date" href="#show-club-slayyyy-dec-19">Dec 19</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-colby-acuff-nov-22">Colby Acuff</a></span><span class="band-dates"><a class="band-date" href="#show-colby-acuff-nov-22">Nov 22</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cold-chocolate-nov-13">Cold Chocolate</a></span><span class="band-dates"><a class="band-date" href="#show-cold-chocolate-nov-13">Nov 13</a> <span class="band-venue">The Kennedy Center — Millennium Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cole-larravide-band-nov-6">Cole Larravide Band</a></span><span class="band-dates"><a class="band-date" href="#show-cole-larravide-band-nov-6">Nov 6</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-coral-bank-hollow-with-john-wood-nov-19">Coral Bank Hollow with John Wood</a></span><span class="band-dates"><a class="band-date" href="#show-coral-bank-hollow-with-john-wood-nov-19">Nov 19</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cortex-nov-23">Cortex</a></span><span class="band-dates"><a class="band-date" href="#show-cortex-nov-23">Nov 23</a> <span class="band-venue">Songbyrd Music House</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-crankdat-jan-1">Crankdat</a></span><span class="band-dates"><a class="band-date" href="#show-crankdat-jan-1">Jan 1</a> <span class="band-venue">Echostage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cravin-dogs-dec-5">Cravin’ Dogs</a></span><span class="band-dates"><a class="band-date" href="#show-cravin-dogs-dec-5">Dec 5</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-crazy-chester-with-jp-hudson-nov-27">Crazy Chester with JP Hudson</a></span><span class="band-dates"><a class="band-date" href="#show-crazy-chester-with-jp-hudson-nov-27">Nov 27</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-cris-jacobs-joe-pug-nov-5">Cris Jacobs &amp; Joe Pug</a></span><span class="band-dates"><a class="band-date" href="#show-cris-jacobs-joe-pug-nov-5">Nov 5</a> <span class="band-venue">The Barns at Wolf Trap</span></span></li>
@@ -504,7 +577,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-daily-bread-dec-12">Daily Bread</a></span><span class="band-dates"><a class="band-date" href="#show-daily-bread-dec-12">Dec 12</a> <span class="band-venue">Echostage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dan-campbell-dec-2">Dan Campbell</a></span><span class="band-dates"><a class="band-date" href="#show-dan-campbell-dec-2">Dec 2</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dan-deacon-dec-31">Dan Deacon</a></span><span class="band-dates"><a class="band-date" href="#show-dan-deacon-dec-31">Dec 31</a> <span class="band-venue">Union Stage</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dan-hovey-nov-3">Dan Hovey</a></span><span class="band-dates"><a class="band-date" href="#show-dan-hovey-nov-3">Nov 3</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-10">Nov 10</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-17">Nov 17</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-24">Nov 24</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-dec-1">Dec 1</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dan-hovey-nov-3">Dan Hovey</a></span><span class="band-dates"><a class="band-date" href="#show-dan-hovey-nov-3">Nov 3</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-10">Nov 10</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-17">Nov 17</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-nov-24">Nov 24</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-dec-1">Dec 1</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-dan-hovey-dec-8">Dec 8</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dan-whitlam-nov-10">Dan Whitlam</a></span><span class="band-dates"><a class="band-date" href="#show-dan-whitlam-nov-10">Nov 10</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dani-cortaza-nov-25">Dani Cortaza</a></span><span class="band-dates"><a class="band-date" href="#show-dani-cortaza-nov-25">Nov 25</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-daniel-lanois-trio-nov-12">Daniel Lanois Trio</a></span><span class="band-dates"><a class="band-date" href="#show-daniel-lanois-trio-nov-12">Nov 12</a> <span class="band-venue">The Hamilton Live</span></span></li>
@@ -575,10 +648,8 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-fleetwood-mac-tribute-tusk-dec-4">Fleetwood Mac — Tribute: TUSK</a></span><span class="band-dates"><a class="band-date" href="#show-fleetwood-mac-tribute-tusk-dec-4">Dec 4</a> <span class="band-venue">State Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-flowersforpersephone-nov-16">flowersforpersephone</a></span><span class="band-dates"><a class="band-date" href="#show-flowersforpersephone-nov-16">Nov 16</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-folk-night-out-nov-27">Folk Night Out</a></span><span class="band-dates"><a class="band-date" href="#show-folk-night-out-nov-27">Nov 27</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-formosan-groove-nov-2">Formosan Groove</a></span><span class="band-dates"><a class="band-date" href="#show-formosan-groove-nov-2">Nov 2</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-francis-of-delirium-with-night-hawk-nov-18">Francis of Delirium with Night Hawk</a></span><span class="band-dates"><a class="band-date" href="#show-francis-of-delirium-with-night-hawk-nov-18">Nov 18</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-francisca-valenzuela-nov-3">Francisca Valenzuela</a></span><span class="band-dates"><a class="band-date" href="#show-francisca-valenzuela-nov-3">Nov 3</a> <span class="band-venue">The Atlantis</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-frank-maza-feat-javier-limon-nov-2">Frank Maza feat. Javier Limón</a></span><span class="band-dates"><a class="band-date" href="#show-frank-maza-feat-javier-limon-nov-2">Nov 2</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-franni-cash-nov-9">Franni Cash</a></span><span class="band-dates"><a class="band-date" href="#show-franni-cash-nov-9">Nov 9</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-freak-slug-nov-11">Freak Slug</a></span><span class="band-dates"><a class="band-date" href="#show-freak-slug-nov-11">Nov 11</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-freddy-mac-nov-20">Freddy Mac w/ Good Excuse, Wit’s Beginning</a></span><span class="band-dates"><a class="band-date" href="#show-freddy-mac-nov-20">Nov 20</a> <span class="band-venue">Pie Shop</span></span></li>
@@ -605,6 +676,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-gone-cold-dec-19">Gone Cold</a></span><span class="band-dates"><a class="band-date" href="#show-gone-cold-dec-19">Dec 19</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-goose-nov-13">Goose</a></span><span class="band-dates"><a class="band-date" href="#show-goose-nov-13">Nov 13</a> <span class="band-venue">The Anthem</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-grandsons-nov-12">The Grandsons</a></span><span class="band-dates"><a class="band-date" href="#show-the-grandsons-nov-12">Nov 12</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-grandsons-present-dec-10">The Grandsons Present</a></span><span class="band-dates"><a class="band-date" href="#show-the-grandsons-present-dec-10">Dec 10</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-grateful-allman-band-experience-nov-28">The Grateful Allman Band Experience</a></span><span class="band-dates"><a class="band-date" href="#show-the-grateful-allman-band-experience-nov-28">Nov 28</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-dark-star-orchestra-celebrating-45-years-of-reckoning-nov-21">Grateful Dead — Tribute: Dark Star Orchestra — Celebrating 45 Years of Reckoning</a></span><span class="band-dates"><a class="band-date" href="#show-dark-star-orchestra-celebrating-45-years-of-reckoning-nov-21">Nov 21</a> <span class="band-venue">The Anthem</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shakedown-citi-nov-22">Grateful Dead — Tribute: Shakedown Citi</a></span><span class="band-dates"><a class="band-date" href="#show-shakedown-citi-nov-22">Nov 22</a> <span class="band-venue">The Hamilton Live</span></span></li>
@@ -623,11 +695,10 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hiss-golden-messenger-with-sam-amidon-nov-7">Hiss Golden Messenger with Sam Amidon</a></span><span class="band-dates"><a class="band-date" href="#show-hiss-golden-messenger-with-sam-amidon-nov-7">Nov 7</a> <span class="band-venue">9:30 Club</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-ho99o9-nov-17">Ho99o9</a></span><span class="band-dates"><a class="band-date" href="#show-ho99o9-nov-17">Nov 17</a> <span class="band-venue">Black Cat</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hope-or-heartbreak-dec-9">Hope or Heartbreak ft. Kyaira &amp; Gabrielle Hights</a></span><span class="band-dates"><a class="band-date" href="#show-hope-or-heartbreak-dec-9">Dec 9</a> <span class="band-venue">Songbyrd Music House</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hot-club-of-baltimore-nov-4">Hot Club of Baltimore</a></span><span class="band-dates"><a class="band-date" href="#show-hot-club-of-baltimore-nov-4">Nov 4</a> <span class="band-venue">Blues Alley</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hot-club-of-baltimore-nov-4">Hot Club of San Francisco</a></span><span class="band-dates"><a class="band-date" href="#show-hot-club-of-baltimore-nov-4">Nov 4</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hot-in-herre-2000s-dance-party-dec-12">Hot In Herre: 2000s Dance Party</a></span><span class="band-dates"><a class="band-date" href="#show-hot-in-herre-2000s-dance-party-dec-12">Dec 12</a> <span class="band-venue">9:30 Club</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hot-mulligan-with-riley-nov-9">Hot Mulligan with Riley!</a></span><span class="band-dates"><a class="band-date" href="#show-hot-mulligan-with-riley-nov-9">Nov 9</a> <span class="band-venue">Nevermore Hall</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-house-party-dec-11">House Party</a></span><span class="band-dates"><a class="band-date" href="#show-house-party-dec-11">Dec 11</a> <span class="band-venue">Union Stage</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hovvdy-nov-2">Hovvdy</a></span><span class="band-dates"><a class="band-date" href="#show-hovvdy-nov-2">Nov 2</a> <span class="band-venue">9:30 Club</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-hula-monsters-nov-15">The Hula Monsters</a></span><span class="band-dates"><a class="band-date" href="#show-the-hula-monsters-nov-15">Nov 15</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-hunxho-dec-2">Hunxho</a></span><span class="band-dates"><a class="band-date" href="#show-hunxho-dec-2">Dec 2</a> <span class="band-venue">The Fillmore Silver Spring</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-identity-shock-nov-15">Identity Shock w/ Subjects, Runnin’ Hot, Shits Creek, Social Interest</a></span><span class="band-dates"><a class="band-date" href="#show-identity-shock-nov-15">Nov 15</a> <span class="band-venue">Pie Shop</span></span></li>
@@ -639,7 +710,6 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-invisible-life-nov-30">Invisible Life (The Musical) World Premiere — E. Lynn Harris, Ashford &amp; Simpson</a></span><span class="band-dates"><a class="band-date" href="#show-invisible-life-nov-30">Nov 30</a> <span class="band-venue">Howard Theatre</span><a class="band-date" href="#show-invisible-life-dec-1">Dec 1</a> <span class="band-venue">Howard Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jp-mcdermott-and-western-bop-nov-29">J.P. McDermott &amp; Western Bop</a></span><span class="band-dates"><a class="band-date" href="#show-jp-mcdermott-and-western-bop-nov-29">Nov 29</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jack-bond-nov-5">Jack Bond</a></span><span class="band-dates"><a class="band-date" href="#show-jack-bond-nov-5">Nov 5</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-jack-bond-dec-3">Dec 3</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jackie-evans-nov-2">Jackie Evans</a></span><span class="band-dates"><a class="band-date" href="#show-jackie-evans-nov-2">Nov 2</a> <span class="band-venue">Songbyrd Music House</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jackie-greene-nov-15">Jackie Greene</a></span><span class="band-dates"><a class="band-date" href="#show-jackie-greene-nov-15">Nov 15</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jaeychino-nov-29">Jaeychino — TOOMANYSTRIKERS World Tour</a></span><span class="band-dates"><a class="band-date" href="#show-jaeychino-nov-29">Nov 29</a> <span class="band-venue">The Fillmore Silver Spring</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jake-shimabukuro-nov-8">Jake Shimabukuro</a></span><span class="band-dates"><a class="band-date" href="#show-jake-shimabukuro-nov-8">Nov 8</a> <span class="band-venue">The Birchmere</span></span></li>
@@ -658,6 +728,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jim-messina-nov-12">Jim Messina</a></span><span class="band-dates"><a class="band-date" href="#show-jim-messina-nov-12">Nov 12</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jim-messina-nov-4">Jim Messina with Orleans</a></span><span class="band-dates"><a class="band-date" href="#show-jim-messina-nov-4">Nov 4</a> <span class="band-venue">The Barns at Wolf Trap</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jim-patton-sherry-brokus-nov-21">Jim Patton &amp; Sherry Brokus</a></span><span class="band-dates"><a class="band-date" href="#show-jim-patton-sherry-brokus-nov-21">Nov 21</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jimmies-chicken-shack-dec-26">Jimmie's Chicken Shack</a></span><span class="band-dates"><a class="band-date" href="#show-jimmies-chicken-shack-dec-26">Dec 26</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jm-stevens-nov-13">JM Stevens</a></span><span class="band-dates"><a class="band-date" href="#show-jm-stevens-nov-13">Nov 13</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jodeci-nov-12">Jodeci</a></span><span class="band-dates"><a class="band-date" href="#show-jodeci-nov-12">Nov 12</a> <span class="band-venue">Theater at MGM National Harbor</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-joe-jordan-dec-12">Joe Jordan</a></span><span class="band-dates"><a class="band-date" href="#show-joe-jordan-dec-12">Dec 12</a> <span class="band-venue">Jammin Java</span></span></li>
@@ -677,7 +748,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jon-tyler-wiley-and-his-virginia-choir-nov-22">Jon Tyler Wiley and His Virginia Choir</a></span><span class="band-dates"><a class="band-date" href="#show-jon-tyler-wiley-and-his-virginia-choir-nov-22">Nov 22</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-jonathan-karrant-nov-14">Jonathan Karrant</a></span><span class="band-dates"><a class="band-date" href="#show-jonathan-karrant-nov-14">Nov 14</a> <span class="band-venue">Blues Alley</span><a class="band-date" href="#show-jonathan-karrant-nov-15">Nov 15</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-joni-mitchell-songbook-nov-20">Joni Mitchell — Tribute: The Joni Mitchell Songbook</a></span><span class="band-dates"><a class="band-date" href="#show-the-joni-mitchell-songbook-nov-20">Nov 20</a> <span class="band-venue">The Barns at Wolf Trap</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-josh-allen-band-nov-25">Josh Allen Band</a></span><span class="band-dates"><a class="band-date" href="#show-josh-allen-band-nov-25">Nov 25</a> <span class="band-venue">Pete&#x27;s Tavern</span><a class="band-date" href="#show-josh-allen-band-dec-11">Dec 11</a> <span class="band-venue">JV’s</span><a class="band-date" href="#show-josh-allen-band-dec-19">Dec 19</a> <span class="band-venue">Pete&#x27;s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-josh-allen-band-nov-25">Josh Allen Band</a></span><span class="band-dates"><a class="band-date" href="#show-josh-allen-band-nov-25">Nov 25</a> <span class="band-venue">Pete's Tavern</span><a class="band-date" href="#show-josh-allen-band-dec-11">Dec 11</a> <span class="band-venue">JV’s</span><a class="band-date" href="#show-josh-allen-band-dec-19">Dec 19</a> <span class="band-venue">Pete's Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-josh-rouse-nov-5">Josh Rouse</a></span><span class="band-dates"><a class="band-date" href="#show-josh-rouse-nov-5">Nov 5</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-josie-edwards-nov-15">Josie Edwards</a></span><span class="band-dates"><a class="band-date" href="#show-josie-edwards-nov-15">Nov 15</a> <span class="band-venue">Songbyrd Music House</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-joy-oladokun-nov-13">Joy Oladokun</a></span><span class="band-dates"><a class="band-date" href="#show-joy-oladokun-nov-13">Nov 13</a> <span class="band-venue">Howard Theatre</span></span></li>
@@ -689,7 +760,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-justin-trawick-nov-6">Justin Trawick</a></span><span class="band-dates"><a class="band-date" href="#show-justin-trawick-nov-6">Nov 6</a> <span class="band-venue">The Phillips Collection</span><a class="band-date" href="#show-justin-trawick-reveler-nov-8">Nov 8</a> <span class="band-venue">Reveler</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-kate-nash-nov-7">Kate Nash</a></span><span class="band-dates"><a class="band-date" href="#show-kate-nash-nov-7">Nov 7</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-kate-voegele-dec-1">Kate Voegele</a></span><span class="band-dates"><a class="band-date" href="#show-kate-voegele-dec-1">Dec 1</a> <span class="band-venue">Jammin Java</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-keith-grimes-dean-dalton-nov-11">Keith Grimes &amp; Dean Dalton</a></span><span class="band-dates"><a class="band-date" href="#show-keith-grimes-dean-dalton-nov-11">Nov 11</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-keith-grimes-dean-dalton-nov-11">Keith Grimes &amp; Dean Dalton</a></span><span class="band-dates"><a class="band-date" href="#show-keith-grimes-dean-dalton-nov-11">Nov 11</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-keith-grimes-dean-dalton-dec-9">Dec 9</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-kelsey-blackstone-nov-20">Kelsey Blackstone</a></span><span class="band-dates"><a class="band-date" href="#show-kelsey-blackstone-nov-20">Nov 20</a> <span class="band-venue">Songbyrd Music House</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-kennedy-center-opera-house-orchestra-dec-4">Kennedy Center Opera House Orchestra</a></span><span class="band-dates"><a class="band-date" href="#show-kennedy-center-opera-house-orchestra-dec-4">Dec 4</a> <span class="band-venue">The Kennedy Center — Millennium Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-key-glock-big5-live-dec-16">Key Glock: BIG5 Live!</a></span><span class="band-dates"><a class="band-date" href="#show-key-glock-big5-live-dec-16">Dec 16</a> <span class="band-venue">The Howard Theatre</span></span></li>
@@ -719,7 +790,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-lone-bellow-nov-14">The Lone Bellow</a></span><span class="band-dates"><a class="band-date" href="#show-the-lone-bellow-nov-14">Nov 14</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-lonesome-river-band-nov-20">Lonesome River Band</a></span><span class="band-dates"><a class="band-date" href="#show-lonesome-river-band-nov-20">Nov 20</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-longest-johns-nov-6">The Longest Johns</a></span><span class="band-dates"><a class="band-date" href="#show-the-longest-johns-nov-6">Nov 6</a> <span class="band-venue">Lincoln Theatre</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-longtimers-nov-5">The Longtimers</a></span><span class="band-dates"><a class="band-date" href="#show-the-longtimers-nov-5">Nov 5</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-longtimers-nov-5">The Longtimers</a></span><span class="band-dates"><a class="band-date" href="#show-the-longtimers-nov-5">Nov 5</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-the-longtimers-dec-9">Dec 9</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-los-gaiteros-de-san-jacinto-nov-15">Los Gaiteros de San Jacinto, Fruko, and Carmelo Torres present Madre Cumbia</a></span><span class="band-dates"><a class="band-date" href="#show-los-gaiteros-de-san-jacinto-nov-15">Nov 15</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-loud-luxury-nov-28">Loud Luxury</a></span><span class="band-dates"><a class="band-date" href="#show-loud-luxury-nov-28">Nov 28</a> <span class="band-venue">Echostage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-love-in-the-club-dec-26">LOVE IN THE CLUB (2000s R&amp;B/Hip Hop)</a></span><span class="band-dates"><a class="band-date" href="#show-love-in-the-club-dec-26">Dec 26</a> <span class="band-venue">Union Stage</span></span></li>
@@ -814,7 +885,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-papa-lebas-gumbo-ya-ya-nov-11">Papa Lebas &amp; Gumbo Ya Ya feat. Joe Krown</a></span><span class="band-dates"><a class="band-date" href="#show-papa-lebas-gumbo-ya-ya-nov-11">Nov 11</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-pat-mcgee-band-freddy-jones-band-jackopierce-nov-7">Pat McGee Band + Freddy Jones Band + Jackopierce</a></span><span class="band-dates"><a class="band-date" href="#show-pat-mcgee-band-freddy-jones-band-jackopierce-nov-7">Nov 7</a> <span class="band-venue">Capital One Hall</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-patty-reese-band-dec-6">Patty Reese Band</a></span><span class="band-dates"><a class="band-date" href="#show-patty-reese-band-dec-6">Dec 6</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-paul-cebar-tomorrow-sound-nov-20">Paul Cebar Tomorrow Sound</a></span><span class="band-dates"><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 20</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-paul-cebar-tomorrow-sound-nov-20">Paul Cebar Tomorrow Sound</a></span><span class="band-dates"><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 20</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-paul-cebar-tomorrow-sound-nov-20">Nov 22</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-paula-cole-nov-19">Paula Cole</a></span><span class="band-dates"><a class="band-date" href="#show-paula-cole-nov-19">Nov 19</a> <span class="band-venue">The Miracle Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-peace-and-carol-ringers-dec-18">Peace and Carol Ringers</a></span><span class="band-dates"><a class="band-date" href="#show-peace-and-carol-ringers-dec-18">Dec 18</a> <span class="band-venue">The Kennedy Center — Millennium Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-bill-starks-greg-hardin-nov-12">Peace, Love &amp; Boogie Woogie Happy Hour — Bill Starks with Greg Hardin</a></span><span class="band-dates"><a class="band-date" href="#show-bill-starks-greg-hardin-nov-12">Nov 12</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
@@ -832,6 +903,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-pool-boys-nov-8">The Pool Boys</a></span><span class="band-dates"><a class="band-date" href="#show-the-pool-boys-nov-8">Nov 8</a> <span class="band-venue">Jammin Java</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-pouya-nov-22">Pouya</a></span><span class="band-dates"><a class="band-date" href="#show-pouya-nov-22">Nov 22</a> <span class="band-venue">The Fillmore Silver Spring</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-premo-rice-another-night-at-the-chateau-dec-11">Premo Rice — Another Night at the Chateau Live In Concert</a></span><span class="band-dates"><a class="band-date" href="#show-premo-rice-another-night-at-the-chateau-dec-11">Dec 11</a> <span class="band-venue">Howard Theatre</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-pressing-strings-dec-18">Pressing Strings</a></span><span class="band-dates"><a class="band-date" href="#show-pressing-strings-dec-18">Dec 18</a> <span class="band-venue">Rams Head On Stage</span><a class="band-date" href="#show-pressing-strings-dec-19">Dec 19</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-allstar-purple-party-tribute-to-prince-nov-13">Prince — Tribute: Allstar Purple Party</a></span><span class="band-dates"><a class="band-date" href="#show-allstar-purple-party-tribute-to-prince-nov-13">Nov 13</a> <span class="band-venue">State Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-protomartyr-with-j-r-c-g-nov-13">Protomartyr with J.R.C.G.</a></span><span class="band-dates"><a class="band-date" href="#show-protomartyr-with-j-r-c-g-nov-13">Nov 13</a> <span class="band-venue">Black Cat</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-punch-brothers-nov-6">Punch Brothers</a></span><span class="band-dates"><a class="band-date" href="#show-punch-brothers-nov-6">Nov 6</a> <span class="band-venue">Warner Theatre</span></span></li>
@@ -880,14 +952,13 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-scythian-dec-6">Scythian</a></span><span class="band-dates"><a class="band-date" href="#show-scythian-dec-6">Dec 6</a> <span class="band-venue">The Hamilton Live</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-second-act-record-release-nov-29">Second Act — Record Release Show</a></span><span class="band-dates"><a class="band-date" href="#show-second-act-record-release-nov-29">Nov 29</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-second-act-kid-life-crisis-ep-record-release-nov-6">Second Act: “Kid Life Crisis” EP record release</a></span><span class="band-dates"><a class="band-date" href="#show-second-act-kid-life-crisis-ep-record-release-nov-6">Nov 6</a> <span class="band-venue">Clare &amp; Don’s Listening Room</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-seldom-scene-nov-27">The Seldom Scene</a></span><span class="band-dates"><a class="band-date" href="#show-the-seldom-scene-nov-27">Nov 27</a> <span class="band-venue">The Birchmere</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-seldom-scene-nov-27">The Seldom Scene</a></span><span class="band-dates"><a class="band-date" href="#show-the-seldom-scene-nov-27">Nov 27</a> <span class="band-venue">The Birchmere</span><a class="band-date" href="#show-the-seldom-scene-dec-30">Dec 30</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-seldom-scene-dec-31">The Seldom Scene with Tim &amp; Savannah Finch &amp; The Eastman String Band</a></span><span class="band-dates"><a class="band-date" href="#show-the-seldom-scene-dec-31">Dec 31</a> <span class="band-venue">The Birchmere</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-seth-kibel-nov-17">Seth Kibel</a></span><span class="band-dates"><a class="band-date" href="#show-seth-kibel-nov-17">Nov 17</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shallou-dec-31">shallou</a></span><span class="band-dates"><a class="band-date" href="#show-shallou-dec-31">Dec 31</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shannon-leigh-and-the-good-bygones-nov-28">Shannon Leigh and The Good Bygones</a></span><span class="band-dates"><a class="band-date" href="#show-shannon-leigh-and-the-good-bygones-nov-28">Nov 28</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shaun-cassidy-unwrapped-dec-6">Shaun Cassidy UNWRAPPED</a></span><span class="band-dates"><a class="band-date" href="#show-shaun-cassidy-unwrapped-dec-6">Dec 6</a> <span class="band-venue">Lincoln Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shenandoah-run-dec-6">Shenandoah Run</a></span><span class="band-dates"><a class="band-date" href="#show-shenandoah-run-dec-6">Dec 6</a> <span class="band-venue">Jammin Java</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-shyne-with-barrington-levy-and-lil-cease-nov-9">SHYNE with Barrington Levy &amp; Lil' Cease</a></span><span class="band-dates"><a class="band-date" href="#show-shyne-with-barrington-levy-and-lil-cease-nov-9">Nov 9</a> <span class="band-venue">Warner Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-silly-goose-nov-3">Silly Goose</a></span><span class="band-dates"><a class="band-date" href="#show-silly-goose-nov-3">Nov 3</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-silverstein-and-story-of-the-year-dec-2">Silverstein &amp; Story Of The Year</a></span><span class="band-dates"><a class="band-date" href="#show-silverstein-and-story-of-the-year-dec-2">Dec 2</a> <span class="band-venue">Nevermore Hall</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-sina-bathaie-nov-24">Sina Bathaie – White Lotus World Tour</a></span><span class="band-dates"><a class="band-date" href="#show-sina-bathaie-nov-24">Nov 24</a> <span class="band-venue">Howard Theatre</span></span></li>
@@ -917,6 +988,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-stealin-the-deal-dec-18">Stealin' the Deal</a></span><span class="band-dates"><a class="band-date" href="#show-stealin-the-deal-dec-18">Dec 18</a> <span class="band-venue">JV’s</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-stella-lefty-nov-19">Stella Lefty</a></span><span class="band-dates"><a class="band-date" href="#show-stella-lefty-nov-19">Nov 19</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-stephanie-blythe-and-ryan-mccullough-dec-6">Stephanie Blythe &amp; Ryan McCullough</a></span><span class="band-dates"><a class="band-date" href="#show-stephanie-blythe-and-ryan-mccullough-dec-6">Dec 6</a> <span class="band-venue">The Barns at Wolf Trap</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-stephen-kellogg-dec-28">Stephen Kellogg</a></span><span class="band-dates"><a class="band-date" href="#show-stephen-kellogg-dec-28">Dec 28</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-steve-herberman-nov-11">Steve Herberman</a></span><span class="band-dates"><a class="band-date" href="#show-steve-herberman-nov-11">Nov 11</a> <span class="band-venue">Blues Alley</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-steve-shartel-solo-nov-13">Steve Shartel solo</a></span><span class="band-dates"><a class="band-date" href="#show-steve-shartel-solo-nov-13">Nov 13</a> <span class="band-venue">JV’s</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-steven-page-dec-21">Steven Page</a></span><span class="band-dates"><a class="band-date" href="#show-steven-page-dec-21">Dec 21</a> <span class="band-venue">Rams Head On Stage</span></span></li>
@@ -942,6 +1014,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-tall-heights-dec-10">Tall Heights</a></span><span class="band-dates"><a class="band-date" href="#show-tall-heights-dec-10">Dec 10</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-tape-b-dec-18">Tape B</a></span><span class="band-dates"><a class="band-date" href="#show-tape-b-dec-18">Dec 18</a> <span class="band-venue">Echostage</span><a class="band-date" href="#show-tape-b-dec-19">Dec 19</a> <span class="band-venue">Echostage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-voices-of-motown-christmas-dec-26">Tarsha Fitzgerald Presents: Voices of Motown Christmas Show</a></span><span class="band-dates"><a class="band-date" href="#show-voices-of-motown-christmas-dec-26">Dec 26</a> <span class="band-venue">The Birchmere</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-tartan-terrors-dec-17">Tartan Terrors: Celtic Invasion</a></span><span class="band-dates"><a class="band-date" href="#show-tartan-terrors-dec-17">Dec 17</a> <span class="band-venue">Rams Head On Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-temples-dec-4">Temples</a></span><span class="band-dates"><a class="band-date" href="#show-temples-dec-4">Dec 4</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-ten-nov-6">TEN</a></span><span class="band-dates"><a class="band-date" href="#show-ten-nov-6">Nov 6</a> <span class="band-venue">Nevermore Hall</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-teri-tobin-nov-12">Teri Tobin — Home For The Holidays Experience (DC Edition)</a></span><span class="band-dates"><a class="band-date" href="#show-teri-tobin-nov-12">Nov 12</a> <span class="band-venue">Songbyrd Music House</span></span></li>
@@ -989,7 +1062,6 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-virginia-coalition-nov-25">Virginia Coalition</a></span><span class="band-dates"><a class="band-date" href="#show-virginia-coalition-nov-25">Nov 25</a> <span class="band-venue">The Atlantis</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-wage-war-nov-20">WAGE WAR</a></span><span class="band-dates"><a class="band-date" href="#show-wage-war-nov-20">Nov 20</a> <span class="band-venue">The Fillmore Silver Spring</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-war-and-treaty-nov-13">The War and Treaty</a></span><span class="band-dates"><a class="band-date" href="#show-the-war-and-treaty-nov-13">Nov 13</a> <span class="band-venue">The Fillmore Silver Spring</span><a class="band-date" href="#show-the-war-and-treaty-rams-head-dec-1">Dec 1</a> <span class="band-venue">Rams Head On Stage</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-watchhouse-nov-7">Watchhouse</a></span><span class="band-dates"><a class="band-date" href="#show-watchhouse-nov-7">Nov 7</a> <span class="band-venue">The Anthem</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-we-are-scientists-nov-17">We Are Scientists</a></span><span class="band-dates"><a class="band-date" href="#show-we-are-scientists-nov-17">Nov 17</a> <span class="band-venue">Songbyrd Music House</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-weatherday-nov-14">Weatherday</a></span><span class="band-dates"><a class="band-date" href="#show-weatherday-nov-14">Nov 14</a> <span class="band-venue">The Miracle Theatre</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-weird-phishes-dec-12">Weird Phishes</a></span><span class="band-dates"><a class="band-date" href="#show-weird-phishes-dec-12">Dec 12</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
@@ -1002,7 +1074,7 @@
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-willi-carlisle-nov-12">Willi Carlisle</a></span><span class="band-dates"><a class="band-date" href="#show-willi-carlisle-nov-12">Nov 12</a> <span class="band-venue">Union Stage</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-winyah-nov-7">Winyah</a></span><span class="band-dates"><a class="band-date" href="#show-winyah-nov-7">Nov 7</a> <span class="band-venue">9:30 Club</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-wldlfe-nov-14">The Wldlfe</a></span><span class="band-dates"><a class="band-date" href="#show-the-wldlfe-nov-14">Nov 14</a> <span class="band-venue">Songbyrd Music House</span></span></li>
-<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-wolfs-blues-show-nov-2">Wolf's Blues Show &amp; Sit-In Jam</a></span><span class="band-dates"><a class="band-date" href="#show-wolfs-blues-show-nov-2">Nov 2</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-9">Nov 9</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-16">Nov 16</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-23">Nov 23</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-30">Nov 30</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
+<li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-wolfs-blues-show-nov-9">Wolf's Blues Show &amp; Sit-In Jam</a></span><span class="band-dates"><a class="band-date" href="#show-wolfs-blues-show-nov-9">Nov 9</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-16">Nov 16</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-23">Nov 23</a> <span class="band-venue">Hank Dietle’s Tavern</span><a class="band-date" href="#show-wolfs-blues-show-nov-30">Nov 30</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-wolfs-every-monday-blues-show-dec-7">Wolf’s Every Monday Blues Show &amp; Sit-In Jam</a></span><span class="band-dates"><a class="band-date" href="#show-wolfs-every-monday-blues-show-dec-7">Dec 7</a> <span class="band-venue">Hank Dietle’s Tavern</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-the-wood-brothers-with-tyler-ramsey-dec-10">The Wood Brothers with Tyler Ramsey</a></span><span class="band-dates"><a class="band-date" href="#show-the-wood-brothers-with-tyler-ramsey-dec-10">Dec 10</a> <span class="band-venue">The Birchmere</span><a class="band-date" href="#show-the-wood-brothers-with-tyler-ramsey-dec-10">Dec 11</a> <span class="band-venue">The Birchmere</span></span></li>
 <li class="band-row"><span class="band-name"><a class="band-name-link" href="#show-worst-party-ever-x-equipment-nov-22">Worst Party Ever x Equipment</a></span><span class="band-dates"><a class="band-date" href="#show-worst-party-ever-x-equipment-nov-22">Nov 22</a> <span class="band-venue">Pearl Street Warehouse</span></span></li>
@@ -1041,58 +1113,23 @@
         <p class="small-note">Up to three top picks appear per day. Tap a show to jump to its full listing.</p>
       </div>
       <div class="event-grid" id="event-grid" role="tabpanel" aria-labelledby="shows-tab">
-        <article id="show-corey-arceneaux-zydeco-hot-peppers-nov-1" class="event-card text-card" data-area="md">
-          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Sun · Nov 1</span><h3>Corey Arceneaux &amp; the Zydeco Hot Peppers</h3><p class="artist-bio">Louisiana zydeco accordionist Corey Arceneaux leads the Zydeco Hot Peppers — Creole dance music straight from Lafayette.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · Hank Dietle’s Tavern</p><p class="detail">At Hank Dietle’s Tavern on Rockville Pike.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-crack-the-sky-nov-1" class="event-card text-card" data-area="md">
-          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Sun · Nov 1</span><h3>Crack the Sky</h3><p class="artist-bio">American progressive-rock band with a long, loyal Mid-Atlantic following.</p><p class="critic-rating no-rating">No critic rating listed</p><p>1:00 PM · Rams Head On Stage</p><p class="detail">Matinee show.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-daniel-hope-and-maxim-lando-nov-1" class="event-card text-card" data-area="nova">
-          <div class="card-body"><span class="region">Vienna, Virginia</span><span class="date-chip">Sun · Nov 1</span><h3>Daniel Hope &amp; Maxim Lando</h3><p class="artist-bio">Violinist Daniel Hope performs chamber music with pianist Maxim Lando in the Barns’ Chamber Music series.</p><p class="critic-rating no-rating">No critic rating listed</p><p>3 PM · The Barns at Wolf Trap</p><p class="detail">Chamber music · matinee.</p><a class="ticket" href="https://www.wolftrap.org/show/2627barns/110126/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-dweezil-zappa-nov-1" class="event-card text-card" data-area="nova">
-          <div class="card-body"><span class="region">Alexandria, Virginia</span><span class="date-chip">Sun · Nov 1</span><h3>Dweezil Zappa</h3><p class="artist-bio">Guitarist Dweezil Zappa has spent two decades bringing his father Frank’s music back to the stage, from Zappa Plays Zappa to the DZ20 show. <a class="artist-source" href="https://en.wikipedia.org/wiki/Dweezil_Zappa" target="_blank" rel="noopener">Wikipedia ↗</a></p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · The Birchmere</p><p class="detail">DZ20: Like Father, Like Son · $99.50 ($106.50 at the box office).</p><a class="ticket" href="https://www.birchmere.com/events/dweezil-zappa-dz20-like-father-like-son/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-eric-gales-nov-1" class="event-card text-card" data-area="md">
-          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Sun · Nov 1</span><h3>GCS ft. Eric Gales, Dennis Chambers &amp; Billy Sheehan</h3><p class="artist-bio">Memphis blues-rock guitar phenomenon, playing a right-handed guitar upside-down since childhood and long cited by his peers as one of the greats.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Rams Head On Stage</p><p class="detail">With Dennis Chambers &amp; Billy Sheehan.</p><a class="ticket" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-eva-ayllon-with-daniela-darcourt-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Eva Ayllon with Daniela Darcourt</h3><p class="artist-bio">Peruvian criolla legend Eva Ayllon performs with special guest Daniela Darcourt.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Howard Theatre</p><p class="detail">Peruvian criolla / salsa.</p><a class="ticket" href="https://www.thehowardtheatre.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-maggie-koerner-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Maggie Koerner</h3><p class="artist-bio">New Orleans singer Maggie Koerner belts soul and R&amp;B with a powerhouse voice, known for fronting Galactic on tour and her own records like Neutral Ground.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Songbyrd Music House</p><a class="ticket" href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-mary-ann-redmond-band-nov-1" class="event-card text-card" data-area="md">
-          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Sun · Nov 1</span><h3>Mary Ann Redmond Band</h3><p class="artist-bio">DC soul and blues singer Mary Ann Redmond — a Wammie-winning powerhouse vocalist — and her band.</p><p class="critic-rating no-rating">No critic rating listed</p><p>2:00 PM · Hank Dietle’s Tavern</p><p class="detail">SOLD OUT.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-pretty-sick-with-computerwife-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Pretty Sick with Computerwife</h3><p class="artist-bio">New York alternative-rock band Pretty Sick appears with Computerwife.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Doors 6:30 PM · The Atlantis</p><p class="detail">Alternative rock.</p><a class="ticket" href="http://theatlantis.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-rachel-levitin-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Rachel Levitin</h3><p class="artist-bio">DC singer-songwriter Rachel Levitin plays an afternoon show with Jarreau Williams and Griefcat.</p><p class="critic-rating no-rating">No critic rating listed</p><p>12 PM · Pearl Street Warehouse</p><p class="detail">Afternoon show · folk-pop.</p><a class="ticket" href="http://www.pearlstreetwarehouse.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-rainao-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Rainao</h3><p class="artist-bio">Puerto Rican artist Rainao brings the Marcriá tour to DC.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Union Stage</p><p class="detail">Latin / alternative.</p><a class="ticket" href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-she-wants-revenge-nov-1" class="event-card" data-area="dc">
-          <div class="art"><img src="assets/she-wants-revenge.jpg" alt="She Wants Revenge performing live onstage"><span class="date-chip">Sun · Nov 1</span></div>
-          <div class="card-body"><span class="region">Washington, DC</span><h3>She Wants Revenge</h3><p class="artist-bio">American rock band based in the San Fernando Valley, California, the post-punk/darkwave/gothic rock duo of singer/guitarist Justin Warfield and multi-instrumentalist Adam Bravin, formed in 2004; their biggest hit "Tear You Apart" reached No. 6 on Billboard's Alternative Songs chart, and they reunited in 2015 and 2022. <a class="artist-source" href="https://en.wikipedia.org/wiki/She_Wants_Revenge" target="_blank" rel="noopener">Wikipedia ↗</a></p><p class="critic-rating"><span aria-label="Critic rating">Critic score:</span> <a href="https://www.albumoftheyear.org/album/11498-she-wants-revenge-she-wants-revenge.php" target="_blank" rel="noopener">Pitchfork 5.9/10</a> · <cite>She Wants Revenge (self-titled debut)</cite></p><p>Doors 7 PM · 9:30 Club</p><p class="detail">With Rosegarden Funeral Party · SOLD OUT.</p><a class="ticket" href="https://www.930.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-stephen-philip-harvey-octet-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Stephen Philip Harvey Octet</h3><p class="artist-bio">Saxophonist and composer Stephen Philip Harvey leads his octet through original big-band writing.</p><p class="critic-rating no-rating">No critic rating listed</p><p>5:30 PM · Blues Alley</p><p class="detail">Recording Release · Two sets: 5:30 PM &amp; 8:00 PM.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-the-bee-charmers-with-carol-gaylor-nov-1" class="event-card text-card" data-area="nova">
-          <div class="card-body"><span class="region">Falls Church, Virginia</span><span class="date-chip">Sun · Nov 1</span><h3>The Bee Charmers with Carol Gaylor</h3><p class="artist-bio">The Bee Charmers, with Carol Gaylor, play variety songs everyone knows — plus a few surprises — for JV's Sunday early show.</p><p class="critic-rating no-rating">No critic rating listed</p><p>4:00 PM · JV’s</p><p class="detail">Early show.</p><a class="ticket" href="http://www.jvsrestaurant.com/home" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-the-nth-power-nov-1" class="event-card text-card" data-area="nova">
-          <div class="card-body"><span class="region">Vienna, Virginia</span><span class="date-chip">Sun · Nov 1</span><h3>The Nth Power</h3><p class="artist-bio">The Nth Power is a New Orleans-rooted soul-funk trio — drummer/vocalist Nikki Glaspie, guitarist Nick Cassarino and bassist Nate Edgar — formed at Jazz Fest in 2012.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Jammin Java</p><p class="detail">Soul-funk trio.</p><a class="ticket" href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-undertale-the-determination-symphony-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Undertale — The Determination Symphony World Tour</h3><p class="artist-bio">The Determination Symphony brings Toby Fox’s beloved Undertale soundtrack to the stage with a full orchestra.</p><p class="critic-rating no-rating">No critic rating listed</p><p>3:00 PM &amp; 8:00 PM · The Anthem</p><p class="detail">Two performances: 3:00 PM and 8:00 PM.</p><a class="ticket" href="https://www.theanthemdc.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
-        <article id="show-girl-girl-nov-1" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sun · Nov 1</span><h3>Girl Girl w/ Fake Radio, My Mandy</h3><p class="artist-bio">Girl Girl headline bill with Fake Radio and My Mandy opening.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Pie Shop</p><a class="ticket" href="https://www.pieshopdc.com/shows/girl-girl-w-fake-radio-my-mandy-01-nov" target="_blank" rel="noopener">Event details</a></div>
-        </article>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <article id="show-bass-drum-of-death-nov-2" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Nov 2</span><h3>Bass Drum of Death</h3><p class="artist-bio">Mississippi garage-rock band Bass Drum of Death plays loud, hooky, fuzz-drenched rock &amp; roll.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · DC9</p><p class="detail">Garage rock.</p><a class="ticket" href="https://www.jambase.com/venue/dc9" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -1127,9 +1164,7 @@
         <article id="show-berra-nov-3" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Nov 3</span><h3>BERRA</h3><p class="artist-bio">BERRA brings an intimate club set to the Songbyrd stage.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Songbyrd Music House</p><a class="ticket" href="https://songbyrddc.com/shows/" target="_blank" rel="noopener">Event details</a></div>
         </article>
-        <article id="show-bob-polding-band-nov-3" class="event-card text-card" data-area="md">
-          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Tue · Nov 3</span><h3>Bob Polding Band</h3><p class="artist-bio">New Jersey singer-songwriter Bob Polding leads his band through heartland-rock originals.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Rams Head On Stage</p><p class="detail">Jake Thistle opens.</p><a class="ticket" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
+        
         <article id="show-choir-choir-choir-nov-3" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Alexandria, Virginia</span><span class="date-chip">Tue · Nov 3</span><h3>Choir! Choir! Choir!</h3><p class="artist-bio">Toronto’s all-are-welcome singing phenomenon, where the audience becomes the choir — this time for an epic Fleetwood Mac singalong. <a class="artist-source" href="https://en.wikipedia.org/wiki/Choir!_Choir!_Choir!" target="_blank" rel="noopener">Wikipedia ↗</a></p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · The Birchmere</p><p class="detail">Landslide: An Epic Fleetwood Mac Singalong · $35 ($42 at the box office).</p><a class="ticket" href="https://www.birchmere.com/events/choir-choir-choir/" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -1175,7 +1210,7 @@
           <div class="card-body"><span class="region">Annapolis, Maryland</span><h3>Gaelic Storm</h3><p class="artist-bio">Celtic band from Santa Monica, California, formed in 1996; they appeared in the 1997 film Titanic and on its soundtrack. <a class="artist-source" href="https://en.wikipedia.org/wiki/Gaelic_Storm" target="_blank" rel="noopener">Wikipedia ↗</a></p><p class="critic-rating"><span aria-label="Critic rating">Critic score:</span> <a href="https://www.allmusic.com/album/gaelic-storm-mw0000040729" target="_blank" rel="noopener">AllMusic 2/5</a> · <cite>Gaelic Storm (1998 self-titled debut)</cite></p><p>8 PM · Rams Head On Stage</p><p class="detail">Second night Thu Nov 5.</p><a class="ticket" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-hot-club-of-baltimore-nov-4" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Nov 4</span><h3>Hot Club of Baltimore</h3><p class="artist-bio">Baltimore’s Hot Club keeps the Django Reinhardt flame — gypsy jazz and swing played at full tilt.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Blues Alley</p><p class="detail">Two sets: 7:00 PM &amp; 9:30 PM.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Nov 4</span><h3>Hot Club of San Francisco</h3><p class="artist-bio">San Francisco’s Hot Club carries the Django Reinhardt flame — gypsy jazz and swing in the spirit of the original Quintette du Hot Club de France, played at full tilt.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Blues Alley</p><p class="detail">Two sets: 7:00 PM &amp; 9:30 PM.</p><a class="ticket" href="https://www.jambase.com/venue/blues-alley" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-jim-messina-nov-4" class="event-card" data-area="nova">
           <div class="art"><img src="assets/jim-messina-orleans.jpg" alt="Jim Messina joined by Orleans (Farewell Tour) performing live onstage"><span class="date-chip">Wed · Nov 4</span></div>
@@ -1356,7 +1391,7 @@
           <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Sat · Nov 7</span><h3>Euge Groove</h3><p class="artist-bio">Smooth-jazz saxophonist and former Tower of Power member with a long run of No. 1 contemporary-jazz singles.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Rams Head On Stage</p><a class="ticket" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-george-clanton-nov-7" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 7</span><h3>George Clanton</h3><p class="artist-bio">Electronic-pop producer George Clanton — a vaporwave pioneer turned maximalist pop showman.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Black Cat</p><a class="ticket" href="http://www.blackcatdc.com/" target="_blank" rel="noopener">Event details</a></div>
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 7</span><h3>George Clanton</h3><p class="artist-bio">Electronic-pop producer George Clanton — a vaporwave pioneer turned maximalist pop showman.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Black Cat</p><p class="detail">Support: Ryan Hemsworth.</p><a class="ticket" href="http://www.blackcatdc.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-hiss-golden-messenger-with-sam-amidon-nov-7" class="event-card" data-area="dc">
           <div class="art"><img src="assets/hiss-golden-messenger.webp" alt="Hiss Golden Messenger with Sam Amidon performing live onstage"><span class="date-chip">Sat · Nov 7</span></div>
@@ -1396,9 +1431,7 @@
         <article id="show-the-wrecks-nov-7" class="event-card text-card" data-area="md">
           <div class="card-body"><span class="region">Baltimore, Maryland</span><span class="date-chip">Sat · Nov 7</span><h3>The Wrecks</h3><p class="artist-bio">LA indie-rock band The Wrecks write big-chorus anthems like “Favorite Liar.”</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Nevermore Hall</p><a class="ticket" href="https://nevermorehall.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
-        <article id="show-watchhouse-nov-7" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 7</span><h3>Watchhouse</h3><p class="artist-bio">Watchhouse — Andrew Marlin and Emily Frantz, formerly Mandolin Orange — plays hushed, harmony-rich Americana.</p><p class="critic-rating no-rating">No critic rating listed</p><p>5:00 PM · The Anthem</p><p class="detail">Americana / folk.</p><a class="ticket" href="https://www.ticketmaster.com/artist/2762365" target="_blank" rel="noopener">Tickets</a></div>
-        </article>
+        
         <article id="show-winyah-nov-7" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Nov 7</span><h3>Winyah</h3><p class="artist-bio">Indie-rock band Winyah plays the late show.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Doors 10 PM · 9:30 Club</p><p class="detail">Late show · indie rock.</p><a class="ticket" href="https://930.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -1468,9 +1501,7 @@
         <article id="show-sadurn-with-kitchen-nov-9" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Nov 9</span><h3>Sadurn with kitchen</h3><p class="artist-bio">Philadelphia indie-folk band Sadurn appears with kitchen.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Doors 6:30 PM · The Atlantis</p><p class="detail">Indie-folk.</p><a class="ticket" href="http://theatlantis.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
-        <article id="show-shyne-with-barrington-levy-and-lil-cease-nov-9" class="event-card text-card" data-area="dc">
-          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Nov 9</span><h3>SHYNE with Barrington Levy &amp; Lil' Cease</h3><p class="artist-bio">Rapper SHYNE brings the 2622 LGND Tour with reggae legend Barrington Levy and Lil’ Cease.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Warner Theatre</p><p class="detail">Hip-hop / reggae.</p><a class="ticket" href="https://www.warnertheatredc.com/" target="_blank" rel="noopener">Event details</a></div>
-        </article>
+        
         <article id="show-slow-pulp-with-her-new-knife-nov-9" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Nov 9</span><h3>Slow Pulp with Her New Knife</h3><p class="artist-bio">Chicago indie-rock band Slow Pulp performs with Her New Knife.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Doors 7 PM · 9:30 Club</p><p class="detail">Indie-rock double bill.</p><a class="ticket" href="https://www.930.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -2495,6 +2526,9 @@
         <article id="show-yuki-chiba-nov-30" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Nov 30</span><h3>Yuki Chiba</h3><p class="artist-bio">Japanese rapper and singer Yuki Chiba brings his first North American headline tour to DC.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Union Stage</p><p class="detail">First North America Headline Tour · with Niko Rubio.</p><a class="ticket" href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-the-bob-polding-band-nov-30" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Mon · Nov 30</span><h3>The Bob Polding Band w/ Mike Sharp</h3><p class="artist-bio">New Jersey singer-songwriter Bob Polding leads his band through heartland-rock originals.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><p class="detail">With Mike Sharp.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
+        </article>
         <article id="show-chuckthespittah-dec-1" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Dec 1</span><h3>ChuckTheSpittah w/ Shango Supreme, Father Sokka, Kudo NYC</h3><p class="artist-bio">ChuckTheSpittah headlines a four-act hip-hop bill with Shango Supreme, Father Sokka and Kudo NYC.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · Pie Shop</p><a class="ticket" href="https://www.pieshopdc.com/shows" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -2784,6 +2818,9 @@
         <article id="show-s-carey-dec-8" class="event-card text-card" data-area="md">
           <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Tue · Dec 8</span><h3>S. Carey</h3><p class="artist-bio">Bon Iver drummer and composer Sean Carey, performing his hushed, orchestral solo songs with strings.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · Rams Head On Stage</p><p class="detail">Solo + Strings.</p><a class="ticket" href="https://www.ramsheadonstage.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-dan-hovey-dec-8" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Tue · Dec 8</span><h3>Dan Hovey</h3><p class="artist-bio">Guitarist, vocalist and songwriter Dan Hovey draws on five decades of stage work — Broadway’s Mamma Mia! and Swing!, The Nighthawks, Root Boy Slim — mixing folk, country, blues, rock and jazz.</p><p class="critic-rating no-rating">No critic rating listed</p><p>5:30 PM · Hank Dietle’s Tavern</p><p class="detail">Happy hour set · no cover.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
         <article id="show-2dead-boyz-x-the-underachievers-dec-9" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Dec 9</span><h3>2DEAD BOYZ x The Underachievers</h3><p class="artist-bio">A double bill of underground hip-hop: 2DEAD BOYZ team up with Brooklyn duo The Underachievers.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Union Stage</p><p class="detail">With Lord Sko.</p><a class="ticket" href="https://www.unionstagepresents.com/union-stage/" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -2813,6 +2850,12 @@
         </article>
         <article id="show-squirrel-nut-zippers-christmas-caravan-dec-9" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Dec 9</span><h3>Squirrel Nut Zippers Christmas Caravan</h3><p class="artist-bio">North Carolina swing revivalists Squirrel Nut Zippers roll their Christmas Caravan holiday show into DC.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Doors 7 PM · 9:30 Club</p><p class="detail">Holiday swing.</p><a class="ticket" href="https://930.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-keith-grimes-dean-dalton-dec-9" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Wed · Dec 9</span><h3>Keith Grimes &amp; Dean Dalton</h3><p class="artist-bio">Guitarist Keith Grimes — Eva Cassidy’s longtime lead guitarist — joins bassist Dean Dalton for soulful blues, jazz and roots grooves.</p><p class="critic-rating no-rating">No critic rating listed</p><p>5:30 PM · Hank Dietle’s Tavern</p><p class="detail">Happy hour set · no cover.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-longtimers-dec-9" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Wed · Dec 9</span><h3>The Longtimers</h3><p class="artist-bio">The Longtimers bring DC old-school Americana roots rock — New Orleans grooves, deep soul and bar-band grit from Ben Holmes, Tom Clifford, Moe Nelson and Pete Rose.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Hank Dietle’s Tavern</p><p class="detail">Special Wednesday Holiday Show.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-iluka-dec-10" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 10</span><h3>ILUKA</h3><p class="artist-bio">ILUKA is an Australian-born, Los Angeles-based singer-songwriter with a raspy vocal and cowgirl twang; her latest album is “the wild, the innocent &amp; the raging” (2025).</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Pie Shop</p><a class="ticket" href="https://www.pieshopdc.com/shows/iluka-10-dec" target="_blank" rel="noopener">Event details</a></div>
@@ -2849,6 +2892,12 @@
         </article>
         <article id="show-beltway-brass-quintet-dec-10" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 10</span><h3>Beltway Brass Quintet</h3><p class="artist-bio">A DC brass quintet since 2003, the Beltway Brass Quintet blends 20th-century jazz harmonies with improvisation.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free · No tickets required · Studio K at the REACH.</p><a class="ticket" href="https://www.kennedy-center.org/whats-on/millennium-stage/all-upcoming-events/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-bill-starks-greg-hardin-dec-10" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Thu · Dec 10</span><h3>Bill Starks w/ Greg Hardin</h3><p class="artist-bio">Keyboard player and songwriter Bill Starks — of Ruthie and the Wranglers — rocks the piano through honky tonk, boogie woogie and blues, with Greg Hardin on bass.</p><p class="critic-rating no-rating">No critic rating listed</p><p>5:30 PM · Hank Dietle’s Tavern</p><p class="detail">Peace, Love &amp; Boogie Woogie Happy Hour · no cover.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-grandsons-present-dec-10" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Rockville, Maryland</span><span class="date-chip">Thu · Dec 10</span><h3>The Grandsons Present</h3><p class="artist-bio">DC favorites The Grandsons blend rock ’n’ roll, swing and New Orleans brass — a party in band form.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Hank Dietle’s Tavern</p><p class="detail">$10.</p><a class="ticket" href="https://www.hankdietles.net/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-avery-anna-dec-11" class="event-card text-card" data-area="md">
           <div class="card-body"><span class="region">Silver Spring, Maryland</span><span class="date-chip">Fri · Dec 11</span><h3>Avery Anna</h3><p class="artist-bio">Country singer-songwriter Avery Anna performs live.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8 PM · The Fillmore Silver Spring</p><p class="detail">Country.</p><a class="ticket" href="https://www.livenation.com/venue/KovZpZA6tFlA/the-fillmore-silver-spring-events" target="_blank" rel="noopener">Event details</a></div>
@@ -2994,6 +3043,9 @@
         <article id="show-sam-c-jones-dec-14" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Vienna, Virginia</span><span class="date-chip">Mon · Dec 14</span><h3>Sam C. Jones</h3><p class="artist-bio">Singer-songwriter Sam C. Jones plays an evening set at Jammin Java.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · Jammin Java</p><a class="ticket" href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-an-annapolis-christmas-dec-14" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Mon · Dec 14</span><h3>An Annapolis Christmas</h3><p class="artist-bio">Annapolis’s annual holiday concert — a stage full of hometown musicians trading Christmas favorites and seasonal cheer.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Rams Head On Stage</p><p class="detail">Annual holiday show.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
+        </article>
         <article id="show-skilla-baby-dec-15" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Dec 15</span><h3>Skilla Baby: The Price of Fame Tour</h3><p class="artist-bio">Detroit rapper Skilla Baby brings The Price of Fame Tour to Union Stage.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Union Stage</p><a class="ticket" href="https://www.unionstagepresents.com/shows/skilla-baby-the-price-of-fame-tour-15-dec" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -3008,6 +3060,9 @@
         </article>
         <article id="show-trsh-dec-15" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Vienna, Virginia</span><span class="date-chip">Tue · Dec 15</span><h3>TRSH</h3><p class="artist-bio">TRSH delivers twinkly, high-energy midwest emo with math-rock edges.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7 PM · Jammin Java</p><p class="detail">Emo.</p><a class="ticket" href="https://www.unionstagepresents.com/jammin-java/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-an-annapolis-christmas-dec-15" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Tue · Dec 15</span><h3>An Annapolis Christmas</h3><p class="artist-bio">Annapolis’s annual holiday concert — a stage full of hometown musicians trading Christmas favorites and seasonal cheer.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Rams Head On Stage</p><p class="detail">Annual holiday show.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-bigbabygucci-dec-16" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Dec 16</span><h3>BigBabyGucci w/ Lil Candy Paint, Zaybeezy, Yung Cee</h3><p class="artist-bio">BigBabyGucci is an American rapper who emerged from the SoundCloud scene with a melodic mix of trap, emo rap and alternative hip-hop.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Pie Shop</p><p class="detail">Before The Paint Dries Tour.</p><a class="ticket" href="https://www.pieshopdc.com/shows/bigbabygucci-before-the-paint-dries-tour-w-lil-candy-paint-zaybeezy-yung-cee-16-dec" target="_blank" rel="noopener">Event details</a></div>
@@ -3044,6 +3099,9 @@
         </article>
         <article id="show-dupont-brass-dec-17" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 17</span><h3>DuPont Brass</h3><p class="artist-bio">DuPont Brass presents “A Very Merry Brassmas” — holiday classics alongside the band’s original music.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free · No tickets required · Studio K at the REACH.</p><a class="ticket" href="https://www.kennedy-center.org/whats-on/millennium-stage/2026/december/dupont-brass/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-tartan-terrors-dec-17" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Thu · Dec 17</span><h3>Tartan Terrors: Celtic Invasion</h3><p class="artist-bio">North America’s premier Celtic act brings its Celtic Invasion — bagpipes, fiddle and step dance with the energy of a rock show, plus plenty of comedy.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-all-you-need-dec-18" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · Dec 18</span><h3>All You Need</h3><p class="artist-bio">All You Need is a pop-rock / pop-punk power trio from Annapolis, MD playing hook-first songs with three-part harmonies, behind their self-released 2026 debut AYN.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · DC9</p><p class="detail">Doors 7:00 PM · All ages · $10 GA.</p><a class="ticket" href="https://dc9.club/event/all-you-need/" target="_blank" rel="noopener">Event details</a></div>
@@ -3086,6 +3144,9 @@
         </article>
         <article id="show-the-snowman-live-in-concert-dec-18" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Tysons, Virginia</span><span class="date-chip">Fri · Dec 18</span><h3>The Snowman Live in Concert</h3><p class="artist-bio">The Brass Band of Northern Virginia with Vocal Arts Fairfax performs the score to the beloved animated film live in concert.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Capital One Hall</p><p class="detail">The animated film’s score played live.</p><a class="ticket" href="https://www.capitalonehall.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-pressing-strings-dec-18" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Fri · Dec 18</span><h3>Pressing Strings</h3><p class="artist-bio">Annapolis powerhouse trio led by guitarist and vocalist Jordan Sokel — a genre-bending blend of blues, rock and folk wrapped in soul-stirring storytelling.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-a-home-for-the-holidays-dec-19" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Tysons, Virginia</span><span class="date-chip">Sat · Dec 19</span><h3>A Home For The Holidays</h3><p class="artist-bio">A festive holiday concert of seasonal favorites at Capital One Hall.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Capital One Hall</p><a class="ticket" href="https://www.ticketmaster.com/capital-one-hall-tickets-tysons/venue/172677" target="_blank" rel="noopener">Event details</a></div>
@@ -3137,6 +3198,9 @@
         </article>
         <article id="show-heidi-martin-ensemble-dec-19" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Dec 19</span><h3>Heidi Martin Ensemble</h3><p class="artist-bio">Vocalist Heidi Martin leads her ensemble in a seasonal performance — an original, genre-defying voice.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free · No tickets required · Studio K at the REACH.</p><a class="ticket" href="https://www.kennedy-center.org/whats-on/millennium-stage/all-upcoming-events/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-pressing-strings-dec-19" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Sat · Dec 19</span><h3>Pressing Strings</h3><p class="artist-bio">Annapolis powerhouse trio led by guitarist and vocalist Jordan Sokel — a genre-bending blend of blues, rock and folk wrapped in soul-stirring storytelling.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-luther-vandross-tribute-luther-re-lives-dec-20" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Alexandria, Virginia</span><span class="date-chip">Sun · Dec 20</span><h3>Luther Vandross — Tribute: Luther Re-Lives</h3><p class="artist-bio">William “Smooth” Wardlaw channels Luther Vandross in Luther Re-Lives, a tribute to the velvet-voiced R&amp;B legend behind “Never Too Much” and “Here and Now.”</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · The Birchmere</p><p class="detail">Featuring William “Smooth” Wardlaw.</p><a class="ticket" href="https://www.birchmere.com/" target="_blank" rel="noopener">Event details</a></div>
@@ -3214,6 +3278,9 @@
         <article id="show-monty-alexander-dec-26" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Sat · Dec 26</span><h3>Monty Alexander — A Jamarican in Paris</h3><p class="artist-bio">Jamaican piano legend Monty Alexander brings his holiday residency “A Jamarican in Paris” to Blues Alley — joyful, virtuosic jazz piano rooted in Kingston and Paris.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Sets 7:00 &amp; 9:30 PM · Blues Alley</p><p class="detail">Holiday residency · Two sets nightly.</p><a class="ticket" href="https://www.bluesalley.com/events" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-jimmies-chicken-shack-dec-26" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Sat · Dec 26</span><h3>Jimmie's Chicken Shack</h3><p class="artist-bio">Annapolis alt-rock veterans fronted by Jimi Haha — funk, ska and post-grunge, famous for the radio hits “High” and “Do Right.”</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><p class="detail">Holidaze Tour.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
+        </article>
         <article id="show-bela-dona-dec-27" class="event-card text-card" data-area="nova">
           <div class="card-body"><span class="region">Alexandria, Virginia</span><span class="date-chip">Sun · Dec 27</span><h3>Be'la Dona</h3><p class="artist-bio">Be'la Dona is DC's all-female go-go and R&amp;B band — a powerhouse lineup known for high-energy covers and originals.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:30 PM · The Birchmere</p><a class="ticket" href="https://www.ticketmaster.com/birchmere-tickets-alexandria/venue/172043" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -3232,6 +3299,9 @@
         <article id="show-monty-alexander-dec-28" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Mon · Dec 28</span><h3>Monty Alexander — A Jamarican in Paris</h3><p class="artist-bio">Jamaican piano legend Monty Alexander brings his holiday residency “A Jamarican in Paris” to Blues Alley — joyful, virtuosic jazz piano rooted in Kingston and Paris.</p><p class="critic-rating no-rating">No critic rating listed</p><p>Sets 7:00 &amp; 9:30 PM · Blues Alley</p><p class="detail">Holiday residency · Two sets nightly.</p><a class="ticket" href="https://www.bluesalley.com/events" target="_blank" rel="noopener">Event details</a></div>
         </article>
+        <article id="show-stephen-kellogg-dec-28" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Mon · Dec 28</span><h3>Stephen Kellogg</h3><p class="artist-bio">New England singer-songwriter Stephen Kellogg — an Americana and folk-rock storyteller formerly of Stephen Kellogg and the Sixers, now thousands of shows into a storied road career.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
+        </article>
         <article id="show-dj-snake-dec-29" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Tue · Dec 29</span><h3>DJ Snake</h3><p class="artist-bio">French superstar DJ Snake — “Lean On,” “Turn Down for What” and “Taki Taki” — closes out Echostage's holiday run.</p><p class="critic-rating no-rating">No critic rating listed</p><p>9:00 PM · Echostage</p><a class="ticket" href="https://www.ticketmaster.com/echostage-tickets-washington/venue/172570" target="_blank" rel="noopener">Event details</a></div>
         </article>
@@ -3246,6 +3316,9 @@
         </article>
         <article id="show-t-3-holiday-harmonies-tour-dec-30" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Wed · Dec 30</span><h3>T.3 — Holiday Harmonies Tour</h3><p class="artist-bio">Vocal trio T.3 — Liam Fenneken, Jim Hogan and Brendan Jacob Smith — brings its Holiday Harmonies Tour to Songbyrd: an a cappella-rooted holiday show built on close harmony.</p><p class="critic-rating no-rating">No critic rating listed</p><p>7:00 PM · Songbyrd Music House</p><p class="detail">A cappella-rooted holiday show.</p><a class="ticket" href="https://songbyrddc.com/event/t-3-holiday-harmonies-tour/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-the-seldom-scene-dec-30" class="event-card text-card" data-area="md">
+          <div class="card-body"><span class="region">Annapolis, Maryland</span><span class="date-chip">Wed · Dec 30</span><h3>The Seldom Scene</h3><p class="artist-bio">DC-area bluegrass institution since 1971, famous for progressive takes on folk, rock, and country songs. <a class="artist-source" href="https://en.wikipedia.org/wiki/The_Seldom_Scene" target="_blank" rel="noopener">Wikipedia ↗</a></p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Rams Head On Stage</p><p class="detail">An Evening with The Seldom Scene.</p><a class="ticket" href="https://www.axs.com/venues/128002/rams-head-on-stage-annapolis-tickets" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-dan-deacon-dec-31" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 31</span><h3>Dan Deacon</h3><p class="artist-bio">Baltimore electronic composer Dan Deacon is famous for ecstatic, participatory live shows — a New Year's Eve blowout.</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · Union Stage</p><p class="detail">Doors 7 PM · New Year's Eve.</p><a class="ticket" href="https://www.unionstagepresents.com/shows/dan-deacon-31-dec" target="_blank" rel="noopener">Event details</a></div>
@@ -3270,6 +3343,12 @@
         </article>
         <article id="show-members-of-the-kennedy-center-opera-house-orchestra-dec-31" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 31</span><h3>Members of the Kennedy Center Opera House Orchestra</h3><p class="artist-bio">Members of the Kennedy Center Opera House Orchestra perform an evening of chamber music.</p><p class="critic-rating no-rating">No critic rating listed</p><p>6 PM · The Kennedy Center — Millennium Stage</p><p class="detail">Free · No tickets required · Studio K at the REACH.</p><a class="ticket" href="https://www.kennedy-center.org/whats-on/millennium-stage/all-upcoming-events/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-cloonee-dec-31" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Thu · Dec 31</span><h3>Cloonee</h3><p class="artist-bio">British tech-house DJ and producer Cloonee headlines the New Year’s Eve party at Echostage.</p><p class="critic-rating no-rating">No critic rating listed</p><p>9:00 PM · Echostage</p><p class="detail">New Year’s Eve · Support: GREG 99.</p><a class="ticket" href="https://echostage.com/" target="_blank" rel="noopener">Event details</a></div>
+        </article>
+        <article id="show-crankdat-jan-1" class="event-card text-card" data-area="dc">
+          <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · January 1, 2027</span><h3>Crankdat</h3><p class="artist-bio">Ohio bass-music producer Crankdat brings heavy dubstep and festival EDM to Echostage to keep the New Year party going.</p><p class="critic-rating no-rating">No critic rating listed</p><p>10:00 PM · Echostage</p><a class="ticket" href="https://echostage.com/" target="_blank" rel="noopener">Event details</a></div>
         </article>
         <article id="show-jason-isbell-feb-20" class="event-card text-card" data-area="dc">
           <div class="card-body"><span class="region">Washington, DC</span><span class="date-chip">Fri · February 20, 2027</span><h3>Jason Isbell and the 400 Unit</h3><p class="artist-bio">Alabama singer-songwriter Jason Isbell leads the 400 Unit — searing Americana anchored by <cite>Southeastern</cite> and “Cover Me Up.”</p><p class="critic-rating no-rating">No critic rating listed</p><p>8:00 PM · The Anthem</p><p class="detail">Americana / rock.</p><a class="ticket" href="https://www.ticketmaster.com/artist/1612568" target="_blank" rel="noopener">Tickets</a></div>
@@ -3309,6 +3388,32 @@
         <div class="artist-watch"><h3>Artist watch</h3><p>SUSTO has no DC-area dates coming up. New Order has no DC-area dates; South America follows in November–December. Caamp has no DC-area dates; its 2026 tour ended Oct 7.</p></div>
       </section>
     </div>
+
+
+    <section id="lists" aria-labelledby="lists-title" hidden>
+      <div class="lists-head"><h2 id="lists-title">My lists</h2><p>Watchlist, Favorites, and the Curb — built from the buttons on every show and band below. Your lists are kept on this page while it&rsquo;s open; use &ldquo;Google Calendar&rdquo; or the .ics download on a watchlisted show to keep it, tentative, with its weekly reminders.</p></div>
+
+      <div class="list-panel" id="panel-watchlist" role="tabpanel" aria-labelledby="watchlist-tab" hidden>
+        <div class="list-panel-head"><h3>Watchlist — tentative plans</h3><div class="list-actions"><button class="list-btn" id="watchlist-ics-all" type="button">Download all (.ics)</button></div></div>
+        <p class="small-note" style="margin:0 0 14px">Watchlisted shows appear on the <strong>Calendar</strong> tab marked <strong>Tentative</strong>. Use the up / down buttons to rank them. Each one carries a weekly reminder — every 7 days until the show — in its calendar file.</p>
+        <div class="list-empty" id="watchlist-empty"><strong>Nothing on the watchlist yet</strong>Tap &ldquo;+ Watchlist&rdquo; on any show card (or &ldquo;Watch&rdquo; on a band row) and it lands here, tentative on the calendar, with a weekly reminder until the show.</div>
+        <div class="list-items" id="watchlist-items"></div>
+      </div>
+
+      <div class="list-panel" id="panel-favorites" role="tabpanel" aria-labelledby="favorites-tab" hidden>
+        <div class="list-panel-head"><h3>Favorites — every show by your bands</h3></div>
+        <p class="small-note" style="margin:0 0 14px">Favorite a band once and <strong>every</strong> show by that band in the guide is collected here too — the shows stay in Shows and Bands as well. Nothing to re-add when a band shows up again.</p>
+        <div class="list-empty" id="favorites-empty"><strong>No favorites yet</strong>Tap &ldquo;&#9734; Favorite&rdquo; on any show or band and all of that band&rsquo;s shows gather here.</div>
+        <div class="list-items" id="favorites-items"></div>
+      </div>
+
+      <div class="list-panel" id="panel-curb" role="tabpanel" aria-labelledby="curb-tab" hidden>
+        <div class="list-panel-head"><h3>Kicked to the curb — out of the way, not banned</h3></div>
+        <p class="small-note" style="margin:0 0 14px">Curbed bands disappear from Bands, Shows, and the Calendar so they stop cluttering the guide — but they live here, dates and venues included, and one tap restores them.</p>
+        <div class="list-empty" id="curb-empty"><strong>Nobody&rsquo;s on the curb</strong>Tap &ldquo;Kick to curb&rdquo; on a band you keep scrolling past and it moves here instead.</div>
+        <div class="list-items" id="curb-items"></div>
+      </div>
+    </section>
 
     <section id="venues" aria-labelledby="venues-title">
       <div class="section-head"><h2 id="venues-title">Venue links</h2><p>Go straight to the calendar for every regular stop.</p></div>
@@ -3368,7 +3473,7 @@
     </section>
   </main>
 
-  <footer><div class="wrap">Listings compiled November 1, 2026. Ticket availability and prices can change.
+  <footer><div class="wrap">Listings compiled November 2, 2026. Ticket availability and prices can change.
     <details><summary>Concert photo sources</summary><ul>
       <li><a href="https://www.washingtonblade.com/2023/08/17/930-club-justin-trawick-griefcat-jon-tyler-wiley/" target="_blank" rel="noopener">Justin Trawick · Washington Blade / YouTube screen capture</a></li>
       <li><a href="https://musicwhynot.com/susto-stubbs-bar-b-q-austin/" target="_blank" rel="noopener">SUSTO</a></li><li><a href="https://thesesubtlesounds.com/cris-jacobs-and-caleb-stine-team-up-for-a-night-of-amazing-music-at-the-recher/" target="_blank" rel="noopener">Cris Jacobs</a></li><li><a href="https://theartsstl.com/beck-15/" target="_blank" rel="noopener">Beck</a></li><li><a href="https://www.concertaddicts.com/new/concert-event-listings/europe/south-uk/the-damned--brighton-dome--2026-11-25--G5vHZ_aQ_cdxW" target="_blank" rel="noopener">The Damned</a></li><li><a href="https://asburyparkchamber.com/events-calendar/category/music/2025-06/" target="_blank" rel="noopener">The Smithereens</a></li><li><a href="https://www.musicscenemedia.com/toad-the-wet-sprocket-at-the-music-hall/" target="_blank" rel="noopener">Toad the Wet Sprocket</a></li><li><a href="https://www.ticketnews.com/2025/10/sugar-reunites-three-decades-new-music-tour-dates/" target="_blank" rel="noopener">Sugar</a></li>
@@ -3378,7 +3483,9 @@
       <li><a href="https://townsquare.media/site/623/files/2016/03/sturgill-simpson-new-music-2016.jpg" target="_blank" rel="noopener">Sturgill Simpson</a></li><li><a href="https://i.ytimg.com/vi/qR4l4GM7pXs/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIFYoSTAP&amp;amp;rs=AOn4CLBCpql2IkdjCVSfWjzglmTjleMGHA" target="_blank" rel="noopener">Airmont Road Band</a></li><li><a href="https://morristourism.org/wp-content/uploads/2023/09/Jim-Messina-Photo-2-scaled.jpeg" target="_blank" rel="noopener">Jim Messina joined by Orleans (Farewell Tour)</a></li><li><a href="https://seatgeekimages.com/performers-landscape/hamilton-leithauser-7cf996/270572/20577/600x600.jpg?auto=webp&amp;amp;width=96&amp;amp;quality=75" target="_blank" rel="noopener">Hamilton Leithauser &amp; Rostam</a></li><li><a href="https://c02.purpledshub.com/uploads/sites/16/2024/06/Five-Finger-Death-Punch-0234.jpg" target="_blank" rel="noopener">Five Finger Death Punch</a></li>
     </ul></details>
   </div></footer>
-  <nav class="float-menu" aria-label="Quick menu"><a href="#bands">Bands</a><a href="#shows">Shows</a><a href="#shows" class="float-cal">Calendar</a><a href="#concert-search">Search</a><a href="#venues">Venues</a><a href="#top">Top</a></nav>
+  <button class="mg-back" id="mg-back" type="button" disabled hidden>&#8592; Back</button>
+<div class="mg-stepnav" id="mg-stepnav" hidden><button id="mg-prev" type="button" aria-label="Previous band or show">&#8593;<span>Prev</span></button><span class="mg-step-pos" id="mg-step-pos"></span><button id="mg-next" type="button" aria-label="Next band or show">&#8595;<span>Next</span></button></div>
+<nav class="float-menu" aria-label="Quick menu"><a href="#bands">Bands</a><a href="#shows">Shows</a><a href="#shows" class="float-cal">Calendar</a><a href="#concert-search">Search</a><a href="#watchlist" class="float-lists">Watchlist</a><a href="#venues">Venues</a><a href="#top">Top</a></nav>
   <script>
     (function(){
       var eventGrid=document.getElementById('event-grid');
@@ -3486,6 +3593,62 @@
         return {card:card,artist:artistName(card),venue:eventVenueName(card),dates:cardDates(card)};
       });
       var popularTracks={
+        "The Bob Polding Band w/ Mike Sharp": {
+                "label": "Watch the Bob Polding Band perform",
+                "url": "https://www.youtube.com/results?search_query=Bob+Polding+Band+live"
+        },
+        "An Annapolis Christmas": {
+                "label": "Watch An Annapolis Christmas performances",
+                "url": "https://www.youtube.com/results?search_query=An+Annapolis+Christmas+Rams+Head"
+        },
+        "Tartan Terrors: Celtic Invasion": {
+                "label": "Watch Tartan Terrors — Live Promo",
+                "url": "https://www.youtube.com/watch?v=gGzXcD_idu8"
+        },
+        "Pressing Strings": {
+                "label": "Watch Pressing Strings — Full Set (Sugarshack Sessions)",
+                "url": "https://www.youtube.com/watch?v=Wjj1m6sRzaE"
+        },
+        "Jimmie's Chicken Shack": {
+                "label": "Watch Jimmie's Chicken Shack videos",
+                "url": "https://www.youtube.com/results?search_query=Jimmie%27s+Chicken+Shack"
+        },
+        "Stephen Kellogg": {
+                "label": "Watch Stephen Kellogg live videos",
+                "url": "https://www.youtube.com/results?search_query=Stephen+Kellogg+live"
+        },
+        "Cloonee": {
+                "label": "Watch Cloonee live sets",
+                "url": "https://www.youtube.com/results?search_query=Cloonee+live+set"
+        },
+        "Crankdat": {
+                "label": "Watch Crankdat live sets",
+                "url": "https://www.youtube.com/results?search_query=Crankdat+live"
+        },
+        "Dan Hovey": {
+                "label": "Watch Dan Hovey perform",
+                "url": "https://www.youtube.com/results?search_query=Dan+Hovey+guitar"
+        },
+        "Keith Grimes & Dean Dalton": {
+                "label": "Watch Keith Grimes perform",
+                "url": "https://www.youtube.com/results?search_query=Keith+Grimes+guitarist"
+        },
+        "The Longtimers": {
+                "label": "Watch The Longtimers perform",
+                "url": "https://www.youtube.com/results?search_query=The+Longtimers+band"
+        },
+        "Bill Starks w/ Greg Hardin": {
+                "label": "Watch Bill Starks on piano",
+                "url": "https://www.youtube.com/results?search_query=Bill+Starks+boogie+woogie"
+        },
+        "The Grandsons Present": {
+                "label": "Watch The Grandsons perform",
+                "url": "https://www.youtube.com/results?search_query=The+Grandsons+band+DC"
+        },
+        "Hot Club of San Francisco": {
+                "label": "Watch Hot Club of San Francisco live",
+                "url": "https://www.youtube.com/results?search_query=Hot+Club+of+San+Francisco+live"
+        },
         "Bill Pappas Project": {
                 "label": "Watch the Bill Pappas Project perform",
                 "url": "https://www.youtube.com/results?search_query=Bill+Pappas+Project+blues"
@@ -4065,10 +4228,6 @@
         "Bonny Light Horseman": {
                 "label": "Watch Bonny Light Horseman videos",
                 "url": "https://www.youtube.com/results?search_query=Bonny+Light+Horseman"
-        },
-        "Watchhouse": {
-                "label": "Watch Watchhouse videos",
-                "url": "https://www.youtube.com/results?search_query=Watchhouse"
         },
         "Robert Plant & Alison Krauss": {
                 "label": "Watch Robert Plant & Alison Krauss videos",
@@ -4797,10 +4956,6 @@
         "NSO: A Cody Fry Christmas": {
                 "label": "Watch NSO: A Cody Fry Christmas videos",
                 "url": "https://www.youtube.com/results?search_query=NSO%3A+A+Cody+Fry+Christmas"
-        },
-        "SHYNE with Barrington Levy & Lil' Cease": {
-                "label": "Watch SHYNE with Barrington Levy & Lil' Cease videos",
-                "url": "https://www.youtube.com/results?search_query=SHYNE+with+Barrington+Levy+%26+Lil%27+Cease"
         },
         "Joe Russo's Almost Dead": {
                 "label": "Watch Joe Russo's Almost Dead videos",
@@ -5848,6 +6003,24 @@
         }
       };
       var officialSites={
+        "Tartan Terrors: Celtic Invasion": [
+                {
+                        "label": "Tartan Terrors official site",
+                        "url": "https://tartanterrors.com/"
+                }
+        ],
+        "Pressing Strings": [
+                {
+                        "label": "Pressing Strings official site",
+                        "url": "https://pressingstrings.com"
+                }
+        ],
+        "Stephen Kellogg": [
+                {
+                        "label": "Stephen Kellogg official site",
+                        "url": "https://www.stephenkellogg.com/"
+                }
+        ],
         "Monty Alexander — A Jamarican in Paris": [
                 {
                         "label": "Monty Alexander official site",
@@ -7181,14 +7354,25 @@
         if(view==='list')view='shows';
         activeView=view;
         var calendarActive=view==='calendar';
+        var listsActive=view==='watchlist'||view==='favorites'||view==='curb';
         var bandsSection=document.getElementById('bands');
         var showsSection=document.getElementById('shows');
+        var listsSection=document.getElementById('lists');
         if(bandsSection)bandsSection.hidden=view!=='bands';
-        if(showsSection)showsSection.hidden=view==='bands';
+        if(showsSection)showsSection.hidden=view==='bands'||listsActive;
+        if(listsSection){
+          listsSection.hidden=!listsActive;
+          ['watchlist','favorites','curb'].forEach(function(name){
+            var panel=document.getElementById('panel-'+name);
+            if(panel)panel.hidden=view!==name;
+          });
+        }
         eventGrid.hidden=calendarActive;
         calendarView.hidden=!calendarActive;
-        viewButtons.forEach(function(button){button.setAttribute('aria-selected',String(button.id===(calendarActive?'calendar-tab':view==='bands'?'bands-tab':'shows-tab')));});
+        var selectedId=calendarActive?'calendar-tab':view==='bands'?'bands-tab':listsActive?view+'-tab':'shows-tab';
+        viewButtons.forEach(function(button){button.setAttribute('aria-selected',String(button.id===selectedId));});
         if(calendarActive)renderCalendar();
+        if(window.__mgOnView)window.__mgOnView(view);
       }
       function renderCalendar(){
         var weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -7214,6 +7398,11 @@
             var dayEvents=calendarEvents.filter(function(entry){
               return !entry.card.hidden&&entry.dates.some(function(date){return date.month===activeMonth&&date.day===dayNumber;});
             });
+            dayEvents.sort(function(a,b){
+              var wa=window.__mgIsWatched&&window.__mgIsWatched(a.card)?0:1;
+              var wb=window.__mgIsWatched&&window.__mgIsWatched(b.card)?0:1;
+              return wa-wb;
+            });
             var cell=document.createElement('div');
             cell.className='calendar-day'+(activeMonth===10&&dayNumber===1?' is-today':'');
             cell.setAttribute('role','gridcell');
@@ -7226,7 +7415,7 @@
             dayEvents.slice(0,3).forEach(function(entry){
               var show=document.createElement('button');
               show.type='button';
-              show.className='calendar-show';
+              show.className='calendar-show'+(window.__mgIsWatched&&window.__mgIsWatched(entry.card)?' is-tentative':'');
               show.setAttribute('aria-label',entry.artist+' at '+entry.venue+', '+monthName(activeMonth)+' '+dayNumber);
               var artist=document.createElement('span');
               artist.className='calendar-artist';
@@ -7235,6 +7424,7 @@
               venue.className='calendar-venue';
               venue.textContent=entry.venue;
               show.append(artist,venue);
+              if(window.__mgIsWatched&&window.__mgIsWatched(entry.card)){var tentTag=document.createElement('span');tentTag.className='cal-tent';tentTag.textContent='Tentative · watchlist';show.appendChild(tentTag);}
               show.addEventListener('click',function(){jumpToCard(entry.card);});
               cell.appendChild(show);
             });
@@ -7345,7 +7535,7 @@
         cards.forEach(function(card){
           var areaMatches=activeArea==='all'||card.getAttribute('data-area')===activeArea;
           var searchMatches=termMatches(query,eventTerms(card));
-          var visible=areaMatches&&searchMatches;
+          var visible=areaMatches&&searchMatches&&!(window.__mgIsCurbed&&window.__mgIsCurbed(card));
           card.hidden=!visible;
           if(visible)shownCards++;
         });
@@ -7394,7 +7584,7 @@
         update();
       });});
       viewButtons.forEach(function(button){button.addEventListener('click',function(){
-        setView(button.id==='calendar-tab'?'calendar':button.id==='bands-tab'?'bands':'shows');
+        setView(button.id==='calendar-tab'?'calendar':button.id==='bands-tab'?'bands':button.id==='watchlist-tab'?'watchlist':button.id==='favorites-tab'?'favorites':button.id==='curb-tab'?'curb':'shows');
       });});
       monthButtons.forEach(function(button){button.addEventListener('click',function(){
         activeMonth=Number(button.getAttribute('data-month'));
@@ -7451,20 +7641,27 @@ document.querySelectorAll('.band-row').forEach(function(row){row.addEventListene
       badge.textContent=label;
       row.insertBefore(badge,row.querySelector('.band-dates'));
     }
-    if(!best||soon.date<best.date){
+    var timeTxt='',timeMin=24*60;
+    var cardEl=document.getElementById((soon.chip.getAttribute('href')||'').slice(1));
+    if(cardEl){
+      var vl=cardEl.querySelector('.card-body > p:not([class])');
+      var tm=vl?vl.textContent.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i):null;
+      if(tm){var hh=parseInt(tm[1],10)%12;if(/pm/i.test(tm[3]))hh+=12;timeMin=hh*60+parseInt(tm[2]||'0',10);timeTxt=tm[0].replace(/\s+/g,' ');}
+    }
+    if(!best||soon.date<best.date||(soon.date.getTime()===best.date.getTime()&&timeMin<best.timeMin)){
       var venue='';
       var n=soon.chip.nextElementSibling;
       while(n){if(n.classList&&n.classList.contains('band-venue')){venue=n.textContent.trim();break;}n=n.nextElementSibling;}
       var band=row.querySelector('.band-name');
-      best={date:soon.date,band:band?band.textContent.trim():'',venue:venue};
+      best={date:soon.date,timeMin:timeMin,time:timeTxt,band:band?band.textContent.trim():'',venue:venue};
     }
   });
   if(best){
     var el=document.getElementById('next-up');
     if(el){
-      var when=best.date.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+      var when=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][best.date.getDay()]+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][best.date.getMonth()]+' '+best.date.getDate();
       el.innerHTML='<span class="nu-label">NEXT UP</span><span class="nu-text"></span>';
-      el.querySelector('.nu-text').textContent=best.band+' — '+when+(best.venue?' · '+best.venue:'');
+      el.querySelector('.nu-text').textContent=best.band+' — '+when+(best.time?', '+best.time:'')+(best.venue?', '+best.venue:'');
       el.hidden=false;
     }
   }
@@ -7472,7 +7669,7 @@ document.querySelectorAll('.band-row').forEach(function(row){row.addEventListene
 </script>
 <script>
 (function(){
-  function tabFor(view){return document.getElementById(view==='calendar'?'calendar-tab':view==='bands'?'bands-tab':'shows-tab');}
+  function tabFor(view){var ids={calendar:'calendar-tab',bands:'bands-tab',watchlist:'watchlist-tab',favorites:'favorites-tab',curb:'curb-tab'};return document.getElementById(ids[view]||'shows-tab');}
   function activate(view){var b=tabFor(view);if(b)b.click();}
   function go(view,targetId){
     activate(view);
@@ -7510,11 +7707,529 @@ document.querySelectorAll('.band-row').forEach(function(row){row.addEventListene
       });
     }else if(h==='#bands'){activate('bands');}
     else if(h==='#shows'){activate('shows');}
-    else if(h==='#calendar-view'){activate('calendar');}
+    else if(h==='#watchlist'){activate('watchlist');}else if(h==='#favorites'){activate('favorites');}else if(h==='#curb'){activate('curb');}else if(h==='#calendar-view'){activate('calendar');}
   }
   window.addEventListener('hashchange',revealHash);
   if(location.hash){revealHash();}else{activate('bands');}
 })();
 </script>
+
+<script>
+(function(){
+  'use strict';
+  var MONTHS={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  var MONTH_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();}
+  function artistOf(card){var h=card.querySelector('h3');return h?h.textContent.split('\u00b7')[0].trim():'';}
+  function venueLineOf(card){var p=card.querySelector('.card-body > p:not([class])');return p?p.textContent.trim():'';}
+  function venueOf(card){var parts=venueLineOf(card).split('\u00b7');return parts.length?parts[parts.length-1].trim():'';}
+  function timeOf(card){var parts=venueLineOf(card).split('\u00b7');return parts.length>1?parts.slice(0,parts.length-1).join('\u00b7').trim():'';}
+  function chipOf(card){var c=card.querySelector('.date-chip');return c?c.textContent.trim():'';}
+  function dateOf(card){
+    var m=chipOf(card).match(/\b([A-Z][a-z]{2})\s+(\d{1,2})\b/);
+    if(!m||MONTHS[m[1]]===undefined)return null;
+    return new Date(2026,MONTHS[m[1]],Number(m[2]));
+  }
+  function fmtDate(d){return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});}
+
+  var cards=[].slice.call(document.querySelectorAll('.event-card'));
+  var infoById={}, bandsByKey={};
+  cards.forEach(function(card){
+    var artist=artistOf(card), key=norm(artist);
+    var info={card:card,id:card.id,artist:artist,key:key,venue:venueOf(card),time:timeOf(card),chip:chipOf(card),date:dateOf(card)};
+    infoById[card.id]=info;
+    if(!bandsByKey[key])bandsByKey[key]={key:key,artist:artist,shows:[]};
+    bandsByKey[key].shows.push(info);
+  });
+  Object.keys(bandsByKey).forEach(function(k){
+    bandsByKey[k].shows.sort(function(a,b){return (a.date?a.date.getTime():0)-(b.date?b.date.getTime():0);});
+  });
+
+  /* Band rows: canonical key comes from the card their first date link points to. */
+  var rows=[].slice.call(document.querySelectorAll('.band-row'));
+  var rowByKey={};
+  rows.forEach(function(row){
+    var link=row.querySelector('.band-name-link')||row.querySelector('.band-date');
+    var key=null;
+    if(link){var href=link.getAttribute('href')||'';var target=href.charAt(0)==='#'?infoById[href.slice(1)]:null;if(target)key=target.key;}
+    if(!key){var nameEl=row.querySelector('.band-name');key=norm(nameEl?nameEl.textContent:'');}
+    row.setAttribute('data-band-key',key);
+    if(!rowByKey[key])rowByKey[key]=[];
+    rowByKey[key].push(row);
+  });
+
+  /* ---------------- State (kept on this page while it is open) ---------------- */
+  var favorites=[];          /* band keys, in the order added */
+  var curbed=[];             /* band keys */
+  var watchlist=[];          /* show ids, in the user's ranked order */
+  function inList(arr,k){return arr.indexOf(k)!==-1;}
+
+  window.__mgIsCurbed=function(card){return inList(curbed,norm(artistOf(card)));};
+  window.__mgIsWatched=function(card){return inList(watchlist,card.id);};
+
+  function refreshGuide(){
+    var input=document.getElementById('concert-query');
+    if(input)input.dispatchEvent(new Event('input',{bubbles:true}));
+  }
+
+  /* ---------------- Action buttons on cards ---------------- */
+  function makeBtn(cls,label,pressed){
+    var b=document.createElement('button');
+    b.type='button';b.className='mg-btn '+cls;b.textContent=label;
+    b.setAttribute('aria-pressed',String(!!pressed));
+    return b;
+  }
+  var cardBtns={}; /* id -> {fav,watch} */
+  cards.forEach(function(card){
+    var info=infoById[card.id]; if(!info)return;
+    var body=card.querySelector('.card-body'); if(!body)return;
+    var row=document.createElement('div'); row.className='mg-actions';
+    var fav=makeBtn('fav','\u2606 Favorite',false);
+    var watch=makeBtn('watch','+ Watchlist',false);
+    var curb=document.createElement('button');
+    curb.type='button';curb.className='mg-btn curb';curb.textContent='Kick to curb';
+    fav.addEventListener('click',function(){toggleFav(info.key);});
+    watch.addEventListener('click',function(){toggleWatch(info.id);});
+    curb.addEventListener('click',function(){setCurb(info.key,true);});
+    row.appendChild(fav);row.appendChild(watch);row.appendChild(curb);
+    var ticket=card.querySelector('.ticket');
+    if(ticket)body.insertBefore(row,ticket);else body.appendChild(row);
+    cardBtns[card.id]={fav:fav,watch:watch};
+  });
+
+  /* ---------------- Action buttons on band rows ---------------- */
+  var rowBtns={}; /* key -> [{fav,watch,curb}] */
+  rows.forEach(function(row){
+    var key=row.getAttribute('data-band-key');
+    var band=bandsByKey[key];
+    var wrap=document.createElement('span'); wrap.className='band-actions';
+    var fav=makeBtn('fav','\u2606 Fav',false);
+    var watch=makeBtn('watch','Watch',false);
+    var curb=document.createElement('button');
+    curb.type='button';curb.className='mg-btn curb';curb.textContent='Curb';
+    fav.setAttribute('aria-label','Favorite '+(band?band.artist:key));
+    watch.setAttribute('aria-label','Add all shows by '+(band?band.artist:key)+' to the watchlist');
+    curb.setAttribute('aria-label','Kick '+(band?band.artist:key)+' to the curb');
+    [fav,watch,curb].forEach(function(b){
+      b.addEventListener('click',function(e){e.stopPropagation();e.preventDefault();});
+    });
+    fav.addEventListener('click',function(){toggleFav(key);});
+    watch.addEventListener('click',function(){toggleBandWatch(key);});
+    curb.addEventListener('click',function(){setCurb(key,!inList(curbed,key));});
+    wrap.appendChild(fav);wrap.appendChild(watch);wrap.appendChild(curb);
+    row.appendChild(wrap);
+    if(!rowBtns[key])rowBtns[key]=[];
+    rowBtns[key].push({fav:fav,watch:watch,curb:curb,row:row});
+  });
+
+  /* ---------------- State changes ---------------- */
+  function toggleFav(key){
+    if(inList(favorites,key))favorites=favorites.filter(function(k){return k!==key;});
+    else favorites.push(key);
+    syncUI();
+  }
+  function toggleWatch(id){
+    if(inList(watchlist,id))watchlist=watchlist.filter(function(x){return x!==id;});
+    else watchlist.push(id);
+    syncUI(true);
+  }
+  function toggleBandWatch(key){
+    var band=bandsByKey[key]; if(!band)return;
+    var ids=band.shows.map(function(s){return s.id;});
+    var allIn=ids.every(function(id){return inList(watchlist,id);});
+    if(allIn)watchlist=watchlist.filter(function(id){return ids.indexOf(id)===-1;});
+    else ids.forEach(function(id){if(!inList(watchlist,id))watchlist.push(id);});
+    syncUI(true);
+  }
+  function setCurb(key,on){
+    if(on&&!inList(curbed,key))curbed.push(key);
+    if(!on)curbed=curbed.filter(function(k){return k!==key;});
+    syncUI(true);
+  }
+  function moveWatch(id,dir){
+    var i=watchlist.indexOf(id); if(i===-1)return;
+    var j=i+dir; if(j<0||j>=watchlist.length)return;
+    var t=watchlist[i];watchlist[i]=watchlist[j];watchlist[j]=t;
+    renderWatchlist();updateCounts();
+  }
+
+  /* ---------------- Calendar files: tentative + weekly reminders ---------------- */
+  function startDateTime(info){
+    var d=info.date?new Date(info.date.getTime()):new Date(2026,10,1);
+    var m=(info.time||'').match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+    var hh=19,mm=0;
+    if(m){hh=Number(m[1])%12;if(/PM/i.test(m[3]))hh+=12;mm=Number(m[2]||0);}
+    d.setHours(hh,mm,0,0);
+    return d;
+  }
+  function icsStamp(d){
+    function p(n){return (n<10?'0':'')+n;}
+    return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'T'+p(d.getHours())+p(d.getMinutes())+'00';
+  }
+  function icsDate(d){
+    function p(n){return (n<10?'0':'')+n;}
+    return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
+  }
+  function esc(s){return (s||'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');}
+  function reminderStart(info){
+    /* Weekly reminders: first one a week from today at 9 AM, then every 7 days, stopping at the show. */
+    var show=startDateTime(info);
+    var first=new Date(); first.setHours(9,0,0,0); first.setDate(first.getDate()+7);
+    if(first>=show){var d=new Date(show.getTime());d.setDate(d.getDate()-1);d.setHours(9,0,0,0);return d;}
+    return first;
+  }
+  function nextReminderLabel(info){
+    var show=startDateTime(info);
+    var now=new Date();
+    var first=reminderStart(info);
+    if(first>=show)return 'Reminder: '+fmtDate(first)+' (day before the show)';
+    var d=new Date(first.getTime());
+    while(d<now&&d<show)d.setDate(d.getDate()+7);
+    if(d>=show)return 'Weekly reminders run until '+fmtDate(show);
+    return 'Weekly reminders: next '+fmtDate(d)+' \u00b7 then every 7 days until the show';
+  }
+  function icsFor(infos){
+    var lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Great Music Guide//Watchlist//EN','CALSCALE:GREGORIAN'];
+    var stamp=icsStamp(new Date());
+    infos.forEach(function(info,i){
+      var start=startDateTime(info);
+      var end=new Date(start.getTime()+2*60*60*1000);
+      lines.push('BEGIN:VEVENT','UID:watch-'+info.id+'@music-guide','DTSTAMP:'+stamp,
+        'DTSTART:'+icsStamp(start),'DTEND:'+icsStamp(end),
+        'SUMMARY:'+esc('TENTATIVE: '+info.artist+' at '+info.venue),
+        'LOCATION:'+esc(info.venue),
+        'DESCRIPTION:'+esc('Tentative \u2014 on your Great Music watchlist. Not a ticket; check the venue before you go.'),
+        'STATUS:TENTATIVE','END:VEVENT');
+      var rStart=reminderStart(info);
+      lines.push('BEGIN:VEVENT','UID:watch-remind-'+info.id+'@music-guide','DTSTAMP:'+stamp,
+        'DTSTART:'+icsStamp(rStart),
+        'RRULE:FREQ=WEEKLY;UNTIL='+icsDate(start),
+        'SUMMARY:'+esc('Weekly reminder: decide on '+info.artist+' \u2014 '+info.chip+' at '+info.venue),
+        'DESCRIPTION:'+esc('Weekly watchlist reminder until the show on '+info.chip+'.'),
+        'BEGIN:VALARM','TRIGGER:-PT0M','ACTION:DISPLAY','DESCRIPTION:'+esc('Weekly reminder: '+info.artist),'END:VALARM',
+        'END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    return lines.join('\r\n');
+  }
+  function downloadICS(infos,filename){
+    var blob=new Blob([icsFor(infos)],{type:'text/calendar'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download=filename;
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url);},4000);
+  }
+  function gcalURL(info){
+    var start=startDateTime(info);
+    var end=new Date(start.getTime()+2*60*60*1000);
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      +'&text='+encodeURIComponent('TENTATIVE: '+info.artist+' at '+info.venue)
+      +'&dates='+icsStamp(start)+'/'+icsStamp(end)
+      +'&details='+encodeURIComponent('Tentative \u2014 on your Great Music watchlist.')
+      +'&location='+encodeURIComponent(info.venue);
+  }
+
+  /* ---------------- List panels ---------------- */
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function showLines(band){
+    var ul=el('ul','show-lines');
+    band.shows.forEach(function(s){
+      ul.appendChild(el('li',null,(s.chip||'')+' \u00b7 '+(s.time?s.time+' \u00b7 ':'')+s.venue));
+    });
+    return ul;
+  }
+  function viewShowButton(info){
+    var b=el('button','mini-btn primary','View show');
+    b.type='button';
+    b.addEventListener('click',function(){
+      pushHistory();
+      var tab=document.getElementById('shows-tab'); if(tab)tab.click();
+      setTimeout(function(){
+        var card=document.getElementById(info.id);
+        if(card){card.scrollIntoView({block:'center'});flash(card);}
+      },60);
+    });
+    return b;
+  }
+  function flash(target){
+    target.classList.remove('jump-target'); void target.offsetWidth;
+    target.classList.add('jump-target');
+    setTimeout(function(){target.classList.remove('jump-target');},1700);
+  }
+
+  function renderWatchlist(){
+    var wrap=document.getElementById('watchlist-items');
+    var empty=document.getElementById('watchlist-empty');
+    wrap.replaceChildren();
+    empty.hidden=watchlist.length>0;
+    watchlist.forEach(function(id,idx){
+      var info=infoById[id]; if(!info)return;
+      var item=el('div','list-item');
+      var main=el('div','list-item-main');
+      var title=el('div','list-item-artist',info.artist);
+      var badge=el('span','tent-badge','Tentative'); title.appendChild(badge);
+      var meta=el('div','list-item-meta',(info.chip||'')+' \u00b7 '+(info.time?info.time+' \u00b7 ':'')+info.venue);
+      var rem=el('div','reminder-line',nextReminderLabel(info));
+      main.appendChild(title);main.appendChild(meta);main.appendChild(rem);
+      var btns=el('div','list-item-btns');
+      var up=el('button','mini-btn','\u2191 Up'); up.type='button'; up.disabled=idx===0;
+      up.setAttribute('aria-label','Move '+info.artist+' up the watchlist');
+      up.addEventListener('click',function(){moveWatch(id,-1);});
+      var down=el('button','mini-btn','\u2193 Down'); down.type='button'; down.disabled=idx===watchlist.length-1;
+      down.setAttribute('aria-label','Move '+info.artist+' down the watchlist');
+      down.addEventListener('click',function(){moveWatch(id,1);});
+      var gcal=el('a','mini-btn','Google Calendar'); gcal.href=gcalURL(info); gcal.target='_blank'; gcal.rel='noopener';
+      var ics=el('button','mini-btn','.ics'); ics.type='button';
+      ics.setAttribute('aria-label','Download calendar file with weekly reminders for '+info.artist);
+      ics.addEventListener('click',function(){downloadICS([info],'watchlist-'+info.id+'.ics');});
+      btns.appendChild(up);btns.appendChild(down);btns.appendChild(viewShowButton(info));btns.appendChild(gcal);btns.appendChild(ics);
+      var rm=el('button','mini-btn danger','Remove'); rm.type='button';
+      rm.addEventListener('click',function(){toggleWatch(id);});
+      btns.appendChild(rm);
+      item.appendChild(main);item.appendChild(btns);
+      wrap.appendChild(item);
+    });
+  }
+
+  function renderFavorites(){
+    var wrap=document.getElementById('favorites-items');
+    var empty=document.getElementById('favorites-empty');
+    wrap.replaceChildren();
+    empty.hidden=favorites.length>0;
+    favorites.forEach(function(key){
+      var band=bandsByKey[key]; if(!band)return;
+      var item=el('div','list-item');
+      var main=el('div','list-item-main');
+      var title=el('div','list-item-artist',band.artist);
+      title.appendChild(el('span','fav-badge','\u2605 Favorite'));
+      if(inList(curbed,key))title.appendChild(el('span','tent-badge','Also on the curb'));
+      main.appendChild(title);
+      main.appendChild(showLines(band));
+      var btns=el('div','list-item-btns');
+      if(band.shows.length)btns.appendChild(viewShowButton(band.shows[0]));
+      var rm=el('button','mini-btn danger','Remove favorite'); rm.type='button';
+      rm.addEventListener('click',function(){toggleFav(key);});
+      btns.appendChild(rm);
+      item.appendChild(main);item.appendChild(btns);
+      wrap.appendChild(item);
+    });
+  }
+
+  function renderCurb(){
+    var wrap=document.getElementById('curb-items');
+    var empty=document.getElementById('curb-empty');
+    wrap.replaceChildren();
+    empty.hidden=curbed.length>0;
+    curbed.forEach(function(key){
+      var band=bandsByKey[key];
+      var item=el('div','list-item');
+      var main=el('div','list-item-main');
+      main.appendChild(el('div','list-item-artist',band?band.artist:key));
+      if(band)main.appendChild(showLines(band));
+      else main.appendChild(el('div','list-item-meta','No upcoming shows in the guide.'));
+      var btns=el('div','list-item-btns');
+      var restore=el('button','mini-btn primary','Restore to the guide'); restore.type='button';
+      restore.addEventListener('click',function(){setCurb(key,false);});
+      btns.appendChild(restore);
+      item.appendChild(main);item.appendChild(btns);
+      wrap.appendChild(item);
+    });
+  }
+
+  function updateCounts(){
+    function set(id,n){var c=document.getElementById(id);if(c){c.textContent=n;c.hidden=n===0;}}
+    set('count-watchlist',watchlist.length);
+    set('count-favorites',favorites.length);
+    set('count-curb',curbed.length);
+  }
+
+  function syncUI(refresh){
+    cards.forEach(function(card){
+      var info=infoById[card.id]; if(!info)return;
+      var b=cardBtns[card.id]; if(!b)return;
+      var f=inList(favorites,info.key), w=inList(watchlist,card.id);
+      b.fav.setAttribute('aria-pressed',String(f));
+      b.fav.textContent=f?'\u2605 Favorited':'\u2606 Favorite';
+      b.watch.setAttribute('aria-pressed',String(w));
+      b.watch.textContent=w?'\u2713 Watching':'+ Watchlist';
+    });
+    Object.keys(rowBtns).forEach(function(key){
+      var band=bandsByKey[key];
+      var f=inList(favorites,key), c=inList(curbed,key);
+      var allW=band?band.shows.every(function(s){return inList(watchlist,s.id);}):false;
+      rowBtns[key].forEach(function(rb){
+        rb.fav.setAttribute('aria-pressed',String(f));
+        rb.fav.textContent=f?'\u2605 Fav':'\u2606 Fav';
+        rb.watch.setAttribute('aria-pressed',String(allW));
+        rb.watch.textContent=allW?'\u2713 Watching':'Watch';
+        rb.curb.textContent=c?'Restore':'Curb';
+        rb.row.hidden=c;
+        rb.row.classList.toggle('is-fav',f);
+        rb.row.classList.toggle('is-watching',allW);
+      });
+    });
+    renderWatchlist();renderFavorites();renderCurb();updateCounts();
+    if(refresh)refreshGuide();
+    updateStepPos();
+  }
+
+  var icsAll=document.getElementById('watchlist-ics-all');
+  if(icsAll)icsAll.addEventListener('click',function(){
+    var infos=watchlist.map(function(id){return infoById[id];}).filter(Boolean);
+    if(infos.length)downloadICS(infos,'great-music-watchlist.ics');
+  });
+
+  /* ---------------- A–Z rail: faster way through all the bands ---------------- */
+  (function buildAZ(){
+    var list=document.querySelector('.band-list');
+    if(!list)return;
+    var rail=document.createElement('nav');
+    rail.className='az-rail'; rail.id='az-rail';
+    rail.setAttribute('aria-label','Jump to bands by letter');
+    var note=el('span','az-note','Jump by letter \u2014 or use the \u2191 \u2193 buttons in the corner to step band by band.');
+    rail.appendChild(note);
+    var seen={};
+    rows.forEach(function(row){
+      var band=bandsByKey[row.getAttribute('data-band-key')];
+      var name=band?band.artist:(row.querySelector('.band-name')||{}).textContent||'';
+      var clean=name.replace(/^The\s+/i,'').trim();
+      var ch=/[A-Za-z]/.test(clean.charAt(0))?clean.charAt(0).toUpperCase():'#';
+      if(!seen[ch])seen[ch]=row;
+    });
+    var letters=['#'].concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+    letters.forEach(function(ch){
+      if(!seen[ch]&&ch!=='#')return;
+      var b=el('button','az-btn',ch); b.type='button';
+      b.setAttribute('aria-label','Jump to bands starting with '+ch);
+      if(!seen[ch])b.disabled=true;
+      b.addEventListener('click',function(){
+        var target=seen[ch];
+        if(ch==='#'){target=rows.filter(function(r){return !r.hidden;})[0]||target;}
+        else{
+          var vis=rows.filter(function(r){return !r.hidden&&seen[ch]===r;});
+          target=vis[0]||seen[ch];
+        }
+        if(target){target.scrollIntoView({block:'start'});flash(target);}
+      });
+      rail.appendChild(b);
+    });
+    list.parentNode.insertBefore(rail,list);
+  })();
+
+  /* ---------------- Step-through scroller (Prev / Next) ---------------- */
+  var stepnav=document.getElementById('mg-stepnav');
+  var stepPos=document.getElementById('mg-step-pos');
+  var currentView='bands';
+  function stepItems(){
+    if(currentView==='bands')return rows.filter(function(r){return !r.hidden;});
+    if(currentView==='shows')return cards.filter(function(c){return !c.hidden;});
+    return [];
+  }
+  function updateStepPos(){
+    if(!stepnav)return;
+    var items=stepItems();
+    stepnav.hidden=items.length===0||!listInView;
+    if(!items.length){stepPos.textContent='';return;}
+    var idx=0;
+    for(var i=0;i<items.length;i++){if(items[i].getBoundingClientRect().bottom>150) {idx=i;break;} idx=i;}
+    stepPos.textContent=(currentView==='bands'?'Band ':'Show ')+(idx+1)+' / '+items.length;
+  }
+  function step(dir){
+    var items=stepItems(); if(!items.length)return;
+    var target=null,i;
+    if(dir>0){
+      for(i=0;i<items.length;i++){if(items[i].getBoundingClientRect().top>130){target=items[i];break;}}
+    }else{
+      for(i=items.length-1;i>=0;i--){if(items[i].getBoundingClientRect().top<-40){target=items[i];break;}}
+      if(!target)for(i=items.length-1;i>=0;i--){if(items[i].getBoundingClientRect().top<60){target=items[i];break;}}
+    }
+    if(target){target.scrollIntoView({block:'start'});flash(target);setTimeout(updateStepPos,350);}
+  }
+  var nextBtn=document.getElementById('mg-next'), prevBtn=document.getElementById('mg-prev');
+  if(nextBtn)nextBtn.addEventListener('click',function(){step(1);});
+  if(prevBtn)prevBtn.addEventListener('click',function(){step(-1);});
+  var listInView=false;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting)listInView=true;});
+      listInView=entries.some(function(en){return en.isIntersecting;})||listInView&&false;
+      var anyVisible=false;
+      ioTargets.forEach(function(t){var r=t.getBoundingClientRect();if(r.bottom>80&&r.top<window.innerHeight-60)anyVisible=true;});
+      listInView=anyVisible;
+      updateStepPos();
+    },{rootMargin:'-60px 0px -60px 0px'});
+    var ioTargets=[];
+    var bl=document.querySelector('.band-list'); if(bl){ioTargets.push(bl);io.observe(bl);}
+    var eg=document.getElementById('event-grid'); if(eg){ioTargets.push(eg);io.observe(eg);}
+  }else{listInView=true;}
+  var scrollTick=false;
+  window.addEventListener('scroll',function(){
+    if(scrollTick)return; scrollTick=true;
+    requestAnimationFrame(function(){scrollTick=false;updateStepPos();});
+  },{passive:true});
+
+  window.__mgOnView=function(view){
+    currentView=view;
+    setTimeout(updateStepPos,50);
+  };
+
+  /* ---------------- In-page Back button (never leaves the app) ---------------- */
+  var backBtn=document.getElementById('mg-back');
+  var stack=[], restoring=false;
+  function viewOf(){
+    var sel=document.querySelector('.view-tab[aria-selected="true"]');
+    if(!sel)return currentView;
+    return sel.id.replace('-tab','');
+  }
+  function snapshot(){return {view:viewOf(),y:window.scrollY,hash:location.hash};}
+  function pushHistory(){
+    if(restoring)return;
+    var s=snapshot();
+    var top=stack[stack.length-1];
+    if(top&&top.view===s.view&&Math.abs(top.y-s.y)<40)return;
+    stack.push(s); if(stack.length>50)stack.shift();
+    if(backBtn){backBtn.disabled=stack.length===0;backBtn.hidden=stack.length===0;}
+  }
+  /* Push the place we are leaving whenever a main tab or a show link is used. */
+  document.querySelectorAll('.view-tab').forEach(function(tab){
+    tab.addEventListener('click',function(){pushHistory();},true);
+  });
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[href^="#show-"],a[href="#bands"],a[href="#venues"]'):null;
+    if(a)pushHistory();
+  },true);
+  if(backBtn)backBtn.addEventListener('click',function(){
+    var target=stack.pop();
+    backBtn.disabled=stack.length===0;
+    backBtn.hidden=stack.length===0;
+    if(!target)return;
+    restoring=true;
+    var tab=document.getElementById(target.view+'-tab');
+    if(tab&&viewOf()!==target.view)tab.click();
+    setTimeout(function(){
+      var dest=null;
+      if(target.hash&&target.hash.indexOf('#show-')===0)dest=document.querySelector(target.hash);
+      if(dest){dest.scrollIntoView({block:'center'});flash(dest);}
+      else window.scrollTo(0,target.y);
+      restoring=false;
+      updateStepPos();
+    },70);
+  });
+
+  /* Float-menu Watchlist link: open the tab in-page instead of relying on the hash alone. */
+  var floatLists=document.querySelector('.float-lists');
+  if(floatLists)floatLists.addEventListener('click',function(e){
+    e.preventDefault();pushHistory();
+    var tab=document.getElementById('watchlist-tab'); if(tab)tab.click();
+    var lists=document.getElementById('lists');
+    if(lists)setTimeout(function(){lists.scrollIntoView({block:'start'});},50);
+  });
+
+  syncUI(false);
+  updateStepPos();
+})();
+</script>
+
 </body>
 </html>
